@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import logo from "./assets/profile.jpg";
 import "./App.css";
-import { link } from "motion/react-client";
 
 function App() {
   const [projects, setProjects] = useState([]);
