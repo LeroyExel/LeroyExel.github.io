@@ -128,13 +128,45 @@
             muted
             loop
             playsinline
-            class="w-full h-auto rounded-lg border border-accent shadow-lg"
+            class="w-full h-auto rounded-lg border border-accent shadow-lg mb-4"
           >
             <source src="./RecoilAssets/Trailer.mp4" type="video/mp4" />
             Je browser ondersteunt het video-element niet.
           </video>
         </div>
       </section>
+            <!-- Info Section -->
+      <section
+        id="info"
+        class="w-full max-w-3xl text-center mt-16 px-4 sm:px-0"
+      >
+        <h2 class="text-xl sm:text-2xl recoil-font text-accent mb-4">
+          Over Recoil
+        </h2>
+        <p class="text-muted leading-relaxed text-sm sm:text-base">
+          <span class="text-accent">Recoil</span> is een 2D actieplatformer met
+          een unieke twist: je beweegt niet door te lopen, maar door de
+          terugslag van je wapen te gebruiken. Elk schot telt — zowel om
+          vijanden te verslaan als om jezelf door uitdagende levels te
+          verplaatsen. <br /><br />
+          Ontwikkeld als schoolproject, is Recoil het resultaat van een
+          gepassioneerde samenwerking tussen programmeurs en
+          ontwerpers die hun vaardigheden wilden testen en verbeteren. Met
+        </p>
+      </section>
+
+      <section class="w-full max-w-3xl text-center mt-16 px-4 sm:px-0">
+        <h2 class="text-xl sm:text-2xl recoil-font text-accent mb-4">
+          Mijn Bijdrage
+        </h2>
+        <p class="text-muted leading-relaxed text-sm sm:text-base">
+          <span class="text-accent">Recoil</span> was een geweldige kans om mijn
+          programmeerskills te verbeteren en samen te werken in een team. Ik
+          was verantwoordelijk voor het implementeren van de CoreMechanic van het 
+          spel, waaronder het schiet- en terugslagsysteem, Ook heb ik bijgedragen aan de Art en leveldesign.
+        </p>
+      </section>
+
       <!-- Team Section -->
       <section id="team" class="w-full max-w-5xl mt-16 text-center">
         <h2 class="text-2xl sm:text-3xl recoil-font text-accent mb-4">
@@ -227,25 +259,6 @@
         </div>
       </section>
 
-      <!-- Info Section -->
-      <section
-        id="info"
-        class="w-full max-w-3xl text-center mt-16 px-4 sm:px-0"
-      >
-        <h2 class="text-xl sm:text-2xl recoil-font text-accent mb-4">
-          Over Recoil
-        </h2>
-        <p class="text-muted leading-relaxed text-sm sm:text-base">
-          <span class="text-accent">Recoil</span> is een 2D actieplatformer met
-          een unieke twist: je beweegt niet door te lopen, maar door de
-          terugslag van je wapen te gebruiken. Elk schot telt — zowel om
-          vijanden te verslaan als om jezelf door uitdagende levels te
-          verplaatsen. <br /><br />
-          Ontwikkeld als schoolproject, is Recoil het resultaat van een
-          gepassioneerde samenwerking tussen programmeurs en
-          ontwerpers die hun vaardigheden wilden testen en verbeteren. Met
-        </p>
-      </section>
 <!-- Script Dropdown Section -->
 <section id="scripts" class="w-full max-w-5xl text-center mt-16 px-4 sm:px-0">
   <h2 class="text-xl sm:text-2xl recoil-font text-accent mb-4">
@@ -491,6 +504,13 @@ public class Weapon : MonoBehaviour
         p {
           font-size: 0.9rem !important;
         }
+         #scriptOutput {
+      width: 100% !important;
+      font-size: 0.8rem !important;
+      white-space: pre-wrap !important;
+      word-break: break-word !important;
+      overflow-x: auto !important;
+    }
       }
     </style>
 
