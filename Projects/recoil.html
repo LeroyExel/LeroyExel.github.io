@@ -89,26 +89,12 @@
           >
         </li>
       </ul>
-
-      <!-- Upcoming section (desktop) -->
-      <div
-        class="mt-auto border-t border-white/5 pt-3 px-2 bg-accent/20 rounded-lg shadow-lg text-text"
-      >
-        <h3 class="text-sm font-semibold mb-1">Upcoming</h3>
-        <div class="text-sm space-y-1 mb-5">
-          <div class="font-medium">Recoil</div>
-          <a href="recoil.html" class="text-sky-400 hover:underline"
-            >See details</a
-          >
-        </div>
-      </div>
     </nav>
 
     <!-- Main content -->
     <main
       class="ml-56 flex-1 flex flex-col items-center pt-20 px-6 md:px-12 lg:px-16 relative z-20"
     >
-      <!-- Hero Section -->
       <section class="text-center max-w-xl w-full">
         <h1
           class="text-5xl sm:text-6xl md:text-7xl font-bold recoil-font bg-gradient-to-r from-accent to-blue-300 text-transparent bg-clip-text drop-shadow-lg mb-4 tracking-widest animate-pulseGlow"
@@ -118,7 +104,7 @@
         <p class="text-muted text-base sm:text-lg mb-6">
           Een <span class="text-accent">2D pixel-shooter</span> waarin je
           beweegt door de terugslag van je eigen wapen. Ontwikkeld met passie
-          door een klein maar ambitieus team.
+          door een klein maar Leuk team..
         </p>
         <a
           href="#game"
@@ -158,7 +144,7 @@
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full"
         >
-          <!-- Member 1 -->
+          <!--- Member 1 -->
           <div
             class="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-transform duration-300"
           >
@@ -255,11 +241,191 @@
           terugslag van je wapen te gebruiken. Elk schot telt — zowel om
           vijanden te verslaan als om jezelf door uitdagende levels te
           verplaatsen. <br /><br />
-          Ontwikkeld als schoolproject, groeide Recoil uit tot een
-          gepassioneerde samenwerking tussen programmeurs, artiesten en
-          ontwerpers die streven naar een unieke indie-ervaring.
+          Ontwikkeld als schoolproject, is Recoil het resultaat van een
+          gepassioneerde samenwerking tussen programmeurs en
+          ontwerpers die hun vaardigheden wilden testen en verbeteren. Met
         </p>
       </section>
+<!-- Script Dropdown Section -->
+<section id="scripts" class="w-full max-w-5xl text-center mt-16 px-4 sm:px-0">
+  <h2 class="text-xl sm:text-2xl recoil-font text-accent mb-4">
+    C# Script Selectie
+  </h2>
+
+  <p class="text-muted text-sm sm:text-base mb-4">
+    Kies een C# script om de code te bekijken:
+  </p>
+
+  <!-- Dropdown menu -->
+<!-- Dropdown menu -->
+<select
+  id="scriptSelector"
+  class="bg-[#1a2538] border border-accent text-white placeholder-muted rounded-lg px-3 py-2 w-full sm:w-96 mx-auto 
+         focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition 
+         hover:bg-[#22324b] shadow-md mb-8"
+>
+  <option value="">-- Selecteer een script --</option>
+  <option value="script1" class="bg-[#0f1724] text-text">BounceCounter.cs</option>
+  <option value="script2" class="bg-[#0f1724] text-text">CoinPickup.cs</option>
+  <option value="script3" class="bg-[#0f1724] text-text">Weapon.cs</option>
+</select>
+
+
+  <!-- Code output -->
+  <pre
+    id="scriptOutput"
+    class="mt-6 p-4 bg-[#0b1220]/80 border border-white/10 rounded-xl text-left text-sm mb-12 font-mono text-accent overflow-x-auto hidden backdrop-blur-sm"
+  ><code id="codeContent"></code></pre>
+</section>
+
+<!-- Script dropdown logic -->
+<script>
+  const scriptSelector = document.getElementById("scriptSelector");
+  const scriptOutput = document.getElementById("scriptOutput");
+  const codeContent = document.getElementById("codeContent");
+
+  // JSON met C# scripts en kleuren
+  const scripts = {
+    "script1": {
+      "name": "BounceCounter.cs",
+      "color": "#8fc1ff",
+      "code": `using UnityEngine;
+
+public class BounceCounter : MonoBehaviour
+{
+    int bounceCounter;
+    [SerializeField] int maxBounces;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        bounceCounter++;
+        if (bounceCounter > maxBounces)
+        {
+            Destroy(gameObject);
+        }
+    }
+}`
+    },
+
+    "script2": {
+      "name": "GunRecoil.cs",
+      "color": "#60a5fa",
+      "code": `using UnityEngine;
+
+public class CoinPickup : MonoBehaviour
+{
+    [SerializeField] int amount;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log($"Add Coins {amount}");
+            SFXManager.instance.PlaySound("coin");
+            CoinManager.Instance.AddCoins(amount);
+            Destroy(gameObject);
+        }
+    }
+}`
+    },
+
+    "script3": {
+      "name": "EnemyAI.cs",
+      "color": "#38bdf8",
+      "code": `using UnityEngine;
+
+public class Weapon : MonoBehaviour
+{
+    public WeaponObject Config;
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform shootPoint;
+    [SerializeField] LineRenderer lineRenderer;
+    public bool aiming;
+    Rigidbody2D rb;
+
+    protected virtual void Start()
+    {
+        rb = GetComponentInParent<Rigidbody2D>();
+    }
+    public void FlipSprite()
+    {
+        Vector3 scale = transform.localScale;
+        scale.y *= -1;
+        transform.localScale = scale;
+    }
+
+    public virtual void Shoot(Vector2 dir, float dragDistance)
+    {
+            float t = Mathf.Clamp01(dragDistance / 3);
+            float finalForce = Mathf.Lerp(Config.minForce, Config.maxForce, t);
+
+
+            SFXManager.instance.PlaySound("shoot");
+
+            if (GroundCheck.Instance.Grounded)
+            {
+                rb.AddForce(-dir * finalForce, ForceMode2D.Impulse);
+            }
+            else
+
+            {
+                rb.AddForce(-dir * Config.minForce, ForceMode2D.Impulse);
+            }
+            Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+
+        
+    }
+
+    private void Update()
+    {
+        if (aiming)
+        {
+            if (lineRenderer != null)
+            {
+                Vector2 origin = shootPoint.position;
+                Vector2 direction = shootPoint.right;
+
+                RaycastHit2D hit = Physics2D.Raycast(origin, direction, Mathf.Infinity);
+
+                Debug.DrawLine(origin, hit ? hit.point : origin + direction * 10f, Color.red);
+
+                lineRenderer.useWorldSpace = true;
+
+                lineRenderer.SetPosition(0, origin);
+
+                if (hit.collider != null)
+                {
+                    lineRenderer.SetPosition(1, hit.point);
+                }
+                else
+                {
+                    lineRenderer.SetPosition(1, origin + direction * 10f);
+                }
+            }
+            
+        }
+    }
+}`
+    }
+  };
+
+  // Toon het juiste script bij selectie
+  scriptSelector.addEventListener("change", () => {
+    const selected = scriptSelector.value;
+
+    if (selected && scripts[selected]) {
+      const { name, code, color } = scripts[selected];
+      codeContent.textContent = code;
+      scriptOutput.classList.remove("hidden");
+      scriptOutput.style.borderColor = color;
+      scriptOutput.style.boxShadow = `0 0 15px ${color}40`;
+      scriptOutput.style.color = color;
+    } else {
+      scriptOutput.classList.add("hidden");
+      codeContent.textContent = "";
+    }
+  });
+</script>
+
     </main>
     </div>
 
