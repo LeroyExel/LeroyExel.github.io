@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loading...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0f1724',
+            accent: '#60a5fa',
+            text: '#e6eef8',
+          },
+          keyframes: {
+            bounceX: {
+              '0%, 100%': { left: '0%' },
+              '50%': { left: 'calc(100% - 4rem)' },
+            },
+          },
+          animation: {
+            bounceX: 'bounceX 3s ease-in-out forwards',
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-gradient-to-b from-bg to-[#071025] flex flex-col items-center justify-center min-h-screen text-text relative overflow-hidden">
+
+  <!-- Loading container -->
+  <div class="flex flex-col items-center gap-6">
+    <p class="text-xl font-semibold mb-4">Loading <span id="percent">0%</span></p>
+
+    <!-- Bar background -->
+    <div class="relative w-72 h-4 bg-white/10 rounded-full overflow-hidden">
+      <!-- Moving block -->
+      <div class="absolute top-0 h-4 w-16 bg-accent rounded-full animate-bounceX"></div>
+    </div>
+  </div>
+  
+
+  <script>
+    const percentEl = document.getElementById('percent');
+    const duration = 800; // 1.4 seconds
+    const intervalTime = 30; // update every 30ms
+    const totalSteps = duration / intervalTime;
+    let step = 0;
+
+    const interval = setInterval(() => {
+      step++;
+      const percent = Math.min(Math.round((step / totalSteps) * 100), 100);
+      percentEl.textContent = percent + '%';5 
+
+      if (percent >= 100) {
+        clearInterval(interval);
+        window.location.href = 'main.html';
+      }
+    }, intervalTime);
+  </script>
+
+</body>
+</html>
