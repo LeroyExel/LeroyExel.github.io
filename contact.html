@@ -5,8 +5,7 @@
     <title>Leroy Exel - Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="src/output.css" rel="stylesheet">
 
     <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -20,13 +19,14 @@
               muted: '#9aa4b2',
               accent: '#60a5fa',
               text: '#e6eef8',
+              normalText: '#FFFFFF'
             },
           },
         },
       };
     </script>
   </head>
-  <body class="min-h-screen flex bg-gradient-to-b from-bg to-[#071025] text-text font-sans relative">
+  <body class="min-h-screen text-white flex bg-linear-to-b from-[#0f2b72] to-[#071025] text-text font-sans relative">
 
     <!-- Particles background -->
     <div id="particles-js" aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
@@ -34,16 +34,16 @@
     <!-- Sidebar -->
     <nav class="fixed left-0 top-0 z-30 w-56 min-h-screen bg-white/5 border-r border-white/5 flex flex-col p-6 backdrop-blur-sm">
       <ul class="flex flex-col gap-2">
-        <li><a href="main.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Home</a></li>
-        <li><a href="about.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">About</a></li>
-        <li><a href="projects.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Projects</a></li>
-        <li><a href="contact.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Contact</a></li>
+        <li><a href="main.html" class="block text-muted hover:text-text  hover:bg-white/5 rounded-md px-2 py-1">Home</a></li>
+        <li><a href="about.html" class="block text-muted hover:text-text  hover:bg-white/5 rounded-md px-2 py-1">About</a></li>
+        <li><a href="projects.html" class="block text-muted hover:text-text  hover:bg-white/5 rounded-md px-2 py-1">Projects</a></li>
+        <li><a href="contact.html" class="block text-muted hover:text-text  hover:bg-white/5 rounded-md px-2 py-1">Contact</a></li>
       </ul>
 
       <div class="mt-auto border-t border-white/5 pt-3 px-2 bg-accent/20 rounded-lg shadow-lg text-text">
-        <h3 class="text-sm font-semibold mb-1">Upcoming</h3>
+        <h3 class="text-sm  font-semibold mb-1">Upcoming</h3>
         <div class="text-sm space-y-1 mb-5">
-          <div class="font-medium">Recoil</div>
+          <div class="font-medium ">Recoil</div>
           <a href="Projects/recoil.html" class="text-sky-400 hover:underline">See details</a>
         </div>
       </div>
@@ -52,16 +52,16 @@
     <!-- Main content -->
     <main class="ml-56 flex-1 flex items-center justify-center p-12 relative z-20">
       <div class="max-w-xl text-center p-8 bg-transparent flex flex-col items-center gap-6">
-        <h1 class="text-3xl font-semibold mb-2">Contact Me</h1>
-        <p class="text-muted">Feel free to reach out via email or connect on LinkedIn!</p>
+        <h1 class="text-3xl font-semibold mb-2 ">Contact Me</h1>
+        <p class="text-muted ">Feel free to reach out via email or connect on LinkedIn!</p>
 
         <!-- Contact Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 mt-4">
-          <a href="mailto:leroyexell@gmail.com" class="flex items-center justify-center gap-2 bg-accent/30 hover:bg-accent/50 text-text px-5 py-2 rounded-md font-medium transition">
+          <a href="mailto:leroyexell@gmail.com" class="flex items-center  justify-center gap-2 bg-[#1564c4] hover:bg-[#0e1e9a79] text-text px-5 py-2 rounded-md font-medium transition">
             📧 Email Me
           </a>
 
-          <a href="https://www.linkedin.com/in/leroy-exel-8b3b4a381/" target="_blank" class="flex items-center justify-center gap-2 bg-accent/30 hover:bg-accent/50 text-text px-5 py-2 rounded-md font-medium transition">
+          <a href="https://www.linkedin.com/in/leroy-exel-8b3b4a381/" target="_blank" class="flex items-center justify-center gap-2 bg-[#1564c4]  hover:bg-[#0e1e9a79] text-text px-5 py-2 rounded-md font-medium transition">
             💼 LinkedIn
           </a>
         </div>

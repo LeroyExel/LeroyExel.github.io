@@ -5,8 +5,7 @@
     <title>Leroy Exel - Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="src/output.css" rel="stylesheet">
 
     <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -24,15 +23,16 @@
           },
         },
       };
+      
     </script>
   </head>
-  <body class="min-h-screen flex bg-gradient-to-b from-bg to-[#071025] text-text font-sans relative">
+  <body class="min-h-screen text-white flex bg-linear-to-b from-[#0f2b72] to-[#071025] text-text font-sans relative">
 
     <!-- Particles background -->
     <div id="particles-js" aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
 
     <!-- Sidebar -->
-    <nav class="fixed left-0 top-0 z-30 w-56 min-h-screen bg-white/5 border-r border-white/5 flex flex-col p-6 backdrop-blur-sm">
+    <nav class="fixed left-0 top-0 z-30 w-56  min-h-screen bg-white/5 border-r border-white/5 flex flex-col p-6 backdrop-blur-sm">
       <ul class="flex flex-col gap-2">
         <li><a href="main.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Home</a></li>
         <li><a href="about.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">About</a></li>
@@ -41,16 +41,16 @@
       </ul>
 
       <div class="mt-auto border-t border-white/5 pt-3 px-2 bg-accent/20 rounded-lg shadow-lg text-text">
-        <h3 class="text-sm font-semibold mb-1">Upcoming</h3>
+        <h3 class="text-sm  font-semibold mb-1 ">Upcoming</h3>
         <div class="text-sm space-y-1 mb-5">
-          <div class="font-medium">Recoil</div>
+          <div class="font-medium ">Recoil</div>
           <a href="Projects/recoil.html" class="text-sky-400 hover:underline">See details</a>
         </div>
       </div>
     </nav>
 
     <!-- Main content -->
-    <main class="ml-56 flex-1 flex items-center justify-center p-12 relative z-20">
+    <main class="ml-56 flex-1 flex items-center  justify-center p-12 relative z-20">
       <div class="max-w-xl text-center p-8 bg-transparent flex flex-col items-center gap-4">
         <h1 class="text-3xl font-semibold mb-2">About Me</h1>
         <p class="text-muted">I'm Leroy Exel, I live in the Netherlands.</p>

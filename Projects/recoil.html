@@ -5,8 +5,7 @@
     <title>Leroy Exel - Recoil</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="../src/output.css" rel="stylesheet">
 
     <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -34,7 +33,6 @@
         },
       };
     </script>
-
     <style>
       @font-face {
         font-family: "RecoilFont";
@@ -47,7 +45,7 @@
   </head>
 
   <body
-    class="min-h-screen flex bg-gradient-to-b from-bg to-[#071025] text-text relative font-sans"
+    class="min-h-screen flex bg-linear-to-b text-white from-[#0f2b72] to-[#071025] text-text relative font-sans"
   >
     <!-- Particles background -->
     <div
@@ -97,7 +95,7 @@
     >
       <section class="text-center max-w-xl w-full">
         <h1
-          class="text-5xl sm:text-6xl md:text-7xl font-bold recoil-font bg-gradient-to-r from-accent to-blue-300 text-transparent bg-clip-text drop-shadow-lg mb-4 tracking-widest animate-pulseGlow"
+          class="text-5xl sm:text-6xl md:text-7xl font-bold recoil-font bg-linear-to-r from-blue-400 to-blue-300 text-transparent bg-clip-text drop-shadow-lg mb-4 tracking-widest animate-pulseGlow"
         >
           RECOIL
         </h1>
@@ -273,7 +271,7 @@
 <!-- Dropdown menu -->
 <select
   id="scriptSelector"
-  class="bg-[#1a2538] border border-accent text-white placeholder-muted rounded-lg px-3 py-2 w-full sm:w-96 mx-auto 
+  class="bg-[#1a2538] border border-accent  placeholder-muted rounded-lg px-3 py-2 w-full sm:w-96 mx-auto 
          focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition 
          hover:bg-[#22324b] shadow-md mb-8"
 >
