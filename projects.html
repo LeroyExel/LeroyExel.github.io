@@ -1,150 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leroy Exel - Portfolio</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leroy Exel - Portfolio</title>
 
-  <link href="src/output.css" rel="stylesheet">
+    <link href="src/output.css" rel="stylesheet" />
 
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            bg: '#0f1724',
-            card: '#ffffff',
-            muted: '#9aa4b2',
-            accent: '#60a5fa',
-            text: '#e6eef8'
-          }
-        }
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "#0f1724",
+              card: "#ffffff",
+              muted: "#9aa4b2",
+              accent: "#60a5fa",
+              text: "#e6eef8",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @font-face {
+        font-family: "RecoilFont";
+        src: url("./Projects/RecoilAssets/RecoilFont.TTF") format("truetype");
       }
-    }
-  </script>
-</head>
-<body class="min-h-screen flex font-sans text-white bg-linear-to-b from-[#0f2b72] to-[#071025] text-text relative">
+      .recoil-font {
+        font-family: "RecoilFont", sans-serif;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex font-sans text-white bg-linear-to-b from-[#0f2b72] to-[#071025] text-text relative"
+  >
+    <!-- Particles background -->
+    <div
+      id="particles-js"
+      class="fixed inset-0 z-0 pointer-events-none opacity-90"
+    ></div>
 
-  <!-- Particles background -->
-  <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
+    <!-- Sidebar -->
+    <nav
+      class="fixed left-0 top-0 z-30 w-56 min-h-screen bg-white/5 border-r border-white/5 flex flex-col p-6 backdrop-blur-sm"
+    >
+      <ul class="flex flex-col gap-2">
+        <li>
+          <a
+            href="main.html"
+            class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            href="about.html"
+            class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            href="projects.html"
+            class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1"
+            >Projects</a
+          >
+        </li>
+        <li>
+          <a
+            href="contact.html"
+            class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1"
+            >Contact</a
+          >
+        </li>
+      </ul>
 
-  <!-- Sidebar -->
-  <nav class="fixed left-0 top-0 z-30 w-56 min-h-screen bg-white/5 border-r border-white/5 flex flex-col p-6 backdrop-blur-sm">
-    <ul class="flex flex-col gap-2">
-      <li><a href="rain.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Home</a></li>
-      <li><a href="about.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">About</a></li>
-      <li><a href="projects.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Projects</a></li>
-      <li><a href="contact.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Contact</a></li>
-    </ul>
+      <!-- Upcoming section -->
+      <div
+        class="mt-auto border-t border-white/5 pt-3 px-2 bg-accent/20 rounded-lg shadow-lg text-text"
+      >
+        <h3 class="text-sm font-semibold mb-1">Upcoming</h3>
+        <div class="text-sm space-y-1 mb-5">
+          <div class="font-medium">Recoil</div>
+          <a href="Projects/recoil.html" class="text-sky-400 hover:underline"
+            >See details</a
+          >
+        </div>
+      </div>
+    </nav>
 
-    <!-- Upcoming section -->
-    <div class="mt-auto border-t border-white/5 pt-3 px-2 bg-accent/20 rounded-lg shadow-lg text-text">
+    <!-- Main content -->
+    <main
+      class="ml-56 flex-1 flex items-center justify-center p-12 relative z-20"
+    >
+      <div class="w-full flex flex-col items-center gap-6">
+        <h1 class="text-5xl font-bold mb-8">Projects</h1>
+        
+        <!-- Projects Grid -->
+        <div class="w-full max-w-6xl grid grid-cols-1 gap-6">
+          <!-- Project 1 -->
+          <div class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer">
+            <div class="flex flex-col md:flex-row gap-4 md:items-start">
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-accent mb-2">Recoil</h3>
+                <p class="text-muted text-sm">School project using bullet force to shoot yourself up and kill enemies </p>
+                <p class="text-muted text-sm mt-4 mb-8"><a href="#" class="text-sky-400 hover:underline">See GitHub →</a></p>
+              </div>
+              <p class="font-bold recoil-font text-5xl md:text-5xl mt-8 text-blue-400 md:flex-shrink-0">RECOIL</p>
+            </div>
+          </div>
+          
+          <!-- Project 2 -->
+          <div class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer">
+            <div class="flex flex-col md:flex-row gap-4 md:items-start">
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-accent mb-2">PhysicsGame</h3>
+                <p class="text-muted text-sm">Fully physics driven characters using my own physics animation system.</p>
+                <p class="text-muted text-sm mt-4"><a href="https://github.com/LeroyExel/Physics-Based-Character/tree/main" class="text-sky-400 hover:underline">See GitHub →</a></p>
+              </div>
+              <img src="https://raw.githubusercontent.com/LeroyExel/Physics-Based-Character/main/ExamplePicture.png" alt="PhysicsGame Preview" class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0">
+            </div>
+          </div>
+          
+          <!-- Project 3 -->
+          <div class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer">
+            <div class="flex flex-col md:flex-row gap-4 md:items-start">
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-accent mb-2">GOPO</h3>
+                <p class="text-muted text-sm">Physics based Pogostick game.</p>
+                <p class="text-muted text-sm mt-4"><a href="https://github.com/LeroyExel/Gopo-PogoStick-" class="text-sky-400 hover:underline">See GitHub →</a></p>
+              </div>
+              <img src="https://raw.githubusercontent.com/LeroyExel/Gopo-PogoStick-/main/Example.png" alt="Project 3 Preview" class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0">
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Fixed Upcoming for mobile -->
+    <div id="upcoming-fixed" class="hidden md:hidden">
       <h3 class="text-sm font-semibold mb-1">Upcoming</h3>
-      <div class="text-sm space-y-1 mb-5">
+      <div class="text-sm space-y-1">
         <div class="font-medium">Recoil</div>
-        <a href="Projects/recoil.html" class="text-sky-400 hover:underline">See details</a>
+        <a href="Projects/recoil.html" class="text-sky-400 hover:underline"
+          >See details</a
+        >
       </div>
     </div>
-  </nav>
 
-  <!-- Main content -->
-  <main class="ml-56 flex-1 flex items-center justify-center p-12 relative z-20">
-    <div class="max-w-xl text-center p-8 bg-transparent flex flex-col items-center gap-6">
-      <h1 class="text-3xl font-semibold mb-2">Worked on!</h1>
-    </div>
-  </main>
+    <!-- Mobile Responsive Styling -->
+    <style>
+      @media (max-width: 700px) {
+        body {
+          flex-direction: column;
+        }
 
-  <!-- Fixed Upcoming for mobile -->
-  <div id="upcoming-fixed" class="hidden md:hidden">
-    <h3 class="text-sm font-semibold mb-1">Upcoming</h3>
-    <div class="text-sm space-y-1">
-      <div class="font-medium">Recoil</div>
-      <a href="Projects/recoil.html" class="text-sky-400 hover:underline">See details</a>
-    </div>
-  </div>
+        /* Sidebar horizontal top */
+        nav {
+          position: relative !important;
+          width: 100% !important;
+          min-height: auto !important;
+          flex-direction: row !important;
+          justify-content: space-around !important;
+          padding: 0.5rem 0.75rem !important;
+          border-right: none !important;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        }
 
-  <!-- Mobile Responsive Styling -->
-  <style>
-    @media (max-width: 700px) {
-      body {
-        flex-direction: column;
+        nav ul {
+          flex-direction: row !important;
+          gap: 1rem !important;
+        }
+
+        nav ul li a {
+          padding: 0.5rem 0.75rem !important;
+        }
+
+        /* Hide sidebar Upcoming */
+        nav .mt-auto {
+          display: none !important;
+        }
+
+        /* Main content full width */
+        main {
+          margin-left: 0 !important;
+          padding: 1.5rem !important;
+          width: 100% !important;
+        }
+
+        /* Fixed Upcoming at bottom-right */
+        #upcoming-fixed {
+          display: block;
+          position: fixed;
+          bottom: 1rem;
+          right: 1rem;
+          width: 220px;
+          background: rgba(96, 165, 250, 0.2);
+          border-radius: 0.5rem;
+          padding: 0.75rem;
+          color: #e6eef8;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+          z-index: 50;
+        }
       }
+    </style>
 
-      /* Sidebar horizontal top */
-      nav {
-        position: relative !important;
-        width: 100% !important;
-        min-height: auto !important;
-        flex-direction: row !important;
-        justify-content: space-around !important;
-        padding: 0.5rem 0.75rem !important;
-        border-right: none !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-        backdrop-blur: none !important;
+    <script>
+      if (window.particlesJS) {
+        particlesJS("particles-js", {
+          particles: {
+            number: { value: 100, density: { enable: true, value_area: 800 } },
+            color: { value: "#60a5fa" },
+            shape: { type: "circle" },
+            opacity: { value: 0.6 },
+            size: { value: 3, random: true },
+            line_linked: {
+              enable: true,
+              distance: 120,
+              color: "#60a5fa",
+              opacity: 0.12,
+              width: 1,
+            },
+            move: { enable: true, speed: 1.5, out_mode: "out" },
+          },
+          interactivity: {
+            detect_on: "window",
+            events: { onhover: { enable: true, mode: "repulse" } },
+            modes: { repulse: { distance: 100 } },
+          },
+          retina_detect: true,
+        });
       }
-
-      nav ul {
-        flex-direction: row !important;
-        gap: 1rem !important;
-      }
-
-      nav ul li a {
-        padding: 0.5rem 0.75rem !important;
-      }
-
-      /* Hide sidebar Upcoming */
-      nav .mt-auto {
-        display: none !important;
-      }
-
-      /* Main content full width */
-      main {
-        margin-left: 0 !important;
-        padding: 1.5rem !important;
-        width: 100% !important;
-      }
-
-      /* Fixed Upcoming at bottom-right */
-      #upcoming-fixed {
-        display: block;
-        position: fixed;
-        bottom: 1rem;
-        right: 1rem;
-        width: 220px;
-        background: rgba(96, 165, 250, 0.2);
-        backdrop-blur: 6px;
-        border-radius: 0.5rem;
-        padding: 0.75rem;
-        color: #e6eef8;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        z-index: 50;
-      }
-    }
-  </style>
-
-  <script>
-    if (window.particlesJS) {
-      particlesJS('particles-js', {
-        particles: {
-          number: { value: 100, density: { enable: true, value_area: 800 } },
-          color: { value: '#60a5fa' },
-          shape: { type: 'circle' },
-          opacity: { value: 0.6 },
-          size: { value: 3, random: true },
-          line_linked: { enable: true, distance: 120, color: '#60a5fa', opacity: 0.12, width: 1 },
-          move: { enable: true, speed: 1.5, out_mode: 'out' }
-        },
-        interactivity: {
-          detect_on: 'window',
-          events: { onhover: { enable: true, mode: 'repulse' } },
-          modes: { repulse: { distance: 100 } }
-        },
-        retina_detect: true
-      });
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>
