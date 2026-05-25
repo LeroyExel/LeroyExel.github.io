@@ -29,7 +29,7 @@
 </head>
 <body class="bg-gradient-to-b from-[#0f2b72] to-[#071025] text-[#e6eef8] font-sans antialiased selection:bg-[#8fc1ff] selection:text-[#0f1724] flex relative min-h-screen">
 
-    <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none opacity-40"></div>
+    <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none opacity-50"></div>
 
     <aside class="w-64 bg-white/5 border-r border-white/5 p-8 flex flex-col justify-between fixed h-full z-30 backdrop-blur-md hidden md:flex">
         <div class="space-y-10">
@@ -71,7 +71,7 @@
             <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Voorwoord & Inleiding</h2>
             <div class="bg-white/5 border border-white/10 p-8 rounded-2xl space-y-6 text-[#9aa4b2] leading-relaxed">
                 <p>
-                    Sinds 1 januari 2026 loop ik met veel plezier stage als onderdeel van mijn opleiding aan het ROC van Twente. In dit verslag beschrijf ik het bedrijf, de projecten waaraan ik heb gewerkt en reflecteer ik op mijn persoonlijke en professionele ontwikkeling gedurende deze periode.
+                    Sinds 1 januari 2026 loop ik met veel plezier stage als onderdeel van mijn opleiding aan het ROC van Twente. In dit verslag beschrijf ik het bedrijf, de projecten waaraan ik heb gewerkt van de afgelopen maanden, en reflecteer ik op mijn persoonlijke en professionele ontwikkeling gedurende deze periode.
                 </p>
                 <p>
                     Dit verslag is zo opgebouwd dat het een helder beeld geeft van de dagelijkse gang van zaken binnen het XR Lab en de processen die komen kijken bij software- en mediaontwikkeling. Naast een analyse van het bedrijf worden er twee specifieke praktijktaken volledig uitgediept aan de hand van de acht procesfasen die binnen de opleiding worden gehanteerd. Tot slot blik ik terug op mijn geformuleerde leerdoelen en de voortgang die ik heb geboekt.
@@ -90,7 +90,7 @@
                 </p>
 
                 <h3 class="text-white font-bold mt-8 mb-4 border-t border-white/10 pt-6">Software, Tools & Hardware</h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                     <div class="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center gap-3 recoil-glow transition-all">
                         <img src="https://cdn.simpleicons.org/unrealengine/e6eef8" alt="Unreal Engine" class="h-10 object-contain opacity-80">
                         <span class="text-[10px] text-white font-mono uppercase tracking-widest text-center">Unreal Engine</span>
@@ -110,17 +110,10 @@
                         <img src="https://cdn.simpleicons.org/gitlab/e6eef8" alt="GitLab" class="h-10 object-contain opacity-80">
                         <span class="text-[10px] text-white font-mono uppercase tracking-widest text-center">GitLab</span>
                     </div>
-                </div>
 
-                <div class="grid grid-cols-2 gap-4 mt-4">
-                    <div class="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center gap-3 recoil-glow transition-all">
+                    <div class="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center gap-3 recoil-glow transition-all col-span-2 sm:col-span-1 md:col-span-1">
                         <img src="https://cdn.simpleicons.org/meta/e6eef8" alt="Meta Quest" class="h-10 object-contain opacity-80">
                         <span class="text-[10px] text-white font-mono uppercase tracking-widest text-center">Meta Quest VR</span>
-                    </div>
-
-                    <div class="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center gap-3 recoil-glow transition-all">
-                        <img src="https://cdn.simpleicons.org/steamvr/e6eef8" alt="HTC Vive" class="h-10 object-contain opacity-80">
-                        <span class="text-[10px] text-white font-mono uppercase tracking-widest text-center">HTC Vive</span>
                     </div>
                 </div>
             </div>
@@ -158,7 +151,7 @@
                     "Ik functioneer een stuk zelfstandiger, weet sneller de oorzaak van bugs te traceren en kan code opleveren die voldoet aan professionele normen."
                 </p>
                 <p class="text-sm">
-                    Gedurende mijn stageperiode bij het XR Lab heb ik grote stappen gezet binnen mijn leerdoelen. Door intensief te werken met grootschalige C++ projecten in Unreal Engine 5 en Git-workflows ben ik efficiënter geworden in teamverband en code-architectuur. Met het oog op de toekomst wil ik deze opgedane kennis blijven inzetten en me nog verder verdiepen in geavanceerde software-architectuur en realtime interactieve logica.
+                    Gedurende mijn stageperiode bij het XR Lab hen ik grote stappen gezet binnen mijn leerdoelen. Door intensief te werken met grootschalige C++ projecten in Unreal Engine 5 en Git-workflows ben ik efficiënter geworden in teamverband en code-architectuur. Met het oog op de toekomst wil ik deze opgedane kennis blijven inzetten en me nog verder verdiepen in geavanceerde software-architectuur en realtime interactieve logica.
                 </p>
                 <p class="text-sm border-t border-white/10 pt-4 mt-4">
                     Tot slot wil ik graag iedereen bedanken die heeft bijgedragen aan deze leerzame stageperiode. In het bijzonder bedank ik mijn praktijkopleider Bram Scholten voor de begeleiding, de waardevolle feedback en de ruimte die ik heb gekregen om mezelf te ontwikkelen binnen het XR Lab. Ook bedank ik mijn collega-studenten voor de prettige samenwerking op de vloer en mijn BPV-docent vanuit het ROC van Twente voor de ondersteuning vanuit de opleiding.
@@ -201,7 +194,7 @@
                     { t: "4. Keuzefase", c: "Gekozen voor Unreal Engine 5 native C++ logica boven Blueprints om performance-kritieke logica soepel te draaien in VR." },
                     { t: "5. Voorbereidingsfase", c: "Inrichten van de repository op GitLab/GitHub, GitFork configureren en importeren van benodigde 3D assets en SDK's." },
                     { t: "6. Uitvoeringsfase", c: "Schrijven van de CoreMechanics interactie-code en integratie met de VR-headsets (Meta Quest / HTC Vive). Rekening houden met Arbo-pauzes tijdens test-sessies." },
-                    { t: "7. Presentatiefase", c: "Demonstratie van de Unreal Engine showcase build aan praktijkopleider Bram Scholten en verwerken van feedback." },
+                    { t: "7. Presentatiefase", c: "Demonstratie van de Unreal Engine showcase build aan praktijkopleider Bram Scholten van afgelopen periode." },
                     { t: "8. Evaluatiefase", c: "Uitgebreide code-review uitgevoerd; focus op optimalisatie van het geheugengebruik en archivering volgens de XR Lab standaarden." }
                 ]
             },
@@ -271,20 +264,20 @@
                 
                 particlesJS("particles-js", {
                     particles: {
-                        number: { value: 60, density: { enable: true, value_area: 1000 } },
+                        number: { value: 90, density: { enable: true, value_area: 700 } },
                         color: { value: "#8fc1ff" },
                         shape: { type: "circle" },
-                        opacity: { value: 0.25, random: true },
-                        size: { value: 2, random: true },
-                        line_linked: { enable: true, distance: 150, color: "#8fc1ff", opacity: 0.08, width: 1 },
-                        move: { enable: true, speed: 1.2, direction: "none", random: true, straight: false, out_mode: "out" }
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3.5, random: true },
+                        line_linked: { enable: true, distance: 130, color: "#8fc1ff", opacity: 0.18, width: 1.2 },
+                        move: { enable: true, speed: 2.2, direction: "none", random: true, straight: false, out_mode: "out" }
                     },
                     interactivity: { 
                         events: { 
                             onhover: { enable: true, mode: "repulse" } 
                         }, 
                         modes: { 
-                            repulse: { distance: 80, duration: 0.4 } 
+                            repulse: { distance: 90, duration: 0.4 } 
                         } 
                     },
                     retina_detect: true
