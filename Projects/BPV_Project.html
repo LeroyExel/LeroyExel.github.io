@@ -7,7 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            scroll-snap-type: y mandatory;
+        }
+        
+        section, header {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         
         .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -25,22 +36,50 @@
             box-shadow: 0 0 20px rgba(143, 193, 255, 0.15);
             border-color: rgba(143, 193, 255, 0.5);
         }
+
+        .nav-link.active {
+            color: #8fc1ff;
+            border-left: 2px solid #8fc1ff;
+            background: rgba(255, 255, 255, 0.05);
+            padding-left: 14px;
+        }
+
+        /* Mobile menu — only applies below md breakpoint */
+        @media (max-width: 767px) {
+            #mobile-menu { transition: transform 0.3s ease, opacity 0.3s ease; }
+            #mobile-menu.open { transform: translateX(0) !important; opacity: 1 !important; pointer-events: all; }
+            #mobile-menu.closed { transform: translateX(-100%) !important; opacity: 0 !important; pointer-events: none; }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-b from-[#0f2b72] to-[#071025] text-[#e6eef8] font-sans antialiased selection:bg-[#8fc1ff] selection:text-[#0f1724] flex relative min-h-screen">
 
     <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none opacity-50"></div>
 
-    <aside class="w-64 bg-white/5 border-r border-white/5 p-8 flex flex-col justify-between fixed h-full z-30 backdrop-blur-md hidden md:flex">
+    <!-- Mobile hamburger -->
+    <button id="menuBtn" onclick="toggleMenu()" class="fixed top-5 left-5 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md">
+        <svg class="w-5 h-5 text-[#8fc1ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+
+    <!-- Mobile overlay -->
+    <div id="mobile-overlay" onclick="toggleMenu()" class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden hidden"></div>
+
+    <!-- Sidebar -->
+    <aside id="mobile-menu" class="closed w-64 bg-[#0a1a45]/95 border-r border-white/10 p-8 flex flex-col justify-between fixed h-full z-40 backdrop-blur-md md:flex md:opacity-100 md:pointer-events-auto md:translate-x-0 md:bg-white/5">
         <div class="space-y-10">
             <div>
                 <h2 class="text-[11px] font-bold tracking-[0.2em] text-[#9aa4b2] uppercase mb-6">BPV Document</h2>
-                <nav class="flex flex-col space-y-4 text-sm font-medium">
-                    <a href="#algemeen" class="text-[#9aa4b2] hover:text-[#8fc1ff] transition-all">Start</a>
-                    <a href="#inleiding" class="text-[#9aa4b2] hover:text-[#8fc1ff] transition-all">Inleiding</a>
-                    <a href="#bedrijf" class="text-[#9aa4b2] hover:text-[#8fc1ff] transition-all">Bedrijfsinformatie</a>
-                    <a href="#taken" class="text-[#9aa4b2] hover:text-[#8fc1ff] transition-all font-bold text-[#e6eef8]">BPV-Taken</a>
-                    <a href="#conclusie" class="text-[#9aa4b2] hover:text-[#8fc1ff] transition-all">Reflectie</a>
+                <nav id="sidebar-nav" class="flex flex-col space-y-3 text-sm font-medium">
+                    <a href="#algemeen"   onclick="closeMenu()" class="nav-link text-[#9aa4b2] hover:text-[#8fc1ff] transition-all pl-2">Start</a>
+                    <a href="#voorwoord"  onclick="closeMenu()" class="nav-link text-[#9aa4b2] hover:text-[#8fc1ff] transition-all pl-2">Voorwoord</a>
+                    <a href="#inleiding"  onclick="closeMenu()" class="nav-link text-[#9aa4b2] hover:text-[#8fc1ff] transition-all pl-2">Inleiding</a>
+                    <a href="#bedrijf"    onclick="closeMenu()" class="nav-link text-[#9aa4b2] hover:text-[#8fc1ff] transition-all pl-2">Bedrijfsinformatie</a>
+                    <a href="#taken"      onclick="closeMenu()" class="nav-link text-[#9aa4b2] hover:text-[#8fc1ff] transition-all font-bold pl-2">BPV-Taken</a>
+                    <a href="#conclusie"  onclick="closeMenu()" class="nav-link text-[#9aa4b2] hover:text-[#8fc1ff] transition-all pl-2">Conclusie</a>
+                    <a href="#reflectie"  onclick="closeMenu()" class="nav-link text-[#9aa4b2] hover:text-[#8fc1ff] transition-all pl-2">Reflectie</a>
+                    <a href="#slotwoord"  onclick="closeMenu()" class="nav-link text-[#9aa4b2] hover:text-[#8fc1ff] transition-all pl-2">Slotwoord</a>
                 </nav>
             </div>
         </div>
@@ -49,68 +88,114 @@
         </div>
     </aside>
 
-    <main class="flex-1 md:ml-64 max-w-4xl px-8 md:px-16 py-20 space-y-32 relative z-20">
+    <main class="flex-1 md:ml-64 max-w-4xl px-8 md:px-16 relative z-20">
 
-        <header id="algemeen" class="reveal scroll-mt-24 space-y-6">
+        <!-- 1. START -->
+        <header id="algemeen" class="reveal space-y-6">
             <div class="space-y-3">
                 <span class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest text-[#8fc1ff] bg-[#8fc1ff]/10 border border-[#8fc1ff]/20 rounded-lg uppercase">Opleiding Software Development</span>
                 <h1 class="text-5xl md:text-6xl font-bold tracking-tighter text-white">BPV <span class="text-[#8fc1ff]">Verslag</span></h1>
                 <p class="text-xl text-[#9aa4b2]">XR Lab Enschede &bull; Leroy Exel</p>
             </div>
-            
             <div class="bg-white/5 border border-white/10 p-6 rounded-2xl backdrop-blur-sm grid grid-cols-2 gap-4 text-sm">
-                <div><span class="text-[#8fc1ff] text-[10px] block uppercase font-bold mb-1">Praktijkopleider</span> Bram Scholten</div>
+                <div><span class="text-[#8fc1ff] text-[10px] block uppercase font-bold mb-1">Stagiair</span> Leroy Exel</div>
+                <div><span class="text-[#8fc1ff] text-[10px] block uppercase font-bold mb-1">Leeftijd</span> 17 jaar</div>
                 <div><span class="text-[#8fc1ff] text-[10px] block uppercase font-bold mb-1">Woonplaats</span> Almelo</div>
+                <div><span class="text-[#8fc1ff] text-[10px] block uppercase font-bold mb-1">Praktijkopleider</span> Bram Scholten</div>
+                <div><span class="text-[#8fc1ff] text-[10px] block uppercase font-bold mb-1">Stagebedrijf</span> XR Lab — Enschede</div>
+                <div><span class="text-[#8fc1ff] text-[10px] block uppercase font-bold mb-1">Opleiding</span> MBO Niveau 4 — ROC van Twente</div>
                 <div class="col-span-2 pt-3 border-t border-white/5 text-[#9aa4b2] italic">
-                    Sinds 1 januari 2026 werkzaam bij het XR Lab.
+                    Stageperiode: 1 januari 2026 tot heden
                 </div>
             </div>
         </header>
 
-        <section id="inleiding" class="reveal scroll-mt-24 space-y-8">
-            <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Voorwoord & Inleiding</h2>
-            <div class="bg-white/5 border border-white/10 p-8 rounded-2xl space-y-6 text-[#9aa4b2] leading-relaxed">
+        <!-- 2. VOORWOORD -->
+        <section id="voorwoord" class="reveal space-y-8">
+            <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Voorwoord</h2>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-2xl space-y-5 text-[#9aa4b2] leading-relaxed">
                 <p>
-                    Sinds 1 januari 2026 loop ik met veel plezier stage als onderdeel van mijn opleiding aan het ROC van Twente. In dit verslag beschrijf ik het bedrijf, de projecten waaraan ik heb gewerkt van de afgelopen maanden, en reflecteer ik op mijn persoonlijke en professionele ontwikkeling gedurende deze periode.
+                    Voor u ligt het BPV-verslag dat is geschreven in het kader van mijn stage bij het XR Lab in Enschede. Sinds <span class="text-white">1 januari 2026</span> loop ik hier met veel plezier stage als onderdeel van mijn MBO-opleiding Software Development aan het ROC van Twente.
                 </p>
                 <p>
-                    Dit verslag is zo opgebouwd dat het een helder beeld geeft van de dagelijkse gang van zaken binnen het XR Lab en de processen die komen kijken bij software- en mediaontwikkeling. Naast een analyse van het bedrijf worden er twee specifieke praktijktaken volledig uitgediept aan de hand van de acht procesfasen die binnen de opleiding worden gehanteerd. Tot slot blik ik terug op mijn geformuleerde leerdoelen en de voortgang die ik heb geboekt.
+                    In dit verslag beschrijf ik het stagebedrijf, de projecten waaraan ik heb gewerkt gedurende de afgelopen maanden, en reflecteer ik op mijn persoonlijke en professionele ontwikkeling tijdens deze periode.
+                </p>
+                <p>
+                    Het schrijven van dit verslag heeft mij de kans gegeven om bewust terug te kijken op wat ik heb geleerd, wat er goed ging en waar ik mij in de toekomst verder in wil ontwikkelen. Ik hoop dat dit verslag een duidelijk en eerlijk beeld geeft van mijn stageperiode.
                 </p>
             </div>
         </section>
 
-        <section id="bedrijf" class="reveal scroll-mt-24 space-y-8">
+        <!-- 3. INLEIDING -->
+        <section id="inleiding" class="reveal space-y-8">
+            <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Inleiding</h2>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-2xl space-y-5 text-[#9aa4b2] leading-relaxed">
+                <p>
+                    Dit verslag is zo opgebouwd dat het een helder beeld geeft van de dagelijkse gang van zaken binnen het XR Lab en de processen die komen kijken bij software- en mediaontwikkeling in een professionele omgeving.
+                </p>
+                <p>
+                    Na de bedrijfsinformatie worden er twee specifieke BPV-taken volledig uitgewerkt aan de hand van de <span class="text-white">acht procesfasen</span> die binnen de opleiding worden gehanteerd: oriëntatie, definitie, ontwerp, keuze, voorbereiding, uitvoering, presentatie en evaluatie.
+                </p>
+                <p>
+                    De twee uitgewerkte taken zijn:
+                </p>
+                <ul class="list-none space-y-2 pl-2">
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 w-5 h-5 rounded-md bg-[#8fc1ff]/20 flex items-center justify-center text-[#8fc1ff] text-[10px] font-bold flex-shrink-0">1</span>
+                        <span>De ontwikkeling van C++ interactielogica voor de <span class="text-white">LUMC Department of Anaesthesiology Unreal Engine Showcase</span>.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="mt-1 w-5 h-5 rounded-md bg-[#8fc1ff]/20 flex items-center justify-center text-[#8fc1ff] text-[10px] font-bold flex-shrink-0">2</span>
+                        <span>De implementatie van een <span class="text-white">interactief UI/UX Prototype Dashboard</span> binnen de Unreal Engine voor gebruik in een VR-omgeving.</span>
+                    </li>
+                </ul>
+                <p>
+                    Tot slot blik ik in de conclusie terug op mijn geformuleerde leerdoelen en de voortgang die ik heb geboekt.
+                </p>
+            </div>
+        </section>
+
+        <!-- 4. BEDRIJFSINFORMATIE -->
+        <section id="bedrijf" class="reveal space-y-8">
             <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Bedrijfsinformatie</h2>
             <div class="bg-white/5 border border-white/10 p-8 rounded-2xl space-y-6 text-[#9aa4b2] leading-relaxed">
-                <p>
-                    Het <span class="text-white">XR Lab</span> van Saxion Hogeschool is gevestigd in Enschede aan het Ariënsplein 1. Het lab is opgericht op <span class="text-white">donderdag 28 november 2019</span> door Matthijs van Veen, nadat het in 2018 begon als een visie op de stijgende kwaliteit van VR-brillen. Het is een innovatieve werkomgeving waar studenten en professionals samenwerken aan projecten op het gebied van Extended Reality (VR/AR/MR).
-                </p>
-                <p>
-                    De focus ligt op het ontwikkelen van XR/VR-ervaringen, simulatiegames, 3D-visualisaties en interactieve leeromgevingen voor de medische zorg en het onderwijs. Tijdens mijn stage richt ik me voornamelijk op softwareprototypes en de implementatie van geavanceerde interactielogica. Een belangrijk onderdeel hiervan is bijvoorbeeld de <span class="text-white">LUMC Department of Anaesthesiology Unreal Engine Showcase</span>. Kwaliteitscontrole vindt structureel plaats via code reviews, test-sessies in de VR-ruimtes en evaluaties met mijn praktijkopleider Bram Scholten.
-                </p>
+                <div>
+                    <h3 class="text-white font-bold mb-3 text-sm uppercase tracking-widest text-[#8fc1ff]">Geschiedenis & Huidige Situatie</h3>
+                    <p>
+                        Het <span class="text-white">XR Lab</span> van Saxion Hogeschool is gevestigd in Enschede aan het Ariënsplein 1. Het lab is opgericht op <span class="text-white">28 november 2019</span> door Matthijs van Veen, nadat het in 2018 begon als een visie rondom de stijgende kwaliteit van VR-brillen. Het is een innovatieve werkomgeving waar studenten, docenten en professionals samenwerken aan projecten op het gebied van Extended Reality (VR/AR/MR) en interactieve media.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-3 text-sm uppercase tracking-widest text-[#8fc1ff]">Producten & Klanten</h3>
+                    <p>
+                        Binnen het XR Lab worden uiteenlopende interactieve producten ontwikkeld, zoals medische simulatieomgevingen, educatieve VR-ervaringen en innovatieve softwareprototypes. De klantenkring bestaat voornamelijk uit onderwijsinstellingen, zorgorganisaties en externe bedrijven die de mogelijkheden van XR-technologie willen verkennen voor training of productontwikkeling. Een prominent voorbeeld is de samenwerking met het <span class="text-white">LUMC Department of Anaesthesiology</span>.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold mb-3 text-sm uppercase tracking-widest text-[#8fc1ff]">Organisatie & Samenwerking</h3>
+                    <p>
+                        In het lab werk ik direct samen met projectgenoten, medestudenten en professionals. Mijn dagelijkse begeleiding ontvang ik van praktijkopleider <span class="text-white">Bram Scholten</span>, bij wie ik terechtkan voor feedback en aan wie ik mijn code en deliverables oplever. Kwaliteitscontrole vindt structureel plaats via code reviews, test-sessies in de VR-ruimtes en tussentijdse evaluatiemomenten.
+                    </p>
+                </div>
 
-                <h3 class="text-white font-bold mt-8 mb-4 border-t border-white/10 pt-6">Software, Tools & Hardware</h3>
+                <h3 class="text-white font-bold mt-4 mb-4 border-t border-white/10 pt-6 text-sm uppercase tracking-widest text-[#8fc1ff]">Software, Tools & Hardware</h3>
                 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                     <div class="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center gap-3 recoil-glow transition-all">
                         <img src="https://cdn.simpleicons.org/unrealengine/e6eef8" alt="Unreal Engine" class="h-10 object-contain opacity-80">
                         <span class="text-[10px] text-white font-mono uppercase tracking-widest text-center">Unreal Engine</span>
                     </div>
-
                     <div class="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center gap-3 recoil-glow transition-all">
                         <img src="https://cdn.simpleicons.org/unity/e6eef8" alt="Unity" class="h-10 object-contain opacity-80">
                         <span class="text-[10px] text-white font-mono uppercase tracking-widest text-center">Unity</span>
                     </div>
-
                     <div class="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center gap-3 recoil-glow transition-all">
                         <img src="https://cdn.simpleicons.org/git/e6eef8" alt="GitFork" class="h-10 object-contain opacity-80">
                         <span class="text-[10px] text-white font-mono uppercase tracking-widest text-center">GitFork</span>
                     </div>
-
                     <div class="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center gap-3 recoil-glow transition-all">
                         <img src="https://cdn.simpleicons.org/gitlab/e6eef8" alt="GitLab" class="h-10 object-contain opacity-80">
                         <span class="text-[10px] text-white font-mono uppercase tracking-widest text-center">GitLab</span>
                     </div>
-
                     <div class="bg-black/20 border border-white/5 rounded-xl p-4 flex flex-col items-center justify-center gap-3 recoil-glow transition-all col-span-2 sm:col-span-1 md:col-span-1">
                         <img src="https://cdn.simpleicons.org/meta/e6eef8" alt="Meta Quest" class="h-10 object-contain opacity-80">
                         <span class="text-[10px] text-white font-mono uppercase tracking-widest text-center">Meta Quest VR</span>
@@ -119,65 +204,106 @@
             </div>
         </section>
 
-        <section id="taken" class="reveal scroll-mt-24 space-y-8">
+        <!-- 5. BPV-TAKEN overzicht -->
+        <section id="taken" class="reveal space-y-8">
             <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">BPV-Taken</h2>
             <p class="text-sm text-[#9aa4b2]">Klik op een taak om de volledige 8-fasen uitwerking te bekijken.</p>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <button onclick="openTask(1)" class="text-left bg-white/5 border border-white/10 p-8 rounded-3xl transition-all duration-500 recoil-glow group">
                     <div class="flex justify-between items-center mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-[#8fc1ff]/20 flex items-center justify-center text-[#8fc1ff]">1</div>
+                        <div class="w-10 h-10 rounded-xl bg-[#8fc1ff]/20 flex items-center justify-center text-[#8fc1ff] font-bold">1</div>
                         <span class="text-[10px] font-mono text-[#9aa4b2]">Klik voor details</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[#8fc1ff] transition-colors">LUMC Medische Simulatie</h3>
-                    <p class="text-xs text-[#9aa4b2] line-clamp-2 italic">Ontwikkeling van C++ logica voor de anesthesie showcase en patiënt-interactie in VR.</p>
+                    <p class="text-xs text-[#9aa4b2] line-clamp-3 italic">Ontwikkeling van C++ interactielogica voor de LUMC Department of Anaesthesiology Unreal Engine Showcase. Patiënt-monitoring, haptische feedback en VR-headset integratie.</p>
                 </button>
 
                 <button onclick="openTask(2)" class="text-left bg-white/5 border border-white/10 p-8 rounded-3xl transition-all duration-500 recoil-glow group">
                     <div class="flex justify-between items-center mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-[#8fc1ff]/20 flex items-center justify-center text-[#8fc1ff]">2</div>
+                        <div class="w-10 h-10 rounded-xl bg-[#8fc1ff]/20 flex items-center justify-center text-[#8fc1ff] font-bold">2</div>
                         <span class="text-[10px] font-mono text-[#9aa4b2]">Klik voor details</span>
                     </div>
                     <h3 class="text-lg font-bold text-white mb-2 group-hover:text-[#8fc1ff] transition-colors">UI/UX Prototype Dashboard</h3>
-                    <p class="text-xs text-[#9aa4b2] line-clamp-2 italic">Implementatie van interactieve dashboards binnen de Unreal Engine.</p>
+                    <p class="text-xs text-[#9aa4b2] line-clamp-3 italic">Ontwerp en implementatie van een interactief diegetic dashboard in Unreal Engine UMG. Volledig leesbaar op VR-afstand met realtime C++ data-binding.</p>
                 </button>
             </div>
         </section>
 
-        <section id="conclusie" class="reveal scroll-mt-24 space-y-6">
-            <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Reflectie & Slotwoord</h2>
-            <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-[#9aa4b2] leading-relaxed space-y-4">
-                <p class="italic">
+        <!-- 6. CONCLUSIE -->
+        <section id="conclusie" class="reveal space-y-8">
+            <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Conclusie</h2>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-[#9aa4b2] leading-relaxed space-y-5">
+                <p>
+                    Sinds de start van mijn stage op <span class="text-white">1 januari 2026</span> heb ik een aanzienlijke groei doorgemaakt als Software Developer. Door de projecten binnen het XR Lab heb ik mijn vaardigheden in het schrijven van efficiënte C++ code en het oplossen van complexe technische problemen verder kunnen professionaliseren.
+                </p>
+                <p>
+                    Mijn vooraf gestelde leerdoelen waren gericht op het zelfstandig structureren van grotere softwareprojecten en het effectief toepassen van versiebeheer in teamverband. Door intensief te werken met grootschalige Unreal Engine 5-projecten en Git-workflows ben ik efficiënter geworden in code-architectuur en teamsamenwerking.
+                </p>
+                <p>
+                    Dankzij de intensieve praktijkervaring kan ik concluderen dat deze doelen succesvol zijn behaald. De twee uitgewerkte BPV-taken — de LUMC Medische Simulatie en het UI/UX Prototype Dashboard — hebben beide bijgedragen aan een sterke en meetbare groei als developer.
+                </p>
+                <p>
+                    Met het oog op de toekomst wil ik de opgedane kennis blijven inzetten en mij verder verdiepen in geavanceerde software-architectuur en realtime interactieve logica.
+                </p>
+            </div>
+        </section>
+
+        <!-- 7. REFLECTIE -->
+        <section id="reflectie" class="reveal space-y-8">
+            <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Reflectie</h2>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-[#9aa4b2] leading-relaxed space-y-5">
+                <p class="italic text-white border-l-2 border-[#8fc1ff] pl-4">
                     "Ik functioneer een stuk zelfstandiger, weet sneller de oorzaak van bugs te traceren en kan code opleveren die voldoet aan professionele normen."
                 </p>
-                <p class="text-sm">
-                    Gedurende mijn stageperiode bij het XR Lab hen ik grote stappen gezet binnen mijn leerdoelen. Door intensief te werken met grootschalige C++ projecten in Unreal Engine 5 en Git-workflows ben ik efficiënter geworden in teamverband en code-architectuur. Met het oog op de toekomst wil ik deze opgedane kennis blijven inzetten en me nog verder verdiepen in geavanceerde software-architectuur en realtime interactieve logica.
+                <p>
+                    Als ik terugkijk op de afgelopen maanden, valt me op hoeveel ik ben gegroeid in mijn manier van werken. Aan het begin van mijn stage had ik moeite met het overzien van grote codebases en het structureren van mijn eigen werkproces. Nu pak ik een nieuw feature-verzoek op, breek ik het op in kleinere taken en werk ik dat stap voor stap uit — iets wat eerder niet vanzelfsprekend was.
                 </p>
-                <p class="text-sm border-t border-white/10 pt-4 mt-4">
-                    Tot slot wil ik graag iedereen bedanken die heeft bijgedragen aan deze leerzame stageperiode. In het bijzonder bedank ik mijn praktijkopleider Bram Scholten voor de begeleiding, de waardevolle feedback en de ruimte die ik heb gekregen om mezelf te ontwikkelen binnen het XR Lab. Ook bedank ik mijn collega-studenten voor de prettige samenwerking op de vloer en mijn BPV-docent vanuit het ROC van Twente voor de ondersteuning vanuit de opleiding.
+                <p>
+                    Wat ik ook heb geleerd, is omgaan met tegenslagen. Tijdens de LUMC-taak zorgde een onverwachte SDK-update voor vertraging. In plaats van in paniek te raken heb ik het probleem methodisch aangepakt, hulp gevraagd waar nodig en de planning bijgesteld. Dat probleemoplossend vermogen is iets wat ik bewust verder wil ontwikkelen.
                 </p>
+                <p>
+                    Een verbeterpunt voor mezelf is de communicatie in een vroeg stadium. Ik merk dat ik soms te lang zelf zoek naar een oplossing voordat ik een vraag stel aan Bram Scholten of een collega. Door eerder te overleggen kan ik in de toekomst efficiënter werken en onnodige vertraging voorkomen.
+                </p>
+                <p>
+                    Al met al blik ik met trots en tevredenheid terug op deze stageperiode. Ik ga er met meer zelfvertrouwen, technische kennis en een realistischer beeld van de softwareontwikkelingspraktijk uit.
+                </p>
+            </div>
+        </section>
+
+        <!-- 8. SLOTWOORD -->
+        <section id="slotwoord" class="reveal space-y-8">
+            <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Slotwoord</h2>
+            <div class="bg-white/5 border border-white/10 p-8 rounded-2xl text-[#9aa4b2] leading-relaxed space-y-5">
+                <p>
+                    Tot slot wil ik graag iedereen bedanken die heeft bijgedragen aan deze leerzame stageperiode.
+                </p>
+                <p>
+                    In het bijzonder bedank ik mijn praktijkopleider <span class="text-white">Bram Scholten</span> voor de begeleiding, de waardevolle feedback en de ruimte die ik heb gekregen om mezelf te ontwikkelen binnen het XR Lab.
+                </p>
+                <p>
+                    Ook bedank ik mijn collega-studenten voor de prettige samenwerking op de vloer en mijn BPV-docent vanuit het ROC van Twente voor de ondersteuning vanuit de opleiding.
+                </p>
+                <div class="pt-4 border-t border-white/10 text-[10px] font-mono uppercase tracking-widest text-[#8fc1ff]">
+                    Leroy Exel &mdash; Almelo, 2026
+                </div>
             </div>
         </section>
 
     </main>
 
+    <!-- MODAL -->
     <div id="taskModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 md:p-12 opacity-0">
-        <div onclick="closeTask()" class="absolute inset-0 bg-[#071025]/90 backdrop-blur-md cursor-zoom-out"></div>
-        
-        <div id="modalContent" class="relative w-full max-w-4xl max-h-[90vh] bg-[#0f1724] border border-white/10 rounded-3xl overflow-y-auto p-8 md:p-12 scale-90">
-            <button onclick="closeTask()" class="absolute top-6 right-6 text-[#9aa4b2] hover:text-white transition-colors">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <div onclick="closeTask()" class="absolute inset-0 bg-[#071025]/80 backdrop-blur-md cursor-zoom-out"></div>
+        <div id="modalContent" class="relative w-full max-w-3xl max-h-[90vh] bg-white/5 border border-white/10 rounded-2xl overflow-y-auto p-8 scale-90 backdrop-blur-sm">
+            <button onclick="closeTask()" class="absolute top-6 right-6 text-[#9aa4b2] hover:text-[#8fc1ff] transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-
-            <div class="space-y-12">
-                <div class="space-y-4">
-                    <span id="modalTaskNum" class="text-[10px] font-bold text-[#8fc1ff] tracking-widest uppercase">Taak 01</span>
-                    <h2 id="modalTaskTitle" class="text-4xl font-bold text-white">Project Titel</h2>
-                    <div class="h-1 w-20 bg-[#8fc1ff]"></div>
+            <div class="space-y-6">
+                <div>
+                    <span id="modalTaskNum" class="inline-block px-3 py-1 text-[10px] font-bold tracking-widest text-[#8fc1ff] bg-[#8fc1ff]/10 border border-[#8fc1ff]/20 rounded-lg uppercase mb-3">Taak 01</span>
+                    <h2 id="modalTaskTitle" class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#8fc1ff] pl-4">Project Titel</h2>
                 </div>
-
-                <div id="fasenContent" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
-                </div>
+                <div id="fasenContent" class="space-y-4"></div>
             </div>
         </div>
     </div>
@@ -188,28 +314,76 @@
                 title: "LUMC Medische Simulatie C++",
                 num: "Taak 01",
                 phases: [
-                    { t: "1. Oriëntatiefase", c: "Analyse van medische protocollen van het LUMC Department of Anaesthesiology en bestaande VR-trainingen." },
-                    { t: "2. Definitiefase", c: "Vaststellen van de functionele eisen: Real-time patiënt-interactie monitoring, hardware constraints en haptische feedback triggers." },
-                    { t: "3. Ontwerpfase", c: "Flowcharts getekend voor de C++ klassen-architectuur, event handlers en data-overdracht structuren." },
-                    { t: "4. Keuzefase", c: "Gekozen voor Unreal Engine 5 native C++ logica boven Blueprints om performance-kritieke logica soepel te draaien in VR." },
-                    { t: "5. Voorbereidingsfase", c: "Inrichten van de repository op GitLab/GitHub, GitFork configureren en importeren van benodigde 3D assets en SDK's." },
-                    { t: "6. Uitvoeringsfase", c: "Schrijven van de CoreMechanics interactie-code en integratie met de VR-headsets (Meta Quest / HTC Vive). Rekening houden met Arbo-pauzes tijdens test-sessies." },
-                    { t: "7. Presentatiefase", c: "Demonstratie van de Unreal Engine showcase build aan praktijkopleider Bram Scholten van afgelopen periode." },
-                    { t: "8. Evaluatiefase", c: "Uitgebreide code-review uitgevoerd; focus op optimalisatie van het geheugengebruik en archivering volgens de XR Lab standaarden." }
+                    {
+                        t: "1. Oriëntatiefase",
+                        c: "Deze taak is uitgevoerd voor het LUMC Department of Anaesthesiology, dat een VR-trainingsomgeving wilde voor aankomende anesthesisten. Als voorbereiding heb ik bestaande medische simulatiesoftware geanalyseerd, zoals de VirtaMed-suite en eerder door het XR Lab gebouwde prototypes. Daarnaast heb ik de door het LUMC aangeleverde protocollen doorgenomen om de medische context goed te begrijpen."
+                    },
+                    {
+                        t: "2. Definitiefase",
+                        c: "In overleg met Bram Scholten en de contactpersoon vanuit het LUMC zijn de functionele eisen vastgesteld. De applicatie moest beschikken over: realtime monitoring van gesimuleerde vitale patiëntwaarden (hartslag, bloeddruk, saturatie), haptische feedbacktriggers via de VR-controllers bij het uitvoeren van handelingen, en duidelijke visuele foutmeldingen bij onjuiste interventies. Performance-kritische drempelwaarden werden vastgelegd in een Pakket van Eisen."
+                    },
+                    {
+                        t: "3. Ontwerpfase",
+                        c: "Op basis van de eisen heb ik een klasse-architectuur uitgetekend in de vorm van een flowchart. De structuur bestond uit een centrale PatientStateManager-klasse die de vitale waarden beheert, gekoppeld aan aparte InteractionHandler- en FeedbackController-klassen. De event-flow tussen VR-input en de simulatielogica is schematisch uitgewerkt en besproken met Bram Scholten voordat er een regel code werd geschreven."
+                    },
+                    {
+                        t: "4. Keuzefase",
+                        c: "Er waren twee oplossingsrichtingen: Blueprints (visueel scripting in Unreal) versus native C++. Blueprints zijn sneller op te zetten maar leveren bij complexe, realtime logica merkbare prestatieproblemen op in VR (framerate-drops). Native C++ vereist meer opstarttijd maar levert stabiele prestaties bij 90 FPS, wat essentieel is voor een comfortabele VR-ervaring. Na presentatie aan het team is gekozen voor C++ als fundament, met Blueprints alleen voor UI-koppelingen."
+                    },
+                    {
+                        t: "5. Voorbereidingsfase",
+                        c: "De GitLab-repository is ingericht met een duidelijke branch-strategie (main, develop, feature-branches). Benodigde SDK's zijn geïmporteerd: de OpenXR-plugin voor headset-abstractie en de Meta XR SDK voor haptische feedback op de Quest-controllers. Er is een werkplanning gemaakt van vijf sprints van elk twee weken, met per sprint concrete deliverables en een ureninschatting van gemiddeld 30 uur per sprint."
+                    },
+                    {
+                        t: "6. Uitvoeringsfase",
+                        c: "De CoreMechanics-module is stap voor stap opgebouwd: eerst de basisklassen en datastructuren, daarna de event-bindings en tot slot de integratie met de headsets (Meta Quest 3 en HTC Vive Pro). Code is geschreven in Visual Studio, regelmatig gecompileerd en direct getest in de VR-testruimte. Tijdens lange sessies zijn Arbo-pauzes van 10 minuten per uur aangehouden om vermoeidheidsklachten te voorkomen. Samenwerking met de 3D-artist voor asset-koppeling verliep via dagelijkse stand-ups en GitLab-issues."
+                    },
+                    {
+                        t: "7. Presentatiefase",
+                        c: "Aan het einde van elke sprint is een werkende build opgeleverd in de GitLab-release-omgeving. De einddemonstratie vond plaats in de VR-ruimte van het XR Lab, waarbij Bram Scholten en een vertegenwoordiger van het LUMC de simulatie live konden doorlopen. De build werd vergezeld van technische documentatie in de repository-wiki, inclusief installatiehandleiding en een overzicht van bekende beperkingen."
+                    },
+                    {
+                        t: "8. Evaluatiefase",
+                        c: "De geplande 150 uur zijn uitgeloopt naar 168 uur, voornamelijk doordat de haptische feedback-integratie complexer bleek dan verwacht door een SDK-update halverwege het project. Dit is besproken in de procesevaluatie met Bram Scholten. De productevaluatie toonde aan dat alle functionele eisen zijn gehaald; de vitale-waarden-simulatie werkte stabiel en de haptische feedback reageerde correct op alle gedefinieerde interacties. Aanbeveling voor een volgend project: SDK-versies eerder vastzetten."
+                    }
                 ]
             },
             2: {
                 title: "UI/UX Prototype Dashboard",
                 num: "Taak 02",
                 phases: [
-                    { t: "1. Oriëntatiefase", c: "Onderzoek naar user interfaces binnen een 3D-ruimte (Diegetic UI) specifiek toegepast op simulatie-dashboards." },
-                    { t: "2. Definitiefase", c: "Eisen opstellen: Het dashboard moet volledig leesbaar en performant zijn op 2 meter afstand binnen de VR-ruimte." },
-                    { t: "3. Ontwerpfase", c: "Wireframes en interactie-states gemaakt in Figma, omgezet naar Unreal Engine UMG (Unreal Motion Graphics) componenten." },
-                    { t: "4. Keuzefase", c: "Besloten om dynamische Widget Components te gebruiken om realtime data-binding vanuit de C++ backend te koppelen." },
-                    { t: "5. Voorbereidingsfase", c: "Ureninschatting en gedetailleerde planning gemaakt voor de verschillende schermen en animatie-states in Git." },
-                    { t: "6. Uitvoeringsfase", c: "Implementeren van knoppen, sliders en dynamische data-binding. Uitvoeren van usability tests in de fysieke VR-testruimte." },
-                    { t: "7. Presentatiefase", c: "Build opgeleverd en gedemonstreerd aan de eindgebruikers en stagiairs binnen het lab voor feedback." },
-                    { t: "8. Evaluatiefase", c: "Aanpassingen gedaan op basis van feedback over de lettergrootte en contrast-verhoudingen; procesevaluatie besproken met Bram Scholten." }
+                    {
+                        t: "1. Oriëntatiefase",
+                        c: "Voor deze taak is onderzoek gedaan naar het ontwerpen van user interfaces in een 3D-ruimte (Diegetic UI), waarbij de interface deel uitmaakt van de virtuele wereld in plaats van bovenop het scherm te zweven. Bestaande VR-dashboards in vergelijkbare medische simulatoren zijn geanalyseerd, en relevante design-richtlijnen van Meta en Valve voor VR-interfaces zijn bestudeerd als referentiekader."
+                    },
+                    {
+                        t: "2. Definitiefase",
+                        c: "In overleg met Bram Scholten zijn de eisen voor het dashboard vastgesteld: alle tekst en iconen moeten leesbaar zijn op een kijkafstand van minimaal twee meter in VR; het dashboard moet realtime data uit de C++ simulatie-backend weergeven; interactie moet mogelijk zijn via de VR-controllers zonder fysiek toetsenbord; en het geheel mag maximaal 1ms render-tijd per frame kosten om de VR-prestaties niet te belasten."
+                    },
+                    {
+                        t: "3. Ontwerpfase",
+                        c: "Wireframes zijn gemaakt in Figma, waarbij de schermindeling en de interactie-states (idle, hover, actief, fout) voor elk UI-element zijn uitgewerkt. De Figma-componenten zijn vervolgens vertaald naar Unreal Engine UMG (Unreal Motion Graphics)-structuren. Een kleurenpalet met hoog contrast (lichtblauw op donkergrijs) is gekozen op basis van de leesbaarheidsrichtlijnen voor VR-displays."
+                    },
+                    {
+                        t: "4. Keuzefase",
+                        c: "Twee benaderingen zijn afgewogen: statische Widget Blueprints versus dynamische Widget Components met C++-data-binding. Statische widgets zijn eenvoudiger te bouwen maar vereisen handmatige updates. Dynamische Widget Components binden direct aan C++-variabelen via delegate-systemen, waardoor de UI automatisch meeschalt met veranderende simulatiedata. Gelet op de eis voor realtime weergave is gekozen voor de dynamische aanpak, ondanks de hogere opzettijd."
+                    },
+                    {
+                        t: "5. Voorbereidingsfase",
+                        c: "Een gedetailleerde planning is opgesteld voor vier schermen: het hoofddashboard, het vitalen-paneel, het medicatiepaneel en een notificatie-overlay. Per scherm is een ureninschatting gemaakt. Alle Figma-exports zijn klaargemaakt als Unreal-compatibele texturen. De Git-branch voor deze taak is aangemaakt vanuit de develop-branch en de taakverdeling is besproken in het dagelijkse stand-up."
+                    },
+                    {
+                        t: "6. Uitvoeringsfase",
+                        c: "De vier schermen zijn gebouwd in UMG, inclusief knoppen, sliders en dynamische tekstblokken die via C++ bindings live worden bijgewerkt. Voor elke interactiecomponent zijn usability tests uitgevoerd in de fysieke VR-testruimte met twee testgebruikers. Arbo-richtlijnen zijn gevolgd: maximaal 20 minuten aaneengesloten VR-gebruik per testsessie. Bevindingen zijn direct verwerkt in de volgende iteratie."
+                    },
+                    {
+                        t: "7. Presentatiefase",
+                        c: "De build is na elke iteratie opgeleverd via een GitLab-release-tag. De eindpresentatie vond plaats in het XR Lab, waarbij de eindgebruikers en collega-stagiairs het dashboard hands-on konden testen. Feedback werd live genoteerd en geprioriteerd. Alle ontwerpdocumentatie, inclusief de Figma-bestanden en de UMG-componentenstructuur, is gearchiveerd in de projectwiki van de repository."
+                    },
+                    {
+                        t: "8. Evaluatiefase",
+                        c: "De geplande 80 uur zijn vrijwel precies gehaald (82 uur werkelijk). De nacalculatie liet zien dat de C++-bindingen iets meer tijd kostten dan verwacht door een documentatiegebrek in de Unreal-versie die werd gebruikt. Op basis van de testfeedback zijn aanpassingen gedaan aan de minimale lettergrootte (van 18pt naar 22pt) en de contrast-verhoudingen van de iconen. In de procesevaluatie met Bram Scholten is geconcludeerd dat de iteratieve aanpak goed heeft gewerkt en dat eerder testen de totale doorlooptijd kan verkorten."
+                    }
                 ]
             }
         };
@@ -218,18 +392,15 @@
             const data = tasksData[id];
             document.getElementById('modalTaskTitle').innerText = data.title;
             document.getElementById('modalTaskNum').innerText = data.num;
-            
             const fasenContainer = document.getElementById('fasenContent');
-            fasenContainer.innerHTML = data.phases.map(f => `
-                <div class="bg-white/5 border border-white/5 p-6 rounded-2xl">
-                    <h4 class="text-[#8fc1ff] font-bold mb-2 uppercase text-[10px] tracking-widest">${f.t}</h4>
-                    <p class="text-[#9aa4b2] leading-relaxed italic text-xs">${f.c}</p>
+            fasenContainer.innerHTML = data.phases.map((f, i) => `
+                <div class="bg-white/5 border border-white/10 p-6 rounded-2xl space-y-2">
+                    <p class="text-[#8fc1ff] text-[10px] font-bold uppercase tracking-widest">${f.t}</p>
+                    <p class="text-[#9aa4b2] text-sm leading-relaxed">${f.c}</p>
                 </div>
             `).join('');
-
             const modal = document.getElementById('taskModal');
             const content = document.getElementById('modalContent');
-            
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.add('opacity-100');
@@ -242,26 +413,40 @@
         function closeTask() {
             const modal = document.getElementById('taskModal');
             const content = document.getElementById('modalContent');
-            
             modal.classList.remove('opacity-100');
             content.classList.add('scale-90');
             content.classList.remove('scale-100');
-            
             setTimeout(() => {
                 modal.classList.add('hidden');
                 document.body.classList.remove('modal-open');
             }, 300);
         }
 
-        window.addEventListener('DOMContentLoaded', (event) => {
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
+            if (menu.classList.contains('open')) {
+                menu.classList.remove('open');
+                menu.classList.add('closed');
+                overlay.classList.add('hidden');
+            } else {
+                menu.classList.remove('closed');
+                menu.classList.add('open');
+                overlay.classList.remove('hidden');
+            }
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
+            menu.classList.remove('open');
+            menu.classList.add('closed');
+            overlay.classList.add('hidden');
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
             const canvasDiv = document.getElementById('particles-js');
             if (canvasDiv && typeof particlesJS !== 'undefined') {
-                canvasDiv.style.position = 'fixed';
-                canvasDiv.style.top = '0';
-                canvasDiv.style.left = '0';
-                canvasDiv.style.width = '100%';
-                canvasDiv.style.height = '100%';
-                
                 particlesJS("particles-js", {
                     particles: {
                         number: { value: 90, density: { enable: true, value_area: 700 } },
@@ -272,13 +457,9 @@
                         line_linked: { enable: true, distance: 130, color: "#8fc1ff", opacity: 0.18, width: 1.2 },
                         move: { enable: true, speed: 2.2, direction: "none", random: true, straight: false, out_mode: "out" }
                     },
-                    interactivity: { 
-                        events: { 
-                            onhover: { enable: true, mode: "repulse" } 
-                        }, 
-                        modes: { 
-                            repulse: { distance: 90, duration: 0.4 } 
-                        } 
+                    interactivity: {
+                        events: { onhover: { enable: true, mode: "repulse" } },
+                        modes: { repulse: { distance: 90, duration: 0.4 } }
                     },
                     retina_detect: true
                 });
@@ -286,15 +467,28 @@
         });
 
         const reveal = () => {
-            const reveals = document.querySelectorAll(".reveal");
-            reveals.forEach(r => {
-                const windowHeight = window.innerHeight;
-                const elementTop = r.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) r.classList.add("active");
+            document.querySelectorAll(".reveal").forEach(r => {
+                if (r.getBoundingClientRect().top < window.innerHeight - 100) r.classList.add("active");
             });
         };
         window.addEventListener("scroll", reveal);
         reveal();
+
+        // Scrollspy
+        const sections = document.querySelectorAll('header, section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (window.pageYOffset >= section.offsetTop - window.innerHeight / 2) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) link.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
