@@ -348,44 +348,44 @@
                     }
                 ]
             },
-            2: {
-                title: "UI/UX Prototype Dashboard",
-                num: "Taak 02",
-                phases: [
-                    {
-                        t: "1. Oriëntatiefase",
-                        c: "Voor deze taak is onderzoek gedaan naar het ontwerpen van user interfaces in een 3D-ruimte (Diegetic UI), waarbij de interface deel uitmaakt van de virtuele wereld in plaats van bovenop het scherm te zweven. Bestaande VR-dashboards in vergelijkbare medische simulatoren zijn geanalyseerd, en relevante design-richtlijnen van Meta en Valve voor VR-interfaces zijn bestudeerd als referentiekader."
-                    },
-                    {
-                        t: "2. Definitiefase",
-                        c: "In overleg met Bram Scholten zijn de eisen voor het dashboard vastgesteld: alle tekst en iconen moeten leesbaar zijn op een kijkafstand van minimaal twee meter in VR; het dashboard moet realtime data uit de C++ simulatie-backend weergeven; interactie moet mogelijk zijn via de VR-controllers zonder fysiek toetsenbord; en het geheel mag maximaal 1ms render-tijd per frame kosten om de VR-prestaties niet te belasten."
-                    },
-                    {
-                        t: "3. Ontwerpfase",
-                        c: "Wireframes zijn gemaakt in Figma, waarbij de schermindeling en de interactie-states (idle, hover, actief, fout) voor elk UI-element zijn uitgewerkt. De Figma-componenten zijn vervolgens vertaald naar Unreal Engine UMG (Unreal Motion Graphics)-structuren. Een kleurenpalet met hoog contrast (lichtblauw op donkergrijs) is gekozen op basis van de leesbaarheidsrichtlijnen voor VR-displays."
-                    },
-                    {
-                        t: "4. Keuzefase",
-                        c: "Twee benaderingen zijn afgewogen: statische Widget Blueprints versus dynamische Widget Components met C++-data-binding. Statische widgets zijn eenvoudiger te bouwen maar vereisen handmatige updates. Dynamische Widget Components binden direct aan C++-variabelen via delegate-systemen, waardoor de UI automatisch meeschalt met veranderende simulatiedata. Gelet op de eis voor realtime weergave is gekozen voor de dynamische aanpak, ondanks de hogere opzettijd."
-                    },
-                    {
-                        t: "5. Voorbereidingsfase",
-                        c: "Een gedetailleerde planning is opgesteld voor vier schermen: het hoofddashboard, het vitalen-paneel, het medicatiepaneel en een notificatie-overlay. Per scherm is een ureninschatting gemaakt. Alle Figma-exports zijn klaargemaakt als Unreal-compatibele texturen. De Git-branch voor deze taak is aangemaakt vanuit de develop-branch en de taakverdeling is besproken in het dagelijkse stand-up."
-                    },
-                    {
-                        t: "6. Uitvoeringsfase",
-                        c: "De vier schermen zijn gebouwd in UMG, inclusief knoppen, sliders en dynamische tekstblokken die via C++ bindings live worden bijgewerkt. Voor elke interactiecomponent zijn usability tests uitgevoerd in de fysieke VR-testruimte met twee testgebruikers. Arbo-richtlijnen zijn gevolgd: maximaal 20 minuten aaneengesloten VR-gebruik per testsessie. Bevindingen zijn direct verwerkt in de volgende iteratie."
-                    },
-                    {
-                        t: "7. Presentatiefase",
-                        c: "De build is na elke iteratie opgeleverd via een GitLab-release-tag. De eindpresentatie vond plaats in het XR Lab, waarbij de eindgebruikers en collega-stagiairs het dashboard hands-on konden testen. Feedback werd live genoteerd en geprioriteerd. Alle ontwerpdocumentatie, inclusief de Figma-bestanden en de UMG-componentenstructuur, is gearchiveerd in de projectwiki van de repository."
-                    },
-                    {
-                        t: "8. Evaluatiefase",
-                        c: "De geplande 80 uur zijn vrijwel precies gehaald (82 uur werkelijk). De nacalculatie liet zien dat de C++-bindingen iets meer tijd kostten dan verwacht door een documentatiegebrek in de Unreal-versie die werd gebruikt. Op basis van de testfeedback zijn aanpassingen gedaan aan de minimale lettergrootte (van 18pt naar 22pt) en de contrast-verhoudingen van de iconen. In de procesevaluatie met Bram Scholten is geconcludeerd dat de iteratieve aanpak goed heeft gewerkt en dat eerder testen de totale doorlooptijd kan verkorten."
-                    }
-                ]
-            }
+          2: {
+ title: "Sticky Notes",
+num: "Taak 02",
+phases: [
+{
+t: "1. Oriëntatiefase",
+c: "Voor deze taak heb ik onderzocht hoe fysieke afleidingen vertaald kunnen worden naar een VR-simulatie. Het doel is dat er dynamisch een 'sticky note' op het scherm van de gebruiker verschijnt (op de juiste schaal) zodra er een nieuwe taak binnenkomt, zoals extra werk van een collega, een Teams-meeting, een telefoonnotificatie of een kind dat om aandacht vraagt. Ik heb gekeken naar de interactie-vereisten: de gebruiker moet deze post-its kunnen vastgrijpen en naar eigen inzicht kunnen verplaatsen binnen de virtuele ruimte."
+},
+{
+t: "2. Definitiefase",
+c: "In overleg met Bram Scholten zijn de eisen voor het sticky notes-systeem vastgesteld: de post-its moeten schaalcorrect renderen ten opzichte van de virtuele monitor en de handcontrollers; het grijp- en verplaatsmechanisme (spatial grabbing) moet latency-vrij werken via VR-controllers; de content op de notes (tekst/iconen) moet dynamisch gegenereerd worden op basis van binnenkomende triggers (events uit de simulatie-backend); en de physics-afhandeling bij het verplaatsen en 'plakken' op nieuwe oppervlakken mag de framerate van de VR-omgeving niet beïnvloeden."
+},
+{
+t: "3. Ontwerpfase",
+c: "De interactieve states van de sticky notes (idle op het scherm, hovered door de VR-controller, vastgegrepen, en geplaatst op een nieuw oppervlak) zijn uitgewerkt in wireframes. Er is een visueel 3D-ontwerp gemaakt van de post-it met een realistische papier- en lijm-shading. De interface-indeling voor de verschillende notificatietypes (zoals een Teams-icoon of een tekstuele taakomschrijving) is vertaald naar Unreal Engine UMG-structuren die op een 3D-plane gerenderd worden."
+},
+{
+t: "4. Keuzefase",
+c: "Twee benaderingen voor de interactie en rendering zijn afgewogen: het spawnen van statische 2D screen-space overlays versus het spawnen van dynamische 3D Actor Components met een Widget Component en physics-constraints. Screen-space overlays zijn eenvoudiger te implementeren maar breken de VR-immersie en maken handmatige interactie onmogelijk. De 3D Actor-aanpak maakt volledige spatial interaction en physics mogelijk (oppakken, verplaatsen, ergens anders opplakken). Gelet op de interactie-eisen is gekozen voor de dynamische 3D Actor-benadering."
+},
+{
+t: "5. Voorbereidingsfase",
+c: "Er is een gedetailleerde planning opgesteld voor het implementeren van de verschillende notificatietypes (collega-taak, Teams-meeting, telefoon, thuisomgeving-afleidingen) en het interactiesysteem. De benodigde 3D-assets en shaders voor het papieroppervlak zijn klaargemaakt. De Git-branch voor deze features is afgesplitst van de develop-branch en de integratie met het bestaande interactie-framework is afgestemd tijdens de dagelijkse stand-up."
+},
+{
+t: "6. Uitvoeringsfase",
+c: "De Sticky Note Actor is opgebouwd in Unreal Engine, waarbij gebruik is gemaakt van een Widget Component voor de dynamische tekstinrichting en Motion Controller componenten voor het grijpmechanisme. De logica voor het accuraat schalen en 'plakken' op de monitor is geïmplementeerd. Er zijn usability-tests uitgevoerd in de VR-testruimte met testgebruikers om te controleren of het oppakken en verplaatsen natuurlijk aanvoelt. Hierbij zijn de Arbo-richtlijnen (maximaal 20 minuten VR-gebruik per sessie) strikt nageleefd."
+},
+{
+t: "7. Presentatiefase",
+c: "Het interactieve sticky notes-systeem is als werkende build opgeleverd via een GitLab-release-tag. Tijdens de demonstratie in het XR Lab konden eindgebruikers en collega-stagiairs zelf ervaren hoe het is om tijdens de simulatie afgeleid te worden door de post-its en deze fysiek te verplaatsen. Feedback over de precisie van de 'grab-box' is genoteerd en alle blueprint-architectuur en interactielogica zijn gedocumenteerd in de projectwiki."
+},
+{
+t: "8. Evaluatiefase",
+c: "De ureninschatting voor deze taak is nauwkeurig gebleken. De nacalculatie liet zien dat het finetunen van de physics-constraints en de collision-detectie bij het ergens anders 'opplakken' van de notes iets meer tijd kostte dan begroot. Op basis van de feedback is de hitbox voor het grijpen van de post-its vergroot om de interactie soepeler te maken. In de procesevaluatie met Bram Scholten is geconcludeerd dat het systeem een realistische simulatielaag toevoegt en dat de physics-interactie de immersie sterk verhoogt."
+}
+]
+}
         };
 
         function openTask(id) {
