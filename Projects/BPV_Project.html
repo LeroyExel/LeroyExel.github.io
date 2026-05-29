@@ -139,14 +139,14 @@
         </section>
 
         <section id="taken" class="space-y-8">
-            <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Uitgewerkte BPV-Taken & Simulator</h2>
+            <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">BPV-Taken</h2>
             
             <div class="bg-[#0a1530] border border-white/10 rounded-xl p-5 shadow-xl relative">
                 
                 <div class="mb-4 flex items-center justify-between border-b border-white/5 pb-3">
                     <div>
-                        <span class="text-[10px] font-mono font-bold tracking-wider text-[#60a5fa] uppercase">Debugging Interface</span>
-                        <h3 class="text-sm font-bold text-white">Source Code Issue Monitor</h3>
+                        <span class="text-[10px] font-mono font-bold tracking-wider text-[#60a5fa] uppercase">Visual Studio Console</span>
+                        <h3 class="text-sm font-bold text-white">Issue Tracker</h3>
                     </div>
                     <div class="flex items-center space-x-4 text-xs font-mono">
                         <div>Score: <span id="game-score-text" class="text-white font-bold">0/5</span></div>
@@ -157,7 +157,7 @@
                 <div class="bg-[#060d1f] border border-white/10 rounded-lg min-h-[180px] relative flex flex-col items-center justify-center p-4 overflow-hidden">
                     
                     <div id="game-start-screen" class="text-center space-y-3 z-10">
-                        <p class="text-xs text-[#9aa4b2] max-w-xs mx-auto">Klik opeenvolgend op 5 binnenkomende runtime issues om de documentatie handmatig te deblokkeren.</p>
+                        <p class="text-xs text-[#9aa4b2] max-w-xs mx-auto">Klik opeenvolgend op 5 binnenkomende runtime issues om de bestanden handmatig te deblokkeren.</p>
                         <button onclick="startMiniGame()" class="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono text-xs rounded transition-all">Start Task</button>
                     </div>
 
@@ -177,8 +177,8 @@
             <div id="tasks-locked-overlay-wrapper" class="relative">
                 <div id="document-blur-wall" class="absolute inset-0 bg-[#0f1724]/75 backdrop-blur-sm z-20 flex flex-col items-center justify-center text-center p-6 rounded-xl border border-white/5">
                     <div class="bg-[#0a1a45] border border-white/10 rounded-lg p-5 shadow-2xl max-w-xs space-y-3">
-                        <h3 class="text-xs font-bold text-white uppercase tracking-wider">Bijlagen Vergrendeld</h3>
-                        <p class="text-[11px] text-[#9aa4b2] font-sans leading-relaxed">Los de simulator op of gebruik de skip-functionaliteit hierboven om de procesfasen in te zien.</p>
+                        <h3 class="text-xs font-bold text-white uppercase tracking-wider">Bestanden Vergrendeld</h3>
+                        <p class="text-[11px] text-[#9aa4b2] font-sans leading-relaxed">Los de simulator op of gebruik de skip hierboven om de procesfasen in te zien.</p>
                     </div>
                 </div>
 
@@ -427,9 +427,9 @@
             if (won) {
                 icon.innerText = "✓";
                 icon.className = "text-xl text-emerald-400 font-bold";
-                title.innerText = "Build Voltooid";
+                title.innerText = "Voltooid";
                 title.className = "text-xs font-bold text-emerald-400 uppercase tracking-wider";
-                desc.innerText = "Alle documenten en procesfasen zijn hieronder vrijgeschakeld.";
+                desc.innerText = "Ging het maar so makkelijk in het echt...";
                 
                 // Clear blocking backdrop DOM walls instantly
                 const lockWall = document.getElementById('document-blur-wall');
@@ -442,7 +442,7 @@
             } else {
                 icon.innerText = "×";
                 icon.className = "text-xl text-red-500 font-bold";
-                title.innerText = "Build Mislukt";
+                title.innerText = "Gefaald";
                 title.className = "text-xs font-bold text-red-500 uppercase tracking-wider";
                 desc.innerText = "De issues stapelden zich te snel op. Probeer het opnieuw of gebruik skip.";
             }
