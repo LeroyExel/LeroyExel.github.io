@@ -31,6 +31,7 @@
                   <a href="#conclusie" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Conclusie</a>
                   <a href="#reflectie" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Reflectie</a>
                   <a href="#slotwoord" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Slotwoord</a>
+                  <a href="#media" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors flex items-center gap-2"><span>Videos/Foto's</span></a>
                </nav>
             </div>
          </div>
@@ -229,7 +230,7 @@
             <div class="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm flex justify-between items-center border-l-2 border-emerald-500/40">
                <div>
                   <h3 class="text-white font-medium text-sm">Nikola</h3>
-                  <span class="text-xs text-[#9aa4b2]">Stagiair VFX / Software Engineer</span>
+                  <span class="text-xs text-[#9aa4b2]">Stagiair Software Engineer</span>
                </div>
                <span class="px-2 py-0.5 text-[10px] font-mono bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded">Stagiair</span>
             </div>
@@ -283,7 +284,7 @@
                <div class="mb-4 flex items-center justify-between border-b border-white/5 pb-3">
                   <div>
                      <span class="text-[10px] font-mono font-bold tracking-wider text-[#60a5fa] uppercase">Visual Studio Console</span>
-                     <h3 class="text-sm font-bold text-white">Issue Tracker (Minigame)</h3>
+                     <h3 class="text-sm font-bold text-white">Dagelijkse Problemen (Minigame)</h3>
                   </div>
                   <div class="flex items-center space-x-4 text-xs font-mono">
                      <div>Score: <span id="game-score-text" class="text-white font-bold">0/5</span></div>
@@ -293,7 +294,7 @@
                <div class="bg-[#060d1f] border border-white/10 rounded-lg min-h-[180px] relative flex flex-col items-center justify-center p-4 overflow-hidden">
                   <div id="game-start-screen" class="text-center space-y-3 z-10">
                      <p class="text-xs text-[#9aa4b2] max-w-xs mx-auto">Klik opeenvolgend op 5 binnenkomende runtime issues om de bestanden handmatig te deblokkeren.</p>
-                     <button onclick="startMiniGame()" class="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono text-xs rounded transition-all">Start Task</button>
+                     <button onclick="startMiniGame()" class="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-mono text-xs rounded transition-all">Start Dag</button>
                   </div>
                   <div id="game-play-screen" class="w-full h-full hidden absolute inset-0 p-2">
                      <div id="game-board" class="w-full h-full relative"></div>
@@ -317,7 +318,7 @@
                   <div class="bg-white/5 border border-white/10 rounded-xl p-6 shadow-xl space-y-6 backdrop-blur-sm">
                      <div>
                         <span class="text-xs font-bold font-mono tracking-wider text-[#60a5fa] uppercase">Taak 01</span>
-                        <h3 class="text-xl font-bold text-white mt-0.5">LUMC Medische Simulatie (C++ & UX Audio)</h3>
+                        <h3 class="text-xl font-bold text-white mt-0.5">LUMC Medische Simulatie (C++ & UX Audio) <- Temporary</h3>
                         <p class="text-sm text-[#9aa4b2] mt-1">Ontwikkeling van objectgeoriënteerde C++ interactielogica, haptische feedback en een dynamisch ademhalingssysteem voor de LUMC Department of Anaesthesiology Unreal Engine Showcase.</p>
                      </div>
                      <div class="grid grid-cols-1 gap-4 pt-4 border-t border-white/5 text-sm">
@@ -329,6 +330,7 @@
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">6. Uitvoeringsfase:</strong> <span class="text-[#9aa4b2]">Ik heb de C++ logica voor het ademhalingssysteem geschreven, zodat de audio vloeiend overloopt op basis van de status van de patiënt. Ook zijn de controllers zo geprogrammeerd dat ze trillen als je een object oppakt. Bij de operatietafel zorgt de code ervoor dat de oude tafel direct via een effect wordt ingewisseld voor de nieuwe zodra de knop wordt ingedrukt.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">7. Presentatiefase:</strong> <span class="text-[#9aa4b2]">Aan het einde van de sprints heb ik een werkende build klaargezet op GitLab. Ik heb het ademhalingssysteem en de feedback van de operatietafel gedemonstreerd in de VR-ruimte aan mijn praktijkbegeleider Bram.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">8. Evaluatiefase:</strong> <span class="text-[#9aa4b2]">Het systeem draait hartstikke stabiel en de performance is optimaal. De audiofeedback werkt vlekkeloos wanneer je de stethoscoop gebruikt en de visuele feedback maakt de app een stuk duidelijker voor de gebruiker. De code is via een code-review netjes overgedragen.</span></div>
+
                      </div>
                   </div>
                   <div class="bg-white/5 border border-white/10 rounded-xl p-6 shadow-xl space-y-6 backdrop-blur-sm">
@@ -339,7 +341,7 @@
                      </div>
                      <div class="grid grid-cols-1 gap-4 pt-4 border-t border-white/5 text-sm">
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">1. Oriëntatiefase:</strong> <span class="text-[#9aa4b2]">Voor het project REINTEGRATION zochten we een manier om binnenkomende meldingen en notificaties op een natuurlijke manier aan de speler te laten zien. Het idee was om dit te doen met fysieke sticky notes die je kunt vastpakken en ophangen.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">2. Definitiefase:</strong> <span class="text-[#9aa4b2]">In overleg met Bram Scholten zijn de functionele eisen bepaald. De briefjes moesten willekeurig spawnen op een dashboard-scherm zodra er een melding binnenkomt. De speler moet ze kunnen pakken en weggooien met VR-controllers op basis van de bestaande VR_Pawn en hand- en vingeranimaties. Ook moesten ze op muren blijven plakken.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">2. Definitiefase:</strong> <span class="text-[#9aa4b2]">In overleg met Andreas zijn de functionele eisen bepaald. De briefjes moesten willekeurig spawnen op een dashboard-scherm zodra er een melding binnenkomt. De speler moet ze kunnen pakken en weggooien met controllers en handden op basis van de bestaande VR_Pawn. Ook moesten ze op alles blijven plakken.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">3. Ontwerpfase:</strong> <span class="text-[#9aa4b2]">Ik heb de logica uitgewerkt. Voor het spawnen moest de Blueprint-logica een random X/Y-positie berekenen binnen de grenzen van het scherm. Voor het plakken moesten muren worden voorzien van een box collision component (hitbox). Zodra een briefje deze raakt, moet de physics stoppen en een physics constraint component worden geactiveerd om de note star te verankeren.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">4. Keuzefase:</strong> <span class="text-[#9aa4b2]">Ik heb gekozen voor Widget Components gerenderd in World Space, gecombineerd met Unreal Engine Physics. Om de interactie realistisch te houden, moest de physics-simulatie actief blijven tijdens het werpen zodat het briefje met de juiste vaart wegvliegt.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">5. Voorbereidingsfase:</strong> <span class="text-[#9aa4b2]">Ik heb de benodigde 3D-assets en materialen voor de sticky notes klaargezet in Unreal Engine. Ook heb ik een aparte feature-branch aangemaakt in GitFork (`feature/sticky-notes-system`) zodat ik veilig kon experimenteren met de physics-logica zonder de main branch te slopen.</span></div>
@@ -836,6 +838,238 @@
                </div>
             </div>
          </section>
+         <section id="media" class="space-y-6">
+            <div class="flex items-center justify-between flex-wrap gap-3">
+               <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Videos/Foto's</h2>
+            </div>
+            <p class="text-sm text-[#9aa4b2]">Video's en foto's per project. Klik op een map om hem open/dicht te klappen. Vervang <code class="text-[#60a5fa] font-mono">src="..."</code> met jouw bestandsnaam om media toe te voegen.</p>
+
+            <!-- ══════════════════════════════════════════════════════════════
+                 📁 MAP 1 — LUMC Anaesthesiology
+                 ══════════════════════════════════════════════════════════════ -->
+            <div class="rounded-xl border border-white/10 overflow-hidden">
+               <button onclick="toggleFolder('folder-lumc')" class="w-full flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/8 transition-colors group">
+                  <div class="flex items-center gap-3">
+                     <!-- folder icon -->
+                     <svg id="folder-lumc-icon" class="w-5 h-5 text-[#60a5fa] transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-8l-2-2z"/></svg>
+                     <div class="text-left">
+                        <p class="text-sm font-bold text-white">LUMC — Anaesthesiology Showcase</p>
+                        <p class="text-[10px] text-[#9aa4b2] font-mono mt-0.5">Unreal Engine 5 · C++ · VR</p>
+                     </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                     <span class="text-[9px] font-mono text-[#9aa4b2] bg-white/5 px-2 py-1 rounded">3 video's · 2 foto's</span>
+                     <svg id="folder-lumc-arrow" class="w-4 h-4 text-[#9aa4b2] transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                  </div>
+               </button>
+               <div id="folder-lumc" class="hidden border-t border-white/10 bg-[#070e20] p-5 space-y-5">
+
+                  <!-- Videos -->
+                  <div class="space-y-2">
+                     <h4 class="text-[10px] font-bold text-[#9aa4b2] uppercase tracking-widest flex items-center gap-2">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+                        Video's
+                     </h4>
+                     <p class="text-[10px] font-mono text-[#ffffff] mb-1">Dit zijn videos/fotos door mij genomen in het lumc project.</p>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- VIDEO — vervang src -->
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/lumc_video1.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Video voor de klant. starten met het moment dat ze zwaaien.</p></div>
+                        </div>
+                        <!-- VIDEO — vervang src -->
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/lumc_video2.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Video voor de klant. operatie kamer laten zien.</p></div>
+                        </div>
+                        <!-- VIDEO — vervang src -->
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/lumc_video3.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Video voor de klant. samen operatie doen.</p></div>
+                        </div>
+                        <!-- ── EXTRA VIDEO ── kopieer dit blok en pas src aan
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">JOUW_VIDEO.mp4</p></div>
+                        </div>
+                        -->
+                     </div>
+                  </div>
+
+                  <!-- Foto's -->
+                  <div class="space-y-2">
+                     <h4 class="text-[10px] font-bold text-[#9aa4b2] uppercase tracking-widest flex items-center gap-2">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Foto's
+                     </h4>
+                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <!-- FOTO — vervang src -->
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                           <img src="./BpvAssets/lumc_foto1.png" alt="LUMC foto 1" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#ffffff] truncate">Nieuwe Operatie tafel</p></div>
+                        </div>
+                        <!-- FOTO — vervang src -->
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                           <img src="./BpvAssets/lumc_foto2.png" alt="LUMC foto 2" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#ffffff] truncate">Oude Operatie tafel</p></div>
+                        </div>
+                        <!-- ── EXTRA FOTO ── kopieer dit blok en pas src aan
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                           <img src="JOUW_FOTO.jpg" alt="Omschrijving" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">JOUW_FOTO.jpg</p></div>
+                        </div>
+                        -->
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════════
+                 📁 MAP 2 — REINTEGRATION
+                 ══════════════════════════════════════════════════════════════ -->
+            <div class="rounded-xl border border-white/10 overflow-hidden">
+               <button onclick="toggleFolder('folder-reintegration')" class="w-full flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/8 transition-colors group">
+                  <div class="flex items-center gap-3">
+                     <svg id="folder-reintegration-icon" class="w-5 h-5 text-emerald-400 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-8l-2-2z"/></svg>
+                     <div class="text-left">
+                        <p class="text-sm font-bold text-white">REINTEGRATION</p>
+                        <p class="text-[10px] text-[#9aa4b2] font-mono mt-0.5">Unreal Engine 5 · Sticky Notes · VR</p>
+                     </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                     <span class="text-[9px] font-mono text-[#9aa4b2] bg-white/5 px-2 py-1 rounded">3 video's · 2 foto's</span>
+                     <svg id="folder-reintegration-arrow" class="w-4 h-4 text-[#9aa4b2] transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                  </div>
+               </button>
+               <div id="folder-reintegration" class="hidden border-t border-white/10 bg-[#070e20] p-5 space-y-5">
+
+                  <div class="space-y-2">
+                     <h4 class="text-[10px] font-bold text-[#9aa4b2] uppercase tracking-widest flex items-center gap-2">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+                        Video's
+                     </h4>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="reintegration_video1.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">reintegration_video1.mp4</p></div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="reintegration_video2.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">reintegration_video2.mp4</p></div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="reintegration_video3.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">reintegration_video3.mp4</p></div>
+                        </div>
+                        <!-- ── EXTRA VIDEO ── kopieer dit blok en pas src aan
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">JOUW_VIDEO.mp4</p></div>
+                        </div>
+                        -->
+                     </div>
+                  </div>
+
+                  <div class="space-y-2">
+                     <h4 class="text-[10px] font-bold text-[#9aa4b2] uppercase tracking-widest flex items-center gap-2">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Foto's
+                     </h4>
+                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                           <img src="reintegration_foto1.jpg" alt="REINTEGRATION foto 1" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">reintegration_foto1.jpg</p></div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                           <img src="reintegration_foto2.jpg" alt="REINTEGRATION foto 2" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">reintegration_foto2.jpg</p></div>
+                        </div>
+                        <!-- ── EXTRA FOTO ── kopieer dit blok en pas src aan
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                           <img src="JOUW_FOTO.jpg" alt="Omschrijving" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">JOUW_FOTO.jpg</p></div>
+                        </div>
+                        -->
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+
+            <!-- ══════════════════════════════════════════════════════════════
+                 📁 MAP 3 — 2D Quantum Delta (Unity Game)
+                 ══════════════════════════════════════════════════════════════ -->
+            <div class="rounded-xl border border-white/10 overflow-hidden">
+               <button onclick="toggleFolder('folder-2dgame')" class="w-full flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/8 transition-colors group">
+                  <div class="flex items-center gap-3">
+                     <svg id="folder-2dgame-icon" class="w-5 h-5 text-violet-400 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-8l-2-2z"/></svg>
+                     <div class="text-left">
+                        <p class="text-sm font-bold text-white">2D Quantum Delta</p>
+                        <p class="text-[10px] text-[#9aa4b2] font-mono mt-0.5">Unity 2D · C# · Game</p>
+                     </div>
+                  </div>
+                  <div class="flex items-center gap-3">
+                     <span class="text-[9px] font-mono text-[#9aa4b2] bg-white/5 px-2 py-1 rounded">3 video's · 2 foto's</span>
+                     <svg id="folder-2dgame-arrow" class="w-4 h-4 text-[#9aa4b2] transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                  </div>
+               </button>
+               <div id="folder-2dgame" class="hidden border-t border-white/10 bg-[#070e20] p-5 space-y-5">
+
+                  <div class="space-y-2">
+                     <h4 class="text-[10px] font-bold text-[#9aa4b2] uppercase tracking-widest flex items-center gap-2">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+                        Video's
+                     </h4>
+                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="2dgame_video1.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">2dgame_video1.mp4</p></div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="2dgame_video2.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">2dgame_video2.mp4</p></div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="2dgame_video3.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">2dgame_video3.mp4</p></div>
+                        </div>
+                        <!-- ── EXTRA VIDEO ── kopieer dit blok en pas src aan
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
+                           <video class="w-full aspect-video bg-black" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
+                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">JOUW_VIDEO.mp4</p></div>
+                        </div>
+                        -->
+                     </div>
+                  </div>
+
+                  <div class="space-y-2">
+                     <h4 class="text-[10px] font-bold text-[#9aa4b2] uppercase tracking-widest flex items-center gap-2">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        Foto's
+                     </h4>
+                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                           <img src="2dgame_foto1.jpg" alt="2D Game foto 1" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">2dgame_foto1.jpg</p></div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                           <img src="2dgame_foto2.jpg" alt="2D Game foto 2" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">2dgame_foto2.jpg</p></div>
+                        </div>
+                        <!-- ── EXTRA FOTO ── kopieer dit blok en pas src aan
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                           <img src="JOUW_FOTO.jpg" alt="Omschrijving" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
+                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">JOUW_FOTO.jpg</p></div>
+                        </div>
+                        -->
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+
+         </section>
       </main>
       <script>
          function toggleMenu() {
@@ -1034,5 +1268,29 @@
          }
          document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
       </script>
+   <script>
+      // ── MEDIA FOLDER LOGIC ───────────────────────────────────────────────────
+
+      function toggleFolder(id) {
+         const panel = document.getElementById(id);
+         const arrow = document.getElementById(id + '-arrow');
+         const icon  = document.getElementById(id + '-icon');
+         const open  = panel.classList.contains('hidden');
+         panel.classList.toggle('hidden', !open);
+         if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+         if (icon)  icon.style.transform  = open ? 'scale(1.1)'     : 'scale(1)';
+      }
+
+      function openImgLightbox(card) {
+         const img = card.querySelector('img');
+         const caption = card.querySelector('p');
+         if (!img) return;
+         const lb = document.getElementById('lightbox');
+         document.getElementById('lightbox-content').innerHTML = `<img src="${img.src}" alt="${img.alt}" class="w-full rounded-lg object-contain max-h-[80vh]">`;
+         document.getElementById('lightbox-caption').textContent = caption ? caption.textContent.trim() : '';
+         lb.classList.remove('hidden');
+         lb.classList.add('flex');
+      }
+   </script>
    </body>
 </html>
