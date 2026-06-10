@@ -375,7 +375,7 @@
                   <div class="absolute -left-[21px] top-1 bg-[#0f1724] border-2 border-[#60a5fa] rounded-full w-2 h-2"></div>
                   <span class="text-xs font-mono font-bold text-[#60a5fa] bg-[#60a5fa]/10 border border-[#60a5fa]/20 px-2 py-0.5 rounded">12:00 - 13:00</span>
                   <p class="text-sm text-[#9aa4b2] mt-2">
-                     Om <span class="text-white">12:00 uur</span> neem ik lekker een uurtje pauze om te lunchen en te ontspannen met de andere stagiairs, waarna ik weer met frisse energie aan de slag kan!
+                     Om <span class="text-white">12:00 uur</span> neem ik lekker een uurtje pauze om te lunchen en rust te nemen, waarna ik weer met veel energie verder kan.
                   </p>
                </div>
                <div class="relative">
@@ -383,7 +383,7 @@
                   <span class="text-xs font-mono font-bold text-[#60a5fa] bg-[#60a5fa]/10 border border-[#60a5fa]/20 px-2 py-0.5 rounded">13:00 - 17:00</span>
                   <div class="text-sm text-[#9aa4b2] mt-2 space-y-2">
                      <p>
-                        In de middag ben ik eigenlijk de hele tijd bezig met het uitwerken van mijn features. Tussendoor test ik de builds door de <span class="text-white">Meta Quest 3</span> op te zetten om te controleren of de controllers, haptische feedback en hand-tracking logica goed werken. Als er iets af is, pak ik in ClickUp meteen een nieuwe taak op.
+                        In de middag ben ik eigenlijk de hele tijd bezig met het uitwerken van mijn features. Tussendoor test ik de builds door de <span class="text-white">Meta Quest 3</span> op te zetten om te controleren of de controllers, haptische feedback en hand-tracking logica goed werken. Als er iets af is, pak ik in ClickUp/Jira meteen een nieuwe taak op.
                      </p>
                      <p>
                         Aan het einde van de middag zorg ik dat mijn code netjes is opgeruimd en voeg ik comments toe waar dat nodig is. Ik maak kleine, logische commits aan met een duidelijke omschrijving en push de boel naar mijn feature-branch op GitLab. Daarna lever ik het op aan <span class="text-white">Bram Scholten</span> voor een code review.
@@ -396,8 +396,7 @@
             <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Leerdoelen</h2>
             <p class="text-sm text-[#9aa4b2]">Vier leerdoelen die ik heb opgesteld en uitgevoerd tijdens mijn stageperiode bij het Saxion XR Lab.</p>
 
-            <!-- Leerdoel 1: VR Implementatie -->
-            <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-xl backdrop-blur-sm">
+<div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-xl backdrop-blur-sm">
                <button onclick="toggleLeerdoel('ld1')" class="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors group">
                   <div class="flex items-center gap-3">
                      <span class="text-[10px] font-mono font-bold tracking-wider text-[#60a5fa] bg-[#60a5fa]/10 border border-[#60a5fa]/20 px-2 py-0.5 rounded uppercase">Leerdoel 01</span>
@@ -435,61 +434,29 @@
                   <div>
                      <strong class="text-[#60a5fa] block font-semibold mb-2">Bewijsmateriaal</strong>
                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div onclick="openLightbox(this)" class="cursor-zoom-in group relative rounded-lg overflow-hidden border border-white/10 hover:border-[#60a5fa]/50 transition-colors">
-                           <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block">
-                              <rect width="960" height="540" fill="#0a1530"/>
-                              <rect x="1" y="1" width="958" height="538" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
-                              <text x="480" y="240" font-family="monospace" font-size="13" fill="#60a5fa" text-anchor="middle" opacity="0.5">bewijs_1.png</text>
-                              <text x="480" y="265" font-family="monospace" font-size="11" fill="#9aa4b2" text-anchor="middle" opacity="0.4">VR_Pawn Blueprint hiërarchie</text>
-                              <text x="480" y="295" font-family="monospace" font-size="10" fill="#9aa4b2" text-anchor="middle" opacity="0.3">960 × 540</text>
-                              <path d="M440 310 L480 285 L520 310 Z" fill="#60a5fa" opacity="0.15"/>
-                              <rect x="455" y="310" width="50" height="35" rx="3" fill="#60a5fa" opacity="0.1"/>
-                           </svg>
-                           <div class="absolute inset-0 bg-[#60a5fa]/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <span class="text-[10px] font-mono text-[#60a5fa] bg-[#0a1530]/80 px-2 py-1 rounded">Vervang met screenshot</span>
-                           </div>
+                        <div onclick="openLightbox(this)" class="cursor-zoom-in group relative rounded-lg overflow-hidden border border-white/10 hover:border-[#60a5fa]/50 transition-colors aspect-video bg-[#0a1530]">
+                           <img src="./BpvAssets/Leerdoelen/Implementatie/Picture1.png" alt="VR_Pawn Blueprint hiërarchie" class="w-full h-full object-cover block">
                            <div class="absolute bottom-0 left-0 right-0 bg-[#0a1530]/80 px-3 py-1.5 text-[10px] font-mono text-[#9aa4b2]">Bewijs 1 — VR_Pawn Blueprint hiërarchie</div>
                         </div>
-                        <div onclick="openLightbox(this)" class="cursor-zoom-in group relative rounded-lg overflow-hidden border border-white/10 hover:border-[#60a5fa]/50 transition-colors">
-                           <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block">
-                              <rect width="960" height="540" fill="#0a1530"/>
-                              <rect x="1" y="1" width="958" height="538" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
-                              <text x="480" y="240" font-family="monospace" font-size="13" fill="#60a5fa" text-anchor="middle" opacity="0.5">bewijs_2.png</text>
-                              <text x="480" y="265" font-family="monospace" font-size="11" fill="#9aa4b2" text-anchor="middle" opacity="0.4">Physics Asset instellingen vingers</text>
-                              <text x="480" y="295" font-family="monospace" font-size="10" fill="#9aa4b2" text-anchor="middle" opacity="0.3">960 × 540</text>
-                              <path d="M440 310 L480 285 L520 310 Z" fill="#60a5fa" opacity="0.15"/>
-                              <rect x="455" y="310" width="50" height="35" rx="3" fill="#60a5fa" opacity="0.1"/>
-                           </svg>
-                           <div class="absolute inset-0 bg-[#60a5fa]/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <span class="text-[10px] font-mono text-[#60a5fa] bg-[#0a1530]/80 px-2 py-1 rounded">Vervang met screenshot</span>
-                           </div>
+                        <div onclick="openLightbox(this)" class="cursor-zoom-in group relative rounded-lg overflow-hidden border border-white/10 hover:border-[#60a5fa]/50 transition-colors aspect-video bg-[#0a1530]">
+                           <img src="./BpvAssets/Leerdoelen/Implementatie/Picture2.png" alt="Physics Asset instellingen vingers" class="w-full h-full object-cover block">
                            <div class="absolute bottom-0 left-0 right-0 bg-[#0a1530]/80 px-3 py-1.5 text-[10px] font-mono text-[#9aa4b2]">Bewijs 2 — Physics Asset instellingen vingers</div>
                         </div>
-                        <div onclick="openLightbox(this)" class="cursor-zoom-in group relative rounded-lg overflow-hidden border border-white/10 hover:border-[#60a5fa]/50 transition-colors">
-                           <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block">
-                              <rect width="960" height="540" fill="#0a1530"/>
-                              <rect x="1" y="1" width="958" height="538" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
-                              <text x="480" y="240" font-family="monospace" font-size="13" fill="#60a5fa" text-anchor="middle" opacity="0.5">bewijs_3.png</text>
-                              <text x="480" y="265" font-family="monospace" font-size="11" fill="#9aa4b2" text-anchor="middle" opacity="0.4">Apply Physical Animation Below Blueprint</text>
-                              <text x="480" y="295" font-family="monospace" font-size="10" fill="#9aa4b2" text-anchor="middle" opacity="0.3">960 × 540</text>
-                              <path d="M440 310 L480 285 L520 310 Z" fill="#60a5fa" opacity="0.15"/>
-                              <rect x="455" y="310" width="50" height="35" rx="3" fill="#60a5fa" opacity="0.1"/>
-                           </svg>
-                           <div class="absolute inset-0 bg-[#60a5fa]/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                              <span class="text-[10px] font-mono text-[#60a5fa] bg-[#0a1530]/80 px-2 py-1 rounded">Vervang met screenshot</span>
-                           </div>
+                        <div onclick="openLightbox(this)" class="cursor-zoom-in group relative rounded-lg overflow-hidden border border-white/10 hover:border-[#60a5fa]/50 transition-colors aspect-video bg-[#0a1530]">
+                           <img src="./BpvAssets/Leerdoelen/Implementatie/Picture3.png" alt="Apply Physical Animation Below" class="w-full h-full object-cover block">
                            <div class="absolute bottom-0 left-0 right-0 bg-[#0a1530]/80 px-3 py-1.5 text-[10px] font-mono text-[#9aa4b2]">Bewijs 3 — Apply Physical Animation Below</div>
                         </div>
-                        <div class="group relative rounded-lg overflow-hidden border border-white/10 hover:border-[#60a5fa]/50 transition-colors">
-                           <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto block">
-                              <rect width="960" height="540" fill="#0a1530"/>
-                              <rect x="1" y="1" width="958" height="538" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
-                              <text x="480" y="230" font-family="monospace" font-size="13" fill="#60a5fa" text-anchor="middle" opacity="0.5">bewijs_5.mp4</text>
-                              <text x="480" y="255" font-family="monospace" font-size="11" fill="#9aa4b2" text-anchor="middle" opacity="0.4">VR Preview — tracking demo</text>
-                              <text x="480" y="285" font-family="monospace" font-size="10" fill="#9aa4b2" text-anchor="middle" opacity="0.3">960 × 540</text>
-                              <circle cx="480" cy="320" r="22" fill="#60a5fa" opacity="0.12" stroke="#60a5fa" stroke-width="1" opacity="0.3"/>
-                              <path d="M473 310 L473 330 L493 320 Z" fill="#60a5fa" opacity="0.4"/>
-                           </svg>
+                        <div onclick="openLightbox(this)" class="cursor-zoom-in group relative rounded-lg overflow-hidden border border-white/10 hover:border-[#60a5fa]/50 transition-colors aspect-video bg-[#0a1530]">
+                           <img src="./BpvAssets/Leerdoelen/Implementatie/Picture4.png" alt="Apply Physical Animation Below" class="w-full h-full object-cover block">
+                           <div class="absolute bottom-0 left-0 right-0 bg-[#0a1530]/80 px-3 py-1.5 text-[10px] font-mono text-[#9aa4b2]">Bewijs 4 — Apply Physical Animation Below</div>
+                        </div>
+                        <div onclick="openLightbox(this)" class="cursor-zoom-in group relative rounded-lg overflow-hidden border border-white/10 hover:border-[#60a5fa]/50 transition-colors aspect-video bg-[#0a1530]">
+                           <video src="./BpvAssets/Leerdoelen/Implementatie/video5.mp4" muted loop playsinline class="w-full h-full object-cover block" onmouseenter="this.play()" onmouseleave="this.pause()"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="absolute bottom-0 left-0 right-0 bg-[#0a1530]/80 px-3 py-1.5 text-[10px] font-mono text-[#9aa4b2]">Bewijs 5 — VR Preview tracking demo (video)</div>
                         </div>
                      </div>
@@ -872,59 +839,124 @@
                      <p class="text-[10px] font-mono text-[#ffffff] mb-1">Dit zijn videos/fotos door mij genomen in het lumc project.</p>
                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <!-- VIDEO — vervang src -->
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video1.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video1.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Video voor de klant. starten met het moment dat ze zwaaien.</p></div>
                         </div>
                         <!-- VIDEO — vervang src -->
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video2.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video2.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Video voor de klant. operatie kamer laten zien.</p></div>
                         </div>
                         <!-- VIDEO — vervang src -->
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video3.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video3.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Video voor de klant. zien dat je samen werkt in de operatiekamer.</p></div>
                         </div>
-                         <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video4.mp4" type="video/mp4"></video>
+                         <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video4.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Laten zien dat de koelkast gevuld is met de benodigde spullen.</p></div>
                         </div>
-                         <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video5.mp4" type="video/mp4"></video>
+                         <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video5.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Laten zien dat de operatietafel beweegt met de knoppen.</p></div>
                         </div>
-                         <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video6.mp4" type="video/mp4"></video>
+                         <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video6.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Laten zien dat de bloedzak langzaam leegloopt.</p></div>
                         </div>                   
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video7.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video7.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Laten zien dat de lampen boven de operatietafel bewogen kunnen worden.</p></div>
                         </div>                    
-                            <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video8.mp4" type="video/mp4"></video>
+                            <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video8.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Laten zien dat alle laden openbaar zijn en gevuld zijn.</p></div>
                         </div>                     
-                           <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video9.mp4" type="video/mp4"></video>
+                           <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video9.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">laten zien dat de beademing op de patient geplaatst kan worden.</p></div>
                         </div>                       
-                         <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video10.mp4" type="video/mp4"></video>
+                         <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video10.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Laten zien dat er inflatie in de luchtzakken is.</p></div>
                         </div>
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video11.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video11.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Laten zien dat de apparatuur correct werkt.</p></div>
                         </div>
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/LUMC/Videos/lumc_video12.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video12.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Laten zien dat de stickers geplakt kunnen worden op de patient.</p></div>
                         </div>
                         <!-- ── EXTRA VIDEO ── kopieer dit blok en pas src aan
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">JOUW_VIDEO.mp4</p></div>
                         </div>
                         -->
@@ -939,17 +971,17 @@
                      </h4>
                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                         <!-- FOTO — vervang src -->
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
                            <img src="./BpvAssets/LUMC/Fotos/lumc_foto1.png" alt="LUMC foto 1" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#ffffff] truncate">Nieuwe Operatie tafel</p></div>
                         </div>
                         <!-- FOTO — vervang src -->
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
                            <img src="./BpvAssets/LUMC/Fotos/lumc_foto2.png" alt="LUMC foto 2" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#ffffff] truncate">Oude Operatie tafel</p></div>
                         </div>
                         <!-- ── EXTRA FOTO ── kopieer dit blok en pas src aan
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
                            <img src="JOUW_FOTO.jpg" alt="Omschrijving" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">JOUW_FOTO.jpg</p></div>
                         </div>
@@ -985,13 +1017,23 @@
                         Video's
                      </h4>
                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/Reintegration/Videos/Reintegration_video1.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/Reintegration/Videos/Reintegration_video1.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]"></p></div>
                         </div>
                         <!-- ── EXTRA VIDEO ── kopieer dit blok en pas src aan
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">JOUW_VIDEO.mp4</p></div>
                         </div>
                         -->
@@ -1004,12 +1046,12 @@
                         Foto's
                      </h4>
                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
                            <img src="./BpvAssets/Reintegration/Photos/Reintegration_photo1.png" alt="REINTEGRATION foto 1" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">reintegration_photo1.png</p></div>
                         </div>
                         <!-- ── EXTRA FOTO ── kopieer dit blok en pas src aan
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
                            <img src="JOUW_FOTO.jpg" alt="Omschrijving" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">JOUW_FOTO.jpg</p></div>
                         </div>
@@ -1045,21 +1087,41 @@
                         Video's
                      </h4>
                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/Quantum/Videos/Quantum_Video1.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/Quantum/Videos/Quantum_Video1.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Playthrough</p></div>
                         </div>
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/Quantum/Videos/Quantum_Video2.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/Quantum/Videos/Quantum_Video2.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Handschoenen prototype functionaliteit gebouwd</p></div>
                         </div>
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="./BpvAssets/Quantum/Videos/Quantum_Video3.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/Quantum/Videos/Quantum_Video3.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Quantum_video3.mp4</p></div>
                         </div>
                         <!-- ── EXTRA VIDEO ── kopieer dit blok en pas src aan
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors">
-                           <video class="w-full aspect-video bg-black" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
+                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
+                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
+                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
+                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
+                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                              </div>
+                           </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">JOUW_VIDEO.mp4</p></div>
                         </div>
                         -->
@@ -1072,16 +1134,16 @@
                         Foto's
                      </h4>
                      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
                            <img src="2dgame_foto1.jpg" alt="2D Game foto 1" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#ffffff] truncate">2dgame_foto1.jpg</p></div>
                         </div>
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
                            <img src="2dgame_foto2.jpg" alt="2D Game foto 2" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#ffffff] truncate">2dgame_foto2.jpg</p></div>
                         </div>
                         <!-- ── EXTRA FOTO ── kopieer dit blok en pas src aan
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openImgLightbox(this)">
+                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
                            <img src="JOUW_FOTO.jpg" alt="Omschrijving" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">JOUW_FOTO.jpg</p></div>
                         </div>
@@ -1272,23 +1334,91 @@
       </div>
 
       <script>
-         function openLightbox(el) {
-            const svg = el.querySelector('svg');
-            const caption = el.querySelector('[class*="bottom-0"]');
-            if (!svg) return;
-            const lb = document.getElementById('lightbox');
-            const lbContent = document.getElementById('lightbox-content');
-            const lbCaption = document.getElementById('lightbox-caption');
-            lbContent.innerHTML = svg.outerHTML;
-            lbCaption.textContent = caption ? caption.textContent.trim() : '';
-            lb.classList.remove('hidden');
-            lb.classList.add('flex');
-         }
-         function closeLightbox() {
-            const lb = document.getElementById('lightbox');
-            lb.classList.add('hidden');
-            lb.classList.remove('flex');
-         }
+function openLightbox(element) {
+    let mediaElement = element.querySelector('img, video');
+    if (!mediaElement) return;
+
+    let isVideo = mediaElement.tagName.toLowerCase() === 'video';
+
+    // Support both src-on-element and <source src="..."> child
+    let src = mediaElement.getAttribute('src');
+    if (!src && isVideo) {
+        let sourceEl = mediaElement.querySelector('source');
+        if (sourceEl) src = sourceEl.getAttribute('src');
+    }
+    if (!src) return;
+
+    // Get caption from the card's text label
+    let captionEl = element.querySelector('[class*="font-mono"][class*="text-[#9aa4b2]"], [class*="font-mono"][class*="text-[#ffffff]"], p');
+    let caption = captionEl ? captionEl.textContent.trim() : '';
+
+    let lightbox = document.getElementById('lightbox');
+    if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.className = 'fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 cursor-zoom-out';
+        document.body.appendChild(lightbox);
+    }
+
+    function closeLb() {
+        // pause any video before clearing
+        let v = lightbox.querySelector('video');
+        if (v) { v.pause(); }
+        lightbox.classList.add('hidden');
+        lightbox.innerHTML = '';
+    }
+
+    lightbox.onclick = function(e) { if (e.target === lightbox) closeLb(); };
+    lightbox.innerHTML = '';
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+
+    let wrap = document.createElement('div');
+    wrap.className = 'relative max-w-5xl w-full flex flex-col items-center';
+    wrap.onclick = function(e) { e.stopPropagation(); };
+
+    let closeButton = document.createElement('button');
+    closeButton.innerHTML = '&times;';
+    closeButton.className = 'absolute -top-4 -right-4 z-50 text-white text-lg font-bold w-9 h-9 flex items-center justify-center leading-none rounded-full bg-red-600 hover:bg-red-500 border-2 border-white/30 shadow-lg transition-all duration-150 cursor-pointer';
+    closeButton.style.lineHeight = '1';
+    closeButton.style.paddingBottom = '1px';
+    closeButton.onclick = function(e) { e.stopPropagation(); closeLb(); };
+    wrap.appendChild(closeButton);
+
+    if (isVideo) {
+        let video = document.createElement('video');
+        video.src = src;
+        video.autoplay = true;
+        video.controls = true;
+        video.muted = false;
+        video.loop = true;
+        video.className = 'max-w-full max-h-[85vh] rounded-lg shadow-2xl border border-white/10 cursor-default w-full';
+        wrap.appendChild(video);
+    } else {
+        let img = document.createElement('img');
+        img.src = src;
+        img.className = 'max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10 cursor-default';
+        wrap.appendChild(img);
+    }
+
+    if (caption) {
+        let cap = document.createElement('div');
+        cap.className = 'mt-3 text-center text-xs font-mono text-[#9aa4b2]';
+        cap.textContent = caption;
+        wrap.appendChild(cap);
+    }
+
+    lightbox.appendChild(wrap);
+}
+
+function closeLightbox() {
+    let lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+    let v = lightbox.querySelector('video');
+    if (v) { v.pause(); }
+    lightbox.classList.add('hidden');
+    lightbox.innerHTML = '';
+}
          document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
       </script>
    <script>
