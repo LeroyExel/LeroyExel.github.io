@@ -91,7 +91,7 @@
                   De twee taken die ik heb uitgewerkt zijn:
                </p>
                <ol class="list-decimal list-inside space-y-2 pl-2 text-[#e6eef8]">
-                  <li>De ontwikkeling van C++ interactielogica en audiofeedback voor de LUMC Department of Anaesthesiology Unreal Engine Showcase.</li>
+                  <li>Het fixen van een hardnekkige medication fluid visuals bug in C++ voor de LUMC Department of Anaesthesiology Unreal Engine Showcase.</li>
                   <li>De implementatie van het interactieve Sticky Notes notificatiesysteem binnen Unreal Engine voor het project REINTEGRATION.</li>
                </ol>
                <p>
@@ -335,18 +335,18 @@
                   <div class="bg-white/5 border border-white/10 rounded-xl p-6 shadow-xl space-y-6 backdrop-blur-sm">
                      <div>
                         <span class="text-xs font-bold font-mono tracking-wider text-[#60a5fa] uppercase">Taak 01</span>
-                        <h3 class="text-xl font-bold text-white mt-0.5">LUMC Medische Simulatie (C++ & UX Audio) <- Temporary</h3>
-                        <p class="text-sm text-[#9aa4b2] mt-1">Ontwikkeling van objectgeoriënteerde C++ interactielogica, haptische feedback en een dynamisch ademhalingssysteem voor de LUMC Department of Anaesthesiology Unreal Engine Showcase.</p>
+                        <h3 class="text-xl font-bold text-white mt-0.5">Fix medication fluid visuals</h3>
+                        <p class="text-sm text-[#9aa4b2] mt-1">Een hardnekkige bug gefixt in C++ waarbij de vloeistof in de medicatiespuit helemaal uitrekte zodra je hem in de patiënt stak.</p>
                      </div>
                      <div class="grid grid-cols-1 gap-4 pt-4 border-t border-white/5 text-sm">
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">1. Oriëntatiefase:</strong> <span class="text-[#9aa4b2]">Voor het LUMC Department of Anaesthesiology moest een VR-trainingsomgeving gemaakt worden voor anesthesisten in opleiding. Het doel was om de gebruiksvriendelijkheid (UX) te optimaliseren en interacties via duidelijke feedback te sturen om motion sickness tegen te gaan.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">2. Definitiefase:</strong> <span class="text-[#9aa4b2]">In overleg met Bram Scholten en de contactpersoon van het LUMC hebben we de eisen opgesteld. Er moest een ademhalingssysteem komen waarmee spelers via een stethoscoop naar de patiënt kunnen luisteren om een bronchospasme te herkennen. Ook moest de operatietafel visuele feedback geven bij het wisselen van status (oude tafel verdwijnt met een effect, nieuwe verschijnt direct).</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">3. Ontwerpfase:</strong> <span class="text-[#9aa4b2]">Ik heb een klasse-architectuur uitgedacht in een flowchart. Voor de stethoscoop moest de code het actieve ademhalingstype controleren en dynamisch de juiste geluiden afspelen. Voor de operatietafel is een state-systeem ontworpen dat via trigger-volumes reageert op interactie-events.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">4. Keuzefase:</strong> <span class="text-[#9aa4b2]">We twijfelden tussen volledige Blueprints of native objectgeoriënteerd C++. Ik heb gekozen voor een hybride aanpak: de zware logica en audioparameters in C++ voor optimale performance, en de haptische feedback (trillingen in controllers) en visuele highlights via Blueprints gekoppeld aan trigger-volumes.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">5. Voorbereidingsfase:</strong> <span class="text-[#9aa4b2]">Ik heb de GitLab-repository klaargezet en gewerkt via een nette branch-strategie. Omdat we in een team werkten, mocht er niks direct in main gepusht worden. Ook heb ik alle benodigde audio-assets voor de ademhaling verzameld en klaargezet in de engine.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">6. Uitvoeringsfase:</strong> <span class="text-[#9aa4b2]">Ik heb de C++ logica voor het ademhalingssysteem geschreven, zodat de audio vloeiend overloopt op basis van de status van de patiënt. Ook zijn de controllers zo geprogrammeerd dat ze trillen als je een object oppakt. Bij de operatietafel zorgt de code ervoor dat de oude tafel direct via een effect wordt ingewisseld voor de nieuwe zodra de knop wordt ingedrukt.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">7. Presentatiefase:</strong> <span class="text-[#9aa4b2]">Aan het einde van de sprints heb ik een werkende build klaargezet op GitLab. Ik heb het ademhalingssysteem en de feedback van de operatietafel gedemonstreerd in de VR-ruimte aan mijn praktijkbegeleider Bram.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">8. Evaluatiefase:</strong> <span class="text-[#9aa4b2]">Het systeem draait hartstikke stabiel en de performance is optimaal. De audiofeedback werkt vlekkeloos wanneer je de stethoscoop gebruikt en de visuele feedback maakt de app een stuk duidelijker voor de gebruiker. De code is via een code-review netjes overgedragen.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">1. Oriëntatiefase:</strong> <span class="text-[#9aa4b2]">Bij de VR-showcase voor het LUMC moeten artsen medicatie toedienen met een virtuele spuit. Tijdens het testen vonden we een flinke bug: zodra de spuit de patiënt raakte, raakte de liquid shader helemaal vervormd en schoot in de min. Zag er echt niet uit en brak de hele immersie.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">2. Definitiefase:</strong> <span class="text-[#9aa4b2]">De eisen waren simpel: de vloeistof in de spuit moest gewoon netjes z'n volume behouden en soepel zakken tijdens het inspuiten. Geen rare glitches of negatieve schaling. En ik moest de onderliggende fout in de C++ code of blueprint fixen.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">3. Ontwerpfase:</strong> <span class="text-[#9aa4b2]">Ik ben in Visual Studio gedoken en kwam erachter dat de variabele MaxSyringeValue (maximale inhoud) per ongeluk op 0 stond in de setup. Hierdoor probeerde de rekensom (HuidigeWaarde / MaxWaarde) te delen door nul, waardoor de schaal de min in vloog. De fix was dus zorgen dat die waarde nooit 0 kan zijn.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">4. Keuzefase:</strong> <span class="text-[#9aa4b2]">Ik kon de variabele gewoon terugzetten in de Unreal editor, maar als iemand hem dan weer op 0 zet, crasht de boel weer. Dus koos ik ervoor om hem in de editor goed te zetten én in C++ een harde check (clamp) te bouwen zodat hij altijd hoger dan 0 is.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">5. Voorbereidingsfase:</strong> <span class="text-[#9aa4b2]">In GitFork heb ik een aparte branch aangemaakt (bugfix/syringe-value-visuals), want je mag hier niet zomaar in main pushen. Ook heb ik even een test-level gefixt in Unreal om de spuit snel te testen.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">6. Uitvoeringsfase:</strong> <span class="text-[#9aa4b2]">In Visual Studio heb ik de C++ code van de spuit aangepast met een veiligheidscheck. De code checkt nu of MaxSyringeValue wel geldig is voordat de shader updatet. Met de Quest 3 op m'n kop heb ik het getest en het werkte perfect. De vloeistof nam netjes lineair af.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">7. Presentatiefase:</strong> <span class="text-[#9aa4b2]">Ik heb de gefixte spuit laten zien aan stagebegeleider Bram tijdens een code review op GitLab. Even uitgelegd hoe een lullige 0-waarde alles sloopte en hoe m'n code dat nu fixt. Na goedkeuring is de branch gemerged.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">8. Evaluatiefase:</strong> <span class="text-[#9aa4b2]">Bug succesvol gefixt! Gevaarlijk hoe zo'n domme setup-fout als delen door nul zulke extreme glitches kan veroorzaken. Ik heb wel echt geleerd dat ik dit soort variabelen in C++ altijd goed moet beveiligen.</span></div>
 
                      </div>
                   </div>
@@ -485,7 +485,6 @@
                </div>
             </div>
 
-            <!-- Leerdoel 2: VR UX & Feedback -->
             <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-xl backdrop-blur-sm">
                <button onclick="toggleLeerdoel('ld2')" class="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors group">
                   <div class="flex items-center gap-3">
@@ -569,7 +568,6 @@
                </div>
             </div>
 
-            <!-- Leerdoel 3: Sticky Notes -->
             <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-xl backdrop-blur-sm">
                <button onclick="toggleLeerdoel('ld3')" class="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors group">
                   <div class="flex items-center gap-3">
@@ -651,7 +649,6 @@
                </div>
             </div>
 
-            <!-- Leerdoel 4: Team & Versiebeheer -->
             <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden shadow-xl backdrop-blur-sm">
                <button onclick="toggleLeerdoel('ld4')" class="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors group">
                   <div class="flex items-center gap-3">
@@ -770,13 +767,9 @@
                <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Videos/Foto's</h2>
             </div>
 
-            <!-- ══════════════════════════════════════════════════════════════
-                 📁 MAP 1 — LUMC Anaesthesiology
-                 ══════════════════════════════════════════════════════════════ -->
             <div class="rounded-xl border border-white/10 overflow-hidden">
                <button onclick="toggleFolder('folder-lumc')" class="w-full flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/8 transition-colors group">
                   <div class="flex items-center gap-3">
-                     <!-- folder icon -->
                      <svg id="folder-lumc-icon" class="w-5 h-5 text-[#60a5fa] transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-8l-2-2z"/></svg>
                      <div class="text-left">
                         <p class="text-sm font-bold text-white">LUMC — Anaesthesiology Showcase</p>
@@ -790,7 +783,6 @@
                </button>
                <div id="folder-lumc" class="hidden border-t border-white/10 bg-[#070e20] p-5 space-y-5">
 
-                  <!-- Videos -->
                   <div class="space-y-2">
                      <h4 class="text-[10px] font-bold text-[#9aa4b2] uppercase tracking-widest flex items-center gap-2">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
@@ -798,7 +790,6 @@
                      </h4>
                      <p class="text-[10px] font-mono text-[#ffffff] mb-1">Dit zijn videos/fotos door mij genomen in het lumc project.</p>
                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <!-- VIDEO — vervang src -->
                         <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
                            <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video1.mp4" type="video/mp4"></video>
                            <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
@@ -808,7 +799,6 @@
                            </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Video voor de klant. starten met het moment dat ze zwaaien.</p></div>
                         </div>
-                        <!-- VIDEO — vervang src -->
                         <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
                            <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video2.mp4" type="video/mp4"></video>
                            <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
@@ -818,7 +808,6 @@
                            </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Video voor de klant. operatie kamer laten zien.</p></div>
                         </div>
-                        <!-- VIDEO — vervang src -->
                         <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
                            <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="./BpvAssets/LUMC/Videos/lumc_video3.mp4" type="video/mp4"></video>
                            <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
@@ -909,21 +898,9 @@
                            </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Laten zien dat de stickers geplakt kunnen worden op de patient.</p></div>
                         </div>
-                        <!-- ── EXTRA VIDEO ── kopieer dit blok en pas src aan
-                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
-                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
-                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
-                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
-                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                              </div>
-                           </div>
-                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">JOUW_VIDEO.mp4</p></div>
                         </div>
-                        -->
-                     </div>
                   </div>
 
-                  <!-- Foto's -->
                   <div class="space-y-2">
                      <h4 class="text-[10px] font-bold text-[#9aa4b2] uppercase tracking-widest flex items-center gap-2">
                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
@@ -949,21 +926,12 @@
                          <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
                            <img src="./BpvAssets/LUMC/Fotos/lumc_foto5.png" alt="LUMC foto 5" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#ffffff] truncate">Clickup Taken 3</p></div>
-                        <!-- ── EXTRA FOTO ── kopieer dit blok en pas src aan
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
-                           <img src="JOUW_FOTO.jpg" alt="Omschrijving" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
-                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">JOUW_FOTO.jpg</p></div>
                         </div>
-                        -->
-                     </div>
                   </div>
 
                </div>
             </div>
 
-            <!-- ══════════════════════════════════════════════════════════════
-                 📁 MAP 2 — REINTEGRATION
-                 ══════════════════════════════════════════════════════════════ -->
             <div class="rounded-xl border border-white/10 overflow-hidden">
                <button onclick="toggleFolder('folder-reintegration')" class="w-full flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/8 transition-colors group">
                   <div class="flex items-center gap-3">
@@ -995,18 +963,7 @@
                            </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]"></p></div>
                         </div>
-                        <!-- ── EXTRA VIDEO ── kopieer dit blok en pas src aan
-                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
-                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
-                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
-                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
-                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                              </div>
-                           </div>
-                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">JOUW_VIDEO.mp4</p></div>
                         </div>
-                        -->
-                     </div>
                   </div>
 
                   <div class="space-y-2">
@@ -1019,21 +976,12 @@
                            <img src="./BpvAssets/Reintegration/Photos/Reintegration_photo1.png" alt="REINTEGRATION foto 1" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">reintegration_photo1.png</p></div>
                         </div>
-                        <!-- ── EXTRA FOTO ── kopieer dit blok en pas src aan
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
-                           <img src="JOUW_FOTO.jpg" alt="Omschrijving" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
-                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">JOUW_FOTO.jpg</p></div>
                         </div>
-                        -->
-                     </div>
                   </div>
 
                </div>
             </div>
 
-            <!-- ══════════════════════════════════════════════════════════════
-                 📁 MAP 3 — 2D Quantum Delta (Unity Game)
-                 ══════════════════════════════════════════════════════════════ -->
             <div class="rounded-xl border border-white/10 overflow-hidden">
                <button onclick="toggleFolder('folder-2dgame')" class="w-full flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/8 transition-colors group">
                   <div class="flex items-center gap-3">
@@ -1083,18 +1031,7 @@
                            </div>
                            <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#ffffff]">Quantum_video3.mp4</p></div>
                         </div>
-                        <!-- ── EXTRA VIDEO ── kopieer dit blok en pas src aan
-                        <div onclick="openLightbox(this)" class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group relative">
-                           <video class="w-full aspect-video bg-black pointer-events-none" controls><source src="JOUW_VIDEO.mp4" type="video/mp4"></video>
-                           <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity">
-                              <div class="bg-[#0a1530]/80 p-2 rounded-full border border-white/10">
-                                 <svg class="w-5 h-5 text-[#60a5fa]" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                              </div>
-                           </div>
-                           <div class="px-3 py-2"><p class="text-[10px] font-mono text-[#9aa4b2]">JOUW_VIDEO.mp4</p></div>
                         </div>
-                        -->
-                     </div>
                   </div>
 
                   <div class="space-y-2">
@@ -1111,13 +1048,7 @@
                            <img src="2dgame_foto2.jpg" alt="2D Game foto 2" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
                            <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#ffffff] truncate">2dgame_foto2.jpg</p></div>
                         </div>
-                        <!-- ── EXTRA FOTO ── kopieer dit blok en pas src aan
-                        <div class="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-colors cursor-zoom-in group" onclick="openLightbox(this)">
-                           <img src="JOUW_FOTO.jpg" alt="Omschrijving" class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300">
-                           <div class="px-2.5 py-2"><p class="text-[10px] font-mono text-[#9aa4b2] truncate">JOUW_FOTO.jpg</p></div>
                         </div>
-                        -->
-                     </div>
                   </div>
 
                </div>
@@ -1293,7 +1224,6 @@
          });
       </script>
 
-      <!-- Lightbox overlay -->
       <div id="lightbox" onclick="closeLightbox()" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out">
          <div class="relative max-w-5xl w-full">
             <div id="lightbox-content" class="w-full rounded-lg overflow-hidden border border-white/10 shadow-2xl"></div>
