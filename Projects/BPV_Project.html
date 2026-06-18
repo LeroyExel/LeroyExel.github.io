@@ -79,10 +79,10 @@
                <p>Na de bedrijfsinformatie heb ik twee belangrijke BPV-taken helemaal uitgewerkt volgens de acht procesfasen van school: oriëntatie, definitie, ontwerp, keuze, voorbereiding, uitvoering, presentatie en evaluatie.</p>
                <p>De twee taken die ik heb uitgewerkt zijn:</p>
                <ol class="list-decimal list-inside space-y-2 pl-2 text-[#e6eef8]">
-                  <li>Het fixen van een irritante medication fluid visuals bug in C++ voor de LUMC Department of Anaesthesiology Unreal Engine Showcase.</li>
+                  <li>Het fixen van een medication fluid visuals bug in Blueprint voor de LUMC Department of Anaesthesiology Unreal Engine Showcase.</li>
                   <li>De implementatie van het interactieve Sticky Notes notificatiesysteem binnen Unreal Engine voor het project Reintegration.</li>
                </ol>
-               <p>Daarnaast zit er een interactieve mini-game in dit verslag om de boel te simuleren. Los 5 binnenkomende runtime issues op om de rest van de procesfasen hieronder vrij te schakelen, of klik gewoon op skip.</p>
+               <p>Daarnaast zit er een interactieve mini-game in dit verslag om te simuleren wat er op een dag gebeurt. Los 5 binnenkomende runtime issues op om de rest van de procesfasen te zien, of klik gewoon op skip.</p>
             </div>
          </section>
          <section id="bedrijf" class="space-y-6">
@@ -196,16 +196,16 @@
                      <div>
                         <span class="text-xs font-bold font-mono tracking-wider text-[#60a5fa] uppercase">Taak 01</span>
                         <h3 class="text-xl font-bold text-white mt-0.5">Fix medication fluid visuals</h3>
-                        <p class="text-sm text-[#9aa4b2] mt-1">Een hardnekkige bug gefixt in C++ waarbij de vloeistof in de medicatiespuit helemaal uitrekte zodra je hem in de patiënt stak.</p>
+                        <p class="text-sm text-[#9aa4b2] mt-1">Een hardnekkige bug gefixt in Blueprints waarbij de vloeistof in de medicatiespuit helemaal uitrekte zodra je hem gebruikte.</p>
                      </div>
                      <div class="grid grid-cols-1 gap-4 pt-4 border-t border-white/5 text-sm">
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">1. Oriëntatiefase:</strong> <span class="text-[#9aa4b2]">Bij de VR-showcase voor het LUMC moeten artsen medicatie toedienen met een virtuele bolus spuit. Tijdens het testen vonden we een flinke bug: zodra de spuit geplaatst werd, raakte de liquid shader helemaal vervormd en schoot in de min. Zag er echt niet uit en brak de hele immersie.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">2. Definitiefase:</strong> <span class="text-[#9aa4b2]">De eisen waren simpel: de vloeistof in de spuit moest gewoon netjes z'n volume behouden en soepel zakken tijdens het inspuiten. Geen rare glitches of negatieve schaling. En ik moest de onderliggende fout in de C++ code of blueprint fixen.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">2. Definitiefase:</strong> <span class="text-[#9aa4b2]">De eisen waren simpel: de vloeistof in de spuit moest gewoon netjes z'n volume behouden en soepel zakken tijdens het inspuiten. Geen rare glitches of negatieve schaling. En ik moest de onderliggende fout in de blueprint fixen.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">3. Ontwerpfase:</strong> <span class="text-[#9aa4b2]">Ik ben in Unreal Engine gaan kijken en kwam erachter dat de variabele MaxSyringeValue (maximale inhoud) per ongeluk op 0 stond in de setup van de spuiten. Hierdoor probeerde de rekensom te delen door nul, waardoor de schaal de min in vloog. De fix was dus zorgen dat die waarde nooit 0 kan zijn.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">4. Keuzefase:</strong> <span class="text-[#9aa4b2]">Ik kon de variabele gewoon terugzetten in de Unreal editor, maar als iemand hem dan weer op 0 zet, crasht de boel weer. Dus koos ik ervoor om hem in de editor goed te zetten én in C++ een harde check (clamp)te bouwen zodat hij altijd hoger dan 0 is.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">4. Keuzefase:</strong> <span class="text-[#9aa4b2]">Ik kon de variabele gewoon terugzetten in de Unreal editor, maar als iemand hem dan weer op 0 zet, crasht de boel weer. Dus koos ik ervoor om hem in de editor goed te zetten én in Blueprint een check (clamp)te bouwen zodat hij altijd hoger dan 0 is.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">5. Voorbereidingsfase:</strong> <span class="text-[#9aa4b2]">In GitFork heb ik een aparte branch aangemaakt (feature/Fix-medication-fluid), want je mag hier niet zomaar in main pushen je moet een merge request indienen.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">6. Uitvoeringsfase:</strong> <span class="text-[#9aa4b2]">In Unreal Engine heb ik de variabelen van de spuit aangepast naar de correcte waarden. Met de Quest 3 heb ik het getest en het werkte perfect. De vloeistof nam netjes lineair af.</span></div>
-                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">7. Presentatiefase:</strong> <span class="text-[#9aa4b2]">Ik heb de gefixte spuit laten zien aan stagebegeleider Bram tijdens een code review op GitLab. En heb uitgelegd hoe ik dat nou heb gefixt. Na goedkeuring is de branch gemerged in develop.</span></div>
+                        <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">7. Presentatiefase:</strong> <span class="text-[#9aa4b2]">Ik heb een merge request gemaakt van de gefixte spuit aan stagebegeleider Bram tijdens een code review op GitLab. En heb uitgelegd hoe ik dat nou heb gefixt. Na goedkeuring is de branch gemerged in develop.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">8. Evaluatiefase:</strong> <span class="text-[#9aa4b2]">Bug succesvol gefixt! Gevaarlijk hoe zo'n kleine setup fout als delen door nul zulke extreme glitches kan veroorzaken ben hier meerdere dagen mee bezig geweest. Ik heb wel echt geleerd waar ik eerst moet zoeken voor fouten.</span></div>
                      </div>
                      <!-- ─── BEWIJSMATERIAAL TAAK 01 ─── -->
@@ -265,7 +265,7 @@
                   <span class="text-xs font-mono font-bold text-[#60a5fa] bg-[#60a5fa]/10 border border-[#60a5fa]/20 px-2 py-0.5 rounded">10:00 - 12:00</span>
                   <div class="text-sm text-[#9aa4b2] mt-2 space-y-2">
                      <p>Rond 10:00 uur sluit ik aan bij de gezamenlijke stand-up met het hele team. Hierin bespreken we kort wat we de dag ervoor hebben gedaan, zoals het oplossen van patiënt-spawning bugs, en wat we vandaag gaan oppakken, zoals het toevoegen van knoppen aan het host-menu. Openstaande taken beheren we in ClickUp.</p>
-                     <p>De rest van de ochtend zit ik lekker in de flow te developen in Visual Studio en Unreal Engine. Dit varieert van het schrijven van objectgeoriënteerde C++ code tot het inrichten van NavMesh-bounds in de operatiekamer.</p>
+                     <p>De rest van de ochtend zit ik lekker in de flow te developen in Visual Studio en Unreal Engine. Dit varieert van het schrijven van C++/Blue code tot het inrichten van NavMesh-bounds in de operatiekamer.</p>
                   </div>
                </div>
                <div class="relative">
@@ -437,8 +437,8 @@
          <section id="conclusie" class="space-y-4">
             <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Conclusie</h2>
             <div class="text-[#9aa4b2] space-y-4 leading-relaxed">
-               <p>Sinds de start van mijn stage op 1 januari 2026 ben ik echt een stuk beter geworden als Software Developer. Door de projecten binnen het Saxion XR Lab heb ik goed geleerd hoe ik efficiënte C++ code schrijf en hoe ik complexe technische problemen oplos binnen een professioneel team.</p>
-               <p>Mijn leerdoelen waren vooral gericht op het zelfstandig structureren van grotere softwareprojecten en het goed toepassen van versiebeheer via professionele Git-workflows (zoals werken met branches en het voorkomen van merge conflicts). Door de intensieve praktijkervaring kan ik wel zeggen dat ik deze doelen succesvol heb behaald.</p>
+               <p>Sinds ik op 1 januari 2026 begon met mijn stage bij het Saxion XR Lab, heb ik echt flinke stappen gezet als Software Developer. Omdat ik direct mocht meebouwen aan echte projecten, ben ik veel handiger geworden met C++ en het fixen van lastige technische bugs samen met het team.</p>
+               <p>Vooraf wilde ik vooral leren hoe je in je eentje een groot softwareproject een beetje netjes opzet en structureert. Ook wilde ik af van het gedoe met Git en gewoon professioneel leren werken met branches, zodat je niet continu zit te klooien met merge conflicts. Als ik nu kijk naar hoeveel ik de afgelopen tijd in de praktijk heb gedaan, durf ik wel te zeggen dat dat helemaal is gelukt.</p>
             </div>
          </section>
          <section id="reflectie" class="space-y-4">
@@ -452,8 +452,7 @@
          <section id="slotwoord" class="space-y-4">
             <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Slotwoord</h2>
             <div class="text-[#9aa4b2] space-y-4 leading-relaxed">
-               <p>Als laatste wil ik iedereen bedanken die mij heeft geholpen tijdens deze super leerzame stageperiode.</p>
-               <p>In het bijzonder wil ik mijn praktijkopleider Bram Scholten bedanken voor de goede begeleiding, de waardevolle feedback op mijn code en de ruimte die ik kreeg om mezelf te ontwikkelen binnen het Saxion XR Lab.</p>
+               <p>Als laatste wil ik echt iedereen bedanken die me heeft geholpen tijdens deze super leerzame tijd. In het bijzonder wil ik mijn praktijkopleider Bram Scholten bedanken voor de fijne begeleiding. Dankzij jouw feedback op mijn code en de ruimte die ik kreeg binnen het Saxion XR Lab, heb ik echt meters kunnen maken.</p>
                <div class="pt-4 text-xs font-mono uppercase tracking-wider text-[#60a5fa]">Leroy Exel &mdash; Almelo, 2026</div>
             </div>
          </section>
@@ -465,7 +464,7 @@
                <button onclick="toggleFolder('folder-lumc')" class="w-full flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/8 transition-colors group">
                   <div class="flex items-center gap-3">
                      <svg id="folder-lumc-icon" class="w-5 h-5 text-[#60a5fa] transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-8l-2-2z"/></svg>
-                     <div class="text-left"><p class="text-sm font-bold text-white">LUMC — Anaesthesiology Showcase</p><p class="text-[10px] text-[#9aa4b2] font-mono mt-0.5">Unreal Engine 5 · C++ · VR</p></div>
+                     <div class="text-left"><p class="text-sm font-bold text-white">LUMC — Anaesthesiology Showcase</p><p class="text-[10px] text-[#9aa4b2] font-mono mt-0.5">Unreal Engine 5 · C++/Blueprints · VR</p></div>
                   </div>
                   <div class="flex items-center gap-3">
                      <span class="text-[9px] font-mono text-[#9aa4b2] bg-white/5 px-2 py-1 rounded">12 video's · 2 foto's</span>
@@ -1036,5 +1035,5 @@
          }
          document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
       </script>
-   </body>
+   </body>what
 </html>
