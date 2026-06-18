@@ -12,7 +12,6 @@
       <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
    </head>
    <body class="bg-gradient-to-b from-[#0f2b72] to-[#071025] text-[#e6eef8] font-sans antialiased selection:bg-[#60a5fa] selection:text-[#0f1724] flex flex-col md:flex-row min-h-screen relative">
-      
       <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none opacity-20"></div>
       <button id="menuBtn" onclick="toggleMenu()" class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -208,8 +207,6 @@
                   </div>
                </div>
             </div>
-
-            <!-- ─── LOCKED CONTENT: collapsed by default, expands on game win ─── -->
             <div id="tasks-locked-overlay-wrapper" class="overflow-hidden transition-all duration-700 ease-in-out" style="max-height: 0;">
                <div id="actual-data-container" class="space-y-8">
                   <div class="bg-white/5 border border-white/10 rounded-xl p-6 shadow-xl space-y-6 backdrop-blur-sm">
@@ -228,7 +225,6 @@
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">7. Presentatiefase:</strong> <span class="text-[#9aa4b2]">Ik heb een merge request gemaakt van de gefixte spuit aan stagebegeleider Bram tijdens een code review op GitLab. En heb uitgelegd hoe ik dat nou heb gefixt. Na goedkeuring is de branch gemerged in develop.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">8. Evaluatiefase:</strong> <span class="text-[#9aa4b2]">Bug succesvol gefixt! Gevaarlijk hoe zo'n kleine setup fout als delen door nul zulke extreme glitches kan veroorzaken ben hier meerdere dagen mee bezig geweest. Ik heb wel echt geleerd waar ik eerst moet zoeken voor fouten.</span></div>
                      </div>
-                     <!-- ─── BEWIJSMATERIAAL TAAK 01 ─── -->
                      <div>
                         <strong class="text-[#60a5fa] block font-semibold mb-2">Bewijsmateriaal</strong>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -255,7 +251,6 @@
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">7. Presentatiefase:</strong> <span class="text-[#9aa4b2]">Ik heb de werkende VR-build laten zien tijdens onze wekelijkse demo. Iedereen in het team heeft de sticky notes getest met de Meta Quest 3 om te kijken of het gooien en plakken natuurlijk aanvoelde. Daarna heb ik een merge request aangemaakt op GitLab.</span></div>
                         <div><strong class="text-[#60a5fa] block font-semibold mb-0.5">8. Evaluatiefase:</strong> <span class="text-[#9aa4b2]">Het notificatiesysteem werkt echt super goed en voegt veel interactiviteit toe aan de game. De opzet is flexibel en herbruikbaar gemaakt, waardoor we dit systeem eventueel ook in andere projecten van het XR Lab kunnen gebruiken.</span></div>
                      </div>
-                     <!-- ─── BEWIJSMATERIAAL TAAK 02 ─── -->
                      <div>
                         <strong class="text-[#60a5fa] block font-semibold mb-2">Bewijsmateriaal</strong>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -269,8 +264,6 @@
                   </div>
                </div>
             </div>
-            <!-- ─── END LOCKED CONTENT ─── -->
-
          </section>
          <section id="dag" class="space-y-4">
             <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Een dag bij het XR Lab</h2>
@@ -569,8 +562,7 @@
                   </div>
                </div>
             </div>
-
-            <!-- ─── BPV-TAKEN FOLDER ─── -->
+            
             <div class="rounded-xl border border-white/10 overflow-hidden">
                <button onclick="toggleFolder('folder-taken')" class="w-full flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/8 transition-colors group">
                   <div class="flex items-center gap-3">
@@ -583,7 +575,6 @@
                   </div>
                </button>
                <div id="folder-taken" class="hidden border-t border-white/10 bg-[#070e20] p-5 space-y-6">
-                  <!-- Taak 01 -->
                   <div class="space-y-3">
                      <h4 class="text-[10px] font-bold text-amber-400 uppercase tracking-widest border-b border-white/5 pb-2">Taak 01 — Fix Medication Fluid Visuals (LUMC)</h4>
                      <div class="space-y-2">
@@ -612,7 +603,6 @@
                         </div>
                      </div>
                   </div>
-                  <!-- Taak 02 -->
                   <div class="space-y-3">
                      <h4 class="text-[10px] font-bold text-amber-400 uppercase tracking-widest border-b border-white/5 pb-2">Taak 02 — Sticky Notes System (REINTEGRATION)</h4>
                      <div class="space-y-2">
@@ -647,8 +637,6 @@
                   </div>
                </div>
             </div>
-
-            <!-- ─── LEERDOELEN FOLDER ─── -->
             <div class="rounded-xl border border-white/10 overflow-hidden">
                <button onclick="toggleFolder('folder-leerdoelen')" class="w-full flex items-center justify-between px-5 py-4 bg-white/5 hover:bg-white/8 transition-colors group">
                   <div class="flex items-center gap-3">
@@ -661,8 +649,6 @@
                   </div>
                </button>
                <div id="folder-leerdoelen" class="hidden border-t border-white/10 bg-[#070e20] p-5 space-y-6">
-
-                  <!-- Leerdoel 01 -->
                   <div class="space-y-3">
                      <h4 class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest border-b border-white/5 pb-2">Leerdoel 01 — VR Implementatie in Unreal Engine</h4>
                      <p class="text-[10px] font-mono text-[#9aa4b2]">VR_Pawn Blueprint, Physics Asset instellingen en tracking demo.</p>
@@ -692,8 +678,6 @@
                         </div>
                      </div>
                   </div>
-
-                  <!-- Leerdoel 02 -->
                   <div class="space-y-3">
                      <h4 class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest border-b border-white/5 pb-2">Leerdoel 02 — VR User Experience (UX) &amp; Feedback</h4>
                      <p class="text-[10px] font-mono text-[#9aa4b2]">Stethoscoop audiofeedback, operatietafel-wissel effect en Unity 2D sound effects.</p>
@@ -715,8 +699,6 @@
                         </div>
                      </div>
                   </div>
-
-                  <!-- Leerdoel 03 -->
                   <div class="space-y-3">
                      <h4 class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest border-b border-white/5 pb-2">Leerdoel 03 — Interactieve VR Systemen Bouwen</h4>
                      <p class="text-[10px] font-mono text-[#9aa4b2]">Sticky Note Actor Blueprint, Physics Constraint, hitbox logica en eindresultaat.</p>
@@ -746,8 +728,6 @@
                         </div>
                      </div>
                   </div>
-
-                  <!-- Leerdoel 04 -->
                   <div class="space-y-3">
                      <h4 class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest border-b border-white/5 pb-2">Leerdoel 04 — Teamsamenwerking &amp; Versiebeheer</h4>
                      <p class="text-[10px] font-mono text-[#9aa4b2]">GitLab branches, merge requests, ClickUp taken en daily stand-up documentatie.</p>
@@ -782,16 +762,13 @@
                         </div>
                      </div>
                   </div>
-
                </div>
             </div>
-
          </section>
          <footer class="text-center p-6 mt-10 text-gray-500">
             <p>&copy; 2026 - BPV Verslag - Software Development</p>
          </footer>
       </main>
-
       <script>
          function toggleMenu() {
              const menu = document.getElementById('mobile-menu');
@@ -813,33 +790,27 @@
              menu.classList.add('-translate-x-full');
              overlay.classList.add('hidden');
          }
-
          // ── MINIGAME ─────────────────────────────────────────────────────────
          let gameScore = 0;
          let gameInterval;
          let activeNodes = [];
          let gameRunning = false;
          let spawnedTotal = 0;
-
          const targetBugs = [
              { text: "New Bug", color: "bg-red-900/80" },
              { text: "Merge Conflict", color: "bg-amber-900/80" },
              { text: "Crash", color: "bg-rose-950/80" }
          ];
-
          function startMiniGame() {
              gameScore = 0;
              spawnedTotal = 0;
              activeNodes.forEach(n => n.remove());
              activeNodes = [];
              gameRunning = true;
-
              document.getElementById('game-start-screen').classList.add('hidden');
              document.getElementById('game-over-screen').classList.add('hidden');
              document.getElementById('game-play-screen').classList.remove('hidden');
-
              updateHUD();
-
              clearInterval(gameInterval);
              gameInterval = setInterval(() => {
                  if (!gameRunning) return;
@@ -850,21 +821,17 @@
                  spawnBugNode();
              }, 850);
          }
-
          function spawnBugNode() {
              const board = document.getElementById('game-board');
              if (!board) return;
-
              const bugType = targetBugs[Math.floor(Math.random() * targetBugs.length)];
              const btn = document.createElement('button');
              btn.className = `absolute px-2.5 py-1 text-white text-[11px] font-mono border border-white/20 rounded cursor-pointer transition-transform active:scale-95 shadow-sm ${bugType.color}`;
              btn.innerText = bugType.text;
-
              const maxW = board.clientWidth - 110;
              const maxH = board.clientHeight - 35;
              btn.style.left = `${Math.max(6, Math.floor(Math.random() * maxW))}px`;
              btn.style.top = `${Math.max(6, Math.floor(Math.random() * maxH))}px`;
-
              btn.onclick = (e) => {
                  e.stopPropagation();
                  if (!gameRunning) return;
@@ -874,41 +841,33 @@
                  updateHUD();
                  if (gameScore >= 5) endGame(true);
              };
-
              board.appendChild(btn);
              activeNodes.push(btn);
              spawnedTotal++;
          }
-
          function updateHUD() {
              document.getElementById('game-score-text').innerText = `${gameScore}/5`;
          }
-
          function skipGame() {
              endGame(true);
          }
-
          function endGame(won) {
              gameRunning = false;
              clearInterval(gameInterval);
              activeNodes.forEach(n => n.remove());
              activeNodes = [];
-
              document.getElementById('game-play-screen').classList.add('hidden');
              const endScreen = document.getElementById('game-over-screen');
              endScreen.classList.remove('hidden');
-
              const title = document.getElementById('game-over-title');
              const desc  = document.getElementById('game-over-desc');
              const icon  = document.getElementById('game-over-icon');
-
              if (won) {
                  icon.innerText = "✓";
                  icon.className = "text-xl text-emerald-400 font-bold";
                  title.innerText = "Voltooid";
                  title.className = "text-xs font-bold text-emerald-400 uppercase tracking-wider";
                  desc.innerText = "Ging het maar zo makkelijk in het echt...";
-
                  // ── REVEAL: animate height from 0 to full ──────────────────
                  const wrapper = document.getElementById('tasks-locked-overlay-wrapper');
                  if (wrapper) {
@@ -927,7 +886,6 @@
                  desc.innerText = "De issues stapelden zich te snel op. Probeer het opnieuw of gebruik skip.";
              }
          }
-
          function toggleLeerdoel(id) {
              const panel = document.getElementById(id);
              const arrow = document.getElementById(id + '-arrow');
@@ -935,7 +893,6 @@
              panel.classList.toggle('hidden', !isHidden);
              if (arrow) arrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
          }
-
          function toggleFolder(id) {
              const panel = document.getElementById(id);
              const arrow = document.getElementById(id + '-arrow');
@@ -945,7 +902,6 @@
              if (arrow) arrow.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
              if (icon)  icon.style.transform  = open ? 'scale(1.1)'     : 'scale(1)';
          }
-
          window.addEventListener('DOMContentLoaded', () => {
              if (typeof particlesJS !== 'undefined') {
                  particlesJS("particles-js", {
@@ -964,7 +920,6 @@
              }
          });
       </script>
-
       <div id="lightbox" onclick="closeLightbox()" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-zoom-out">
          <div class="relative max-w-5xl w-full">
             <div id="lightbox-content" class="w-full rounded-lg overflow-hidden border border-white/10 shadow-2xl"></div>
@@ -972,7 +927,6 @@
             <button onclick="closeLightbox()" class="absolute -top-3 -right-3 w-7 h-7 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-white text-sm flex items-center justify-center transition-colors">✕</button>
          </div>
       </div>
-
       <script>
          function openLightbox(element) {
              let mediaElement = element.querySelector('img, video');
@@ -1036,7 +990,6 @@
              }
              lightbox.appendChild(wrap);
          }
-
          function closeLightbox() {
              let lightbox = document.getElementById('lightbox');
              if (!lightbox) return;
