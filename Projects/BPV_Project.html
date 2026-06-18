@@ -10,9 +10,50 @@
       <title>BPV-Verslag | Leroy Exel</title>
       <script src="https://cdn.tailwindcss.com"></script>
       <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+      <script>
+    // Ensure the DOM is fully loaded before initializing particles
+    window.onload = function() {
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "repulse" },
+                    "onclick": { "enable": true, "mode": "push" }
+                }
+            },
+            "retina_detect": true
+        });
+    };
+</script>
    </head>
    <body class="bg-gradient-to-b from-[#0f2b72] to-[#071025] text-[#e6eef8] font-sans antialiased selection:bg-[#60a5fa] selection:text-[#0f1724] flex flex-col md:flex-row min-h-screen relative">
-      <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none opacity-20"></div>
+      <div id="particles-js" class="fixed inset-0 z-[-1] pointer-events-none"></div>
       <button id="menuBtn" onclick="toggleMenu()" class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
