@@ -1,143 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Leroy Exel - Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leroy Exel - Contact</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#0f1724',
+            muted: '#9aa4b2',
+            accent: '#60a5fa',
+            text: '#e6eef8'
+          }
+        }
+      }
+    };
+  </script>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              bg: '#0f1724',
-              muted: '#9aa4b2',
-              accent: '#60a5fa',
-              text: '#e6eef8',
-              normalText: '#FFFFFF'
-            },
-          },
-        },
-      };
-    </script>
-  </head>
-  <body class="min-h-screen text-white flex bg-linear-to-b from-[#0f2b72] to-[#071025] text-text font-sans relative">
+  <style>
+    #mobile-menu {
+      transition: transform 0.3s ease-in-out;
+    }
+    #mobile-menu.hidden-menu {
+      transform: translateX(-100%);
+    }
+    #mobile-menu.visible-menu {
+      transform: translateX(0);
+    }
+    @media (min-width: 768px) {
+      #mobile-menu {
+        transform: translateX(0) !important;
+      }
+      #mobile-overlay {
+        display: none !important;
+      }
+    }
 
-    <!-- Particles background -->
-    <div id="particles-js" aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
+    .contact-card {
+      transition: all 0.3s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(96, 165, 250, 0.15);
+    }
 
-    <!-- Sidebar -->
-    <nav class="fixed left-0 top-0 z-30 w-56 min-h-screen bg-white/5 border-r border-white/5 flex flex-col p-6 backdrop-blur-sm">
-      <ul class="flex flex-col gap-2">
-        <li><a href="main.html" class="block text-muted hover:text-text  hover:bg-white/5 rounded-md px-2 py-1">Home</a></li>
-        <li><a href="about.html" class="block text-muted hover:text-text  hover:bg-white/5 rounded-md px-2 py-1">About</a></li>
-        <li><a href="projects.html" class="block text-muted hover:text-text  hover:bg-white/5 rounded-md px-2 py-1">Projects</a></li>
-        <li><a href="contact.html" class="block text-muted hover:text-text  hover:bg-white/5 rounded-md px-2 py-1">Contact</a></li>
-      </ul>
+    .form-input {
+      transition: all 0.2s ease;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #60a5fa;
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+    }
+  </style>
+</head>
 
-    <!-- Project buttons -->
+<body class="min-h-screen text-white flex bg-linear-to-b from-[#0f2b72] to-[#071025] text-text font-sans relative">
+
+  <!-- Particles background -->
+  <div id="particles-js" aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
+
+  <!-- Mobile menu button -->
+  <button id="menuBtn" onclick="toggleMenu()" class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+  </button>
+
+  <!-- Mobile overlay -->
+  <div id="mobile-overlay" onclick="toggleMenu()" class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden hidden"></div>
+
+  <!-- Sidebar -->
+  <nav id="mobile-menu" class="hidden-menu fixed left-0 top-0 z-40 w-64 min-h-screen bg-[#0a1a45]/95 border-r border-white/10 flex flex-col p-6 backdrop-blur-md md:bg-white/5 md:relative md:translate-x-0 md:min-h-screen">
+    <ul class="flex flex-col gap-2">
+      <li><a href="main.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Home</a></li>
+      <li><a href="about.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">About</a></li>
+      <li><a href="projects.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Projects</a></li>
+      <li><a href="contact.html" class="block text-accent hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Contact</a></li>
+    </ul>
+
     <div class="mt-auto border-t border-white/5 pt-3 px-2 flex flex-col gap-2">
       <a href="Projects/recoil.html" class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-muted hover:bg-white/10 hover:text-text transition-colors">Recoil</a>
       <a href="Projects/BPV_Project.html" class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-muted hover:bg-white/10 hover:text-text transition-colors">BPV Project</a>
     </div>
   </nav>
 
-    <!-- Main content -->
-    <main class="ml-56 flex-1 flex items-center justify-center p-12 relative z-20">
-      <div class="max-w-xl text-center p-8 bg-transparent flex flex-col items-center gap-6">
-        <h1 class="text-3xl font-semibold mb-2 ">Contact Me</h1>
-        <p class="text-muted ">Feel free to reach out via email or connect on LinkedIn!</p>
+  <!-- Main content -->
+  <main class="flex-1 flex items-center justify-center p-6 md:p-12 relative z-20">
+    <div class="w-full max-w-3xl">
 
-        <!-- Contact Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 mt-4">
-          <a href="mailto:leroyexell@gmail.com" class="flex items-center  justify-center gap-2 bg-[#1564c4] hover:bg-[#0e1e9a79] text-text px-5 py-2 rounded-md font-medium transition">
-            📧 Email Me
-          </a>
-
-          <a href="https://www.linkedin.com/in/leroy-exel-8b3b4a381/" target="_blank" class="flex items-center justify-center gap-2 bg-[#1564c4]  hover:bg-[#0e1e9a79] text-text px-5 py-2 rounded-md font-medium transition">
-            💼 LinkedIn
-          </a>
-        </div>
+      <!-- Header -->
+      <div class="text-center mb-10">
+        <h1 class="text-4xl font-bold text-white mb-3">Contact</h1>
+        <p class="text-muted text-sm max-w-md mx-auto">
+          Heb je een vraag, een projectidee of wil je gewoon kennismaken? Ik hoor graag van je!
+        </p>
       </div>
-    </main>
 
-        <a href="Projects/BPV_Project.html" class="text-sky-400 hover:underline"
-          >See details</a
-        >
+      <!-- Contact Options Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+
+        <!-- Email -->
+        <a href="mailto:leroyexell@gmail.com" class="contact-card bg-white/5 border border-white/10 rounded-xl p-5 flex items-center gap-4 hover:border-accent group">
+          <div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-muted uppercase tracking-wider">Email</p>
+            <p class="text-white text-sm font-medium group-hover:text-accent transition-colors">leroyexell@gmail.com</p>
+          </div>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/leroy-exel-8b3b4a381/" target="_blank" class="contact-card bg-white/5 border border-white/10 rounded-xl p-5 flex items-center gap-4 hover:border-accent group">
+          <div class="w-12 h-12 rounded-full bg-[#0a66c2]/20 flex items-center justify-center shrink-0 group-hover:bg-[#0a66c2]/30 transition-colors">
+            <svg class="w-6 h-6 text-[#0a66c2]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-muted uppercase tracking-wider">LinkedIn</p>
+            <p class="text-white text-sm font-medium group-hover:text-accent transition-colors">Leroy Exel</p>
+          </div>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/LeroyExel" target="_blank" class="contact-card bg-white/5 border border-white/10 rounded-xl p-5 flex items-center gap-4 hover:border-accent group">
+          <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/20 transition-colors">
+            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.694.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-muted uppercase tracking-wider">GitHub</p>
+            <p class="text-white text-sm font-medium group-hover:text-accent transition-colors">LeroyExel</p>
+          </div>
+        </a>
+
+        <!-- Fiverr -->
+        <a href="https://www.fiverr.com/gorvert" target="_blank" class="contact-card bg-white/5 border border-white/10 rounded-xl p-5 flex items-center gap-4 hover:border-green-400 group">
+          <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center shrink-0 group-hover:bg-green-500/30 transition-colors">
+            <svg class="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.5 4H6.5C4.6 4 3 5.6 3 7.5v9C3 18.4 4.6 20 6.5 20h11c1.9 0 3.5-1.6 3.5-3.5v-9C21 5.6 19.4 4 17.5 4zm0 14h-11c-.8 0-1.5-.7-1.5-1.5v-9C5 6.7 5.7 6 6.5 6h11c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5zM8 8h8v1.5H8V8zm0 3h8v1.5H8V11zm0 3h5v1.5H8V14z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-muted uppercase tracking-wider">Fiverr</p>
+            <p class="text-white text-sm font-medium group-hover:text-green-400 transition-colors">Gorvert S</p>
+          </div>
+        </a>
+
       </div>
+
+      <!-- Contact Form -->
+      <div class="bg-white/5 border border-white/10 rounded-xl p-6 md:p-8">
+        <h2 class="text-lg font-bold text-white mb-4">Stuur een bericht</h2>
+        <form id="contactForm" onsubmit="handleSubmit(event)" class="space-y-4">
+          <div>
+            <label for="name" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Naam</label>
+            <input type="text" id="name" name="name" required placeholder="Jouw naam" class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm">
+          </div>
+          <div>
+            <label for="email" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Jouw emailadres" class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm">
+          </div>
+          <div>
+            <label for="subject" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Onderwerp</label>
+            <input type="text" id="subject" name="subject" required placeholder="Waar gaat het over?" class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm">
+          </div>
+          <div>
+            <label for="message" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Bericht</label>
+            <textarea id="message" name="message" required rows="4" placeholder="Vertel me waar je mee bezig bent..." class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full py-3 bg-accent hover:bg-accent/80 text-white font-bold rounded-lg transition-colors text-sm">
+            Verstuur bericht
+          </button>
+        </form>
+
+        <!-- Form feedback -->
+        <div id="formFeedback" class="mt-4 text-sm text-center hidden"></div>
+      </div>
+
     </div>
+  </main>
 
-    <!-- Mobile Responsive Styling -->
-    <style>
-      @media (max-width: 700px) {
-        body {
-          flex-direction: column;
-        }
+  <script>
+    // Initialiseer EmailJS met je Public Key
+    emailjs.init("Y7_VfCpY6XSVV9JuV");
 
-        /* Sidebar horizontal top */
-        nav {
-          position: relative !important;
-          width: 100% !important;
-          min-height: auto !important;
-          flex-direction: row !important;
-          justify-content: space-around !important;
-          padding: 0.5rem 0.75rem !important;
-          border-right: none !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-        }
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const overlay = document.getElementById('mobile-overlay');
+      const isHidden = menu.classList.contains('hidden-menu');
 
-        nav ul {
-          flex-direction: row !important;
-          gap: 1rem !important;
-        }
-
-        nav ul li a {
-          padding: 0.5rem 0.75rem !important;
-        }
-
-
-        /* Main content full width */
-        main {
-          margin-left: 0 !important;
-          padding: 1.5rem !important;
-          width: 100% !important;
-        }
-
+      if (isHidden) {
+        menu.classList.remove('hidden-menu');
+        menu.classList.add('visible-menu');
+        overlay.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        menu.classList.remove('visible-menu');
+        menu.classList.add('hidden-menu');
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
       }
-    </style>
+    }
 
-    <!-- Particles JS Config -->
-    <script>
-      if (window.particlesJS) {
-        particlesJS("particles-js", {
-          particles: {
-            number: { value: 100, density: { enable: true, value_area: 800 } },
-            color: { value: "#60a5fa" },
-            shape: { type: "circle" },
-            opacity: { value: 0.6 },
-            size: { value: 3, random: true },
-            line_linked: {
-              enable: true,
-              distance: 120,
-              color: "#60a5fa",
-              opacity: 0.12,
-              width: 1,
-            },
-            move: { enable: true, speed: 1.5, out_mode: "out" },
-          },
-          interactivity: {
-            detect_on: "window",
-            events: { onhover: { enable: true, mode: "repulse" } },
-            modes: { repulse: { distance: 100 }, push: { particles_nb: 1 } },
-          },
-          retina_detect: true,
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-overlay');
+        if (window.innerWidth < 768) {
+          menu.classList.remove('visible-menu');
+          menu.classList.add('hidden-menu');
+          overlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      
+      const feedback = document.getElementById('formFeedback');
+      feedback.className = 'mt-4 text-sm text-center text-accent';
+      feedback.textContent = '📨 Bericht wordt verzonden...';
+
+      const form = document.getElementById('contactForm');
+      
+      // Verstuur het formulier met EmailJS
+      emailjs.sendForm('service_k551zka', 'template_jjmglr6', form)
+        .then(() => {
+          feedback.className = 'mt-4 text-sm text-center text-emerald-400';
+          feedback.textContent = '✅ Bedankt! Je bericht is verzonden. Ik neem zo snel mogelijk contact met je op.';
+          form.reset();
+        }, (error) => {
+          feedback.className = 'mt-4 text-sm text-center text-red-400';
+          feedback.textContent = '❌ Er ging iets mis. Probeer het later opnieuw.';
+          console.error('Fout:', error);
         });
-      }
-    </script>
-  </body>
+    }
+
+    if (window.particlesJS) {
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 100, density: { enable: true, value_area: 800 } },
+          color: { value: "#60a5fa" },
+          shape: { type: "circle" },
+          opacity: { value: 0.6 },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 120, color: "#60a5fa", opacity: 0.12, width: 1 },
+          move: { enable: true, speed: 1.5, out_mode: "out" },
+        },
+        interactivity: {
+          detect_on: "window",
+          events: { onhover: { enable: true, mode: "repulse" } },
+          modes: { repulse: { distance: 100 } },
+        },
+        retina_detect: true,
+      });
+    }
+  </script>
+
+</body>
 </html>
