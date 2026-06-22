@@ -1,0 +1,46 @@
+<!-- sidebar.html -->
+<aside id="mobile-menu"
+       class="fixed md:sticky top-0 left-0 z-40 h-screen w-64 bg-[#0a1a45]/95 border-r border-white/10 p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-200 ease-in-out md:translate-x-0 backdrop-blur-md md:bg-white/5 overflow-y-auto">
+
+  <!-- Close button (visible only on mobile) -->
+  <button onclick="toggleMenu()"
+          class="absolute top-4 right-4 md:hidden text-[#9aa4b2] hover:text-white transition-colors">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <!-- Top section -->
+  <div class="space-y-8">
+    <div>
+      <h2 class="text-xs font-bold tracking-widest text-[#9aa4b2] uppercase mb-4">Menu</h2>
+      <nav class="flex flex-col space-y-1 text-sm font-medium">
+        <a href="main.html" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Home</a>
+        <a href="about.html" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">About</a>
+        <a href="projects.html" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Projects</a>
+        <a href="contact.html" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Contact</a>
+      </nav>
+    </div>
+
+    <div class="border-t border-white/5 pt-4">
+      <p class="text-[10px] font-bold tracking-widest text-[#9aa4b2] uppercase mb-2">Projecten</p>
+      <div class="flex flex-col gap-2">
+        <a href="Projects/recoil.html"
+           class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-[#9aa4b2] hover:bg-white/10 hover:text-[#60a5fa] transition-colors">
+          Recoil
+        </a>
+        <a href="Projects/BPV_Project.html"
+           class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-[#9aa4b2] hover:bg-white/10 hover:text-[#60a5fa] transition-colors">
+          BPV Project
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="flex flex-col gap-2">
+    <div class="text-xs text-[#9aa4b2] font-mono uppercase tracking-widest mt-1">
+      Leroy Exel &copy; 2026
+    </div>
+  </div>
+</aside>

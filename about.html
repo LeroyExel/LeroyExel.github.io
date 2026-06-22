@@ -24,24 +24,6 @@
   </script>
 
   <style>
-    #mobile-menu {
-      transition: transform 0.3s ease-in-out;
-    }
-    #mobile-menu.hidden-menu {
-      transform: translateX(-100%);
-    }
-    #mobile-menu.visible-menu {
-      transform: translateX(0);
-    }
-    @media (min-width: 768px) {
-      #mobile-menu {
-        transform: translateX(0) !important;
-      }
-      #mobile-overlay {
-        display: none !important;
-      }
-    }
-
     .skill-tag {
       transition: all 0.2s ease;
     }
@@ -49,44 +31,29 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(96, 165, 250, 0.25);
     }
+    #sidebar-container {
+      display: contents;
+    }
   </style>
 </head>
 
 <body class="min-h-screen text-white flex bg-linear-to-b from-[#0f2b72] to-[#071025] text-text font-sans relative">
 
-  <!-- Particles background -->
   <div id="particles-js" aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
 
-  <!-- Mobile menu button -->
   <button id="menuBtn" onclick="toggleMenu()" class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
     </svg>
   </button>
 
-  <!-- Mobile overlay -->
   <div id="mobile-overlay" onclick="toggleMenu()" class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden hidden"></div>
 
-  <!-- Sidebar – added pt-20 to push content below the hamburger button -->
-  <nav id="mobile-menu" class="hidden-menu fixed left-0 top-0 z-40 w-64 min-h-screen bg-[#0a1a45]/95 border-r border-white/10 flex flex-col p-6 pt-20 backdrop-blur-md md:bg-white/5 md:relative md:translate-x-0 md:min-h-screen">
-    <ul class="flex flex-col gap-2">
-      <li><a href="main.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Home</a></li>
-      <li><a href="about.html" class="block text-accent hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">About</a></li>
-      <li><a href="projects.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Projects</a></li>
-      <li><a href="contact.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Contact</a></li>
-    </ul>
+  <div id="sidebar-container"></div>
 
-    <div class="mt-auto border-t border-white/5 pt-3 px-2 flex flex-col gap-2">
-      <a href="Projects/recoil.html" class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-muted hover:bg-white/10 hover:text-text transition-colors">Recoil</a>
-      <a href="Projects/BPV_Project.html" class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-muted hover:bg-white/10 hover:text-text transition-colors">BPV Project</a>
-    </div>
-  </nav>
-
-  <!-- Main content -->
   <main class="flex-1 flex items-center justify-center p-6 md:p-12 relative z-20">
     <div class="w-full max-w-3xl">
 
-      <!-- Profile Header -->
       <div class="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
         <img src="Assets/Profile.jpg" alt="Leroy Exel" class="w-32 h-32 rounded-full border-2 border-accent object-cover shrink-0">
         <div class="text-center md:text-left">
@@ -102,7 +69,6 @@
         </div>
       </div>
 
-      <!-- Bio -->
       <div class="bg-white/5 border border-white/10 rounded-xl p-6 mb-6">
         <h2 class="text-sm font-bold text-accent uppercase tracking-wider mb-3">Over Mij</h2>
         <p class="text-muted text-sm leading-relaxed">
@@ -124,7 +90,6 @@
         </p>
       </div>
 
-      <!-- Skills -->
       <div class="bg-white/5 border border-white/10 rounded-xl p-6 mb-6">
         <h2 class="text-sm font-bold text-accent uppercase tracking-wider mb-3">Technische Vaardigheden</h2>
         <div class="flex flex-wrap gap-2">
@@ -142,9 +107,7 @@
         </div>
       </div>
 
-      <!-- Experience + Fiverr -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Stage-ervaring -->
         <div class="bg-white/5 border border-white/10 rounded-xl p-6">
           <h2 class="text-sm font-bold text-accent uppercase tracking-wider mb-3">Stage-ervaring</h2>
           <div class="space-y-4">
@@ -172,7 +135,6 @@
           </div>
         </div>
 
-        <!-- Fiverr - Gorvert S -->
         <div class="bg-white/5 border border-green-500/30 rounded-xl p-6 hover:border-green-400 transition-colors">
           <h2 class="text-sm font-bold text-green-400 uppercase tracking-wider mb-3">Freelance (Fiverr)</h2>
           <div class="space-y-3">
@@ -198,7 +160,7 @@
               </ul>
             </div>
             <div class="border-t border-white/5 pt-3 mt-2">
-              <a href="https://www.fiverr.com/gorvert" target="_blank" class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 text-sm transition-colors">
+              <a href="https://www.fiverr.com/gorvert" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-green-400 hover:text-green-300 text-sm transition-colors">
                 <span>Bekijk mijn Fiverr profiel</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -213,36 +175,93 @@
   </main>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      const overlay = document.getElementById('mobile-overlay');
-      const isHidden = menu.classList.contains('hidden-menu');
-
-      if (isHidden) {
-        menu.classList.remove('hidden-menu');
-        menu.classList.add('visible-menu');
-        overlay.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      } else {
-        menu.classList.remove('visible-menu');
-        menu.classList.add('hidden-menu');
-        overlay.classList.add('hidden');
-        document.body.style.overflow = '';
+    (function() {
+      function getSidebarPath() {
+        const path = window.location.pathname;
+        if (path.includes('/Projects/') || path.includes('/project/')) {
+          return '../sidebar.html';
+        }
+        return 'sidebar.html';
       }
-    }
 
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
+      fetch(getSidebarPath())
+        .then(res => {
+          if (!res.ok) throw new Error('Sidebar not found');
+          return res.text();
+        })
+        .then(html => {
+          document.getElementById('sidebar-container').innerHTML = html;
+          const currentPath = window.location.pathname.split('/').pop() || 'about.html';
+          document.querySelectorAll('#mobile-menu a[href]').forEach(link => {
+            const href = link.getAttribute('href');
+            if (href === currentPath) {
+              link.classList.add('text-accent', 'bg-white/5');
+              link.classList.remove('text-muted');
+            } else {
+              link.classList.remove('text-accent', 'bg-white/5');
+              link.classList.add('text-muted');
+            }
+          });
+        })
+        .catch(err => console.warn('Sidebar injection failed:', err));
+
+      window.toggleMenu = function() {
         const menu = document.getElementById('mobile-menu');
         const overlay = document.getElementById('mobile-overlay');
-        if (window.innerWidth < 768) {
-          menu.classList.remove('visible-menu');
-          menu.classList.add('hidden-menu');
-          overlay.classList.add('hidden');
+        if (!menu) return;
+        const isHidden = menu.classList.contains('-translate-x-full');
+        if (isHidden) {
+          menu.classList.remove('-translate-x-full');
+          menu.classList.add('translate-x-0');
+          if (overlay) overlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        } else {
+          menu.classList.remove('translate-x-0');
+          menu.classList.add('-translate-x-full');
+          if (overlay) overlay.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      };
+
+      const overlay = document.getElementById('mobile-overlay');
+      if (overlay) {
+        overlay.addEventListener('click', toggleMenu);
+      }
+
+      document.addEventListener('click', function(e) {
+        const menu = document.getElementById('mobile-menu');
+        if (!menu) return;
+        const link = e.target.closest('#mobile-menu a');
+        if (link && window.innerWidth < 768) {
+          menu.classList.remove('translate-x-0');
+          menu.classList.add('-translate-x-full');
+          if (overlay) overlay.classList.add('hidden');
           document.body.style.overflow = '';
         }
       });
-    });
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          const menu = document.getElementById('mobile-menu');
+          const overlay = document.getElementById('mobile-overlay');
+          if (!menu) return;
+          if (window.innerWidth >= 768) {
+            menu.classList.remove('-translate-x-full');
+            menu.classList.add('translate-x-0');
+            if (overlay) overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+          } else {
+            if (!menu.classList.contains('translate-x-0')) {
+              menu.classList.add('-translate-x-full');
+              menu.classList.remove('translate-x-0');
+              if (overlay) overlay.classList.add('hidden');
+            }
+          }
+        }, 200);
+      });
+    })();
 
     if (window.particlesJS) {
       particlesJS("particles-js", {
