@@ -1,127 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leroy Exel - Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leroy Exel - Portfolio</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js">
+    </script>
 
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            bg: '#0f1724',
-            card: '#ffffff',
-            muted: '#9aa4b2',
-            accent: '#60a5fa',
-            text: '#e6eef8'
-          }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0f1724',
+                        muted: '#9aa4b2',
+                        accent: '#60a5fa',
+                        text: '#e6eef8'
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
+
+    <style>
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+        #mobile-menu.hidden-menu {
+            transform: translateX(-100%);
+        }
+        #mobile-menu.visible-menu {
+            transform: translateX(0);
+        }
+        @media (min-width: 768px) {
+            #mobile-menu {
+                transform: translateX(0) !important;
+            }
+            #mobile-overlay {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
+
 <body class="min-h-screen flex font-sans text-white bg-linear-to-b from-[#0f2b72] to-[#071025] text-text relative">
 
-  <!-- Particles background -->
-  <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
+    <!-- Particles background -->
+    <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
 
-  <!-- Sidebar -->
-  <nav class="fixed left-0 top-0 z-30 w-56 min-h-screen bg-white/5 border-r border-white/5 flex flex-col p-6 backdrop-blur-sm">
-    <ul class="flex flex-col gap-2">
-      <li><a href="main.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Home</a></li>
-      <li><a href="about.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">About</a></li>
-      <li><a href="projects.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Projects</a></li>
-      <li><a href="contact.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1">Contact</a></li>
-    </ul>
+    <!-- Mobile menu button -->
+    <button id="menuBtn" onclick="toggleMenu()" class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
 
-    <!-- Project buttons -->
-    <div class="mt-auto border-t border-white/5 pt-3 px-2 flex flex-col gap-2">
-      <a href="Projects/recoil.html" class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-muted hover:bg-white/10 hover:text-text transition-colors">Recoil</a>
-      <a href="Projects/BPV_Project.html" class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-muted hover:bg-white/10 hover:text-text transition-colors">BPV Project</a>
-    </div>
-  </nav>
+    <!-- Mobile overlay -->
+    <div id="mobile-overlay" onclick="toggleMenu()" class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden hidden"></div>
 
-  <!-- Main content -->
-  <main class="ml-56 flex-1 flex items-center justify-center p-12 relative z-20">
-    <div class="max-w-xl text-center p-8 bg-transparent flex flex-col items-center gap-6">
-      <img src="Assets/Profile.jpg" alt="Leroy Exel" class="w-44 h-44 rounded-full border-2 border-accent mb-4 object-cover">
-      <h1 class="text-3xl font-semibold mb-2">Leroy Exel</h1>
-      <p class="text-muted">Software Developer — Enschede.</p>
-    </div>
-  </main>
+    <!-- Sidebar – added pt-20 to push content below the hamburger button -->
+    <nav id="mobile-menu" class="hidden-menu fixed left-0 top-0 z-40 w-64 min-h-screen bg-[#0a1a45]/95 border-r border-white/10 flex flex-col p-6 pt-20 backdrop-blur-md md:bg-white/5 md:relative md:translate-x-0 md:min-h-screen">
+        <ul class="flex flex-col gap-2">
+            <li><a href="main.html" class="block text-accent hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Home</a></li>
+            <li><a href="about.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">About</a></li>
+            <li><a href="projects.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Projects</a></li>
+            <li><a href="contact.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Contact</a></li>
+        </ul>
 
-        <a href="Projects/BPV_Project.html" class="text-sky-400 hover:underline"
-          >See details</a
-        >
-      </div>
-    </div>
+        <div class="mt-auto border-t border-white/5 pt-3 px-2 flex flex-col gap-2">
+            <a href="Projects/recoil.html" class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-muted hover:bg-white/10 hover:text-text transition-colors">Recoil</a>
+            <a href="Projects/BPV_Project.html" class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-muted hover:bg-white/10 hover:text-text transition-colors">BPV Project</a>
+        </div>
+    </nav>
 
-  <!-- Mobile Responsive Styling -->
-  <style>
-    @media (max-width: 700px) {
-      body {
-        flex-direction: column;
-      }
+    <!-- Main content -->
+    <main class="flex-1 flex items-center justify-center p-6 md:p-12 relative z-20">
+        <div class="max-w-xl text-center p-8 bg-transparent flex flex-col items-center gap-6">
+            <img src="Assets/Profile.jpg" alt="Leroy Exel" class="w-44 h-44 rounded-full border-2 border-accent mb-4 object-cover">
+            <h1 class="text-3xl font-semibold mb-2">Leroy Exel</h1>
+            <p class="text-muted">Software Developer — Enschede.</p>
+        </div>
+    </main>
 
-      /* Sidebar horizontal top */
-      nav {
-        position: relative !important;
-        width: 100% !important;
-        min-height: auto !important;
-        flex-direction: row !important;
-        justify-content: space-around !important;
-        padding: 0.5rem 0.75rem !important;
-        border-right: none !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
+            const isHidden = menu.classList.contains('hidden-menu');
 
-      }
+            if (isHidden) {
+                menu.classList.remove('hidden-menu');
+                menu.classList.add('visible-menu');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.remove('visible-menu');
+                menu.classList.add('hidden-menu');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
 
-      nav ul {
-        flex-direction: row !important;
-        gap: 1rem !important;
-      }
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('mobile-menu');
+                const overlay = document.getElementById('mobile-overlay');
+                if (window.innerWidth < 768) {
+                    menu.classList.remove('visible-menu');
+                    menu.classList.add('hidden-menu');
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
 
-      nav ul li a {
-        padding: 0.5rem 0.75rem !important;
-      }
+        if (window.particlesJS) {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 100, density: { enable: true, value_area: 800 } },
+                    color: { value: '#60a5fa' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.6 },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 120, color: '#60a5fa', opacity: 0.12, width: 1 },
+                    move: { enable: true, speed: 1.5, out_mode: 'out' }
+                },
+                interactivity: {
+                    detect_on: 'window',
+                    events: { onhover: { enable: true, mode: 'repulse' } },
+                    modes: { repulse: { distance: 100 } }
+                },
+                retina_detect: true
+            });
+        }
+    </script>
 
-
-      /* Main content full width */
-      main {
-        margin-left: 0 !important;
-        padding: 1.5rem !important;
-        width: 100% !important;
-      }
-
-    }
-  </style>
-
-  <script>
-    if (window.particlesJS) {
-      particlesJS('particles-js', {
-        particles: {
-          number: { value: 100, density: { enable: true, value_area: 800 } },
-          color: { value: '#60a5fa' },
-          shape: { type: 'circle' },
-          opacity: { value: 0.6 },
-          size: { value: 3, random: true },
-          line_linked: { enable: true, distance: 120, color: '#60a5fa', opacity: 0.12, width: 1 },
-          move: { enable: true, speed: 1.5, out_mode: 'out' }
-        },
-        interactivity: {
-          detect_on: 'window',
-          events: { onhover: { enable: true, mode: 'repulse' } },
-          modes: { repulse: { distance: 100 } }
-        },
-        retina_detect: true
-      });
-    }
-  </script>
 </body>
 </html>

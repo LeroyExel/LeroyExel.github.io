@@ -77,8 +77,8 @@
   <!-- Mobile overlay -->
   <div id="mobile-overlay" onclick="toggleMenu()" class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden hidden"></div>
 
-  <!-- Sidebar -->
-  <nav id="mobile-menu" class="hidden-menu fixed left-0 top-0 z-40 w-64 min-h-screen bg-[#0a1a45]/95 border-r border-white/10 flex flex-col p-6 backdrop-blur-md md:bg-white/5 md:relative md:translate-x-0 md:min-h-screen">
+  <!-- Sidebar – added pt-20 to push content below the hamburger button -->
+  <nav id="mobile-menu" class="hidden-menu fixed left-0 top-0 z-40 w-64 min-h-screen bg-[#0a1a45]/95 border-r border-white/10 flex flex-col p-6 pt-20 backdrop-blur-md md:bg-white/5 md:relative md:translate-x-0 md:min-h-screen">
     <ul class="flex flex-col gap-2">
       <li><a href="main.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">Home</a></li>
       <li><a href="about.html" class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition-colors">About</a></li>
@@ -237,15 +237,14 @@
 
       const form = document.getElementById('contactForm');
       
-      // Verstuur het formulier met EmailJS
       emailjs.sendForm('service_k551zka', 'template_jjmglr6', form)
         .then(() => {
           feedback.className = 'mt-4 text-sm text-center text-emerald-400';
-          feedback.textContent = '✅ Bedankt! Je bericht is verzonden. Ik neem zo snel mogelijk contact met je op.';
+          feedback.textContent = 'Bedankt! Je bericht is verzonden. Ik neem zo snel mogelijk contact met je op.';
           form.reset();
         }, (error) => {
           feedback.className = 'mt-4 text-sm text-center text-red-400';
-          feedback.textContent = '❌ Er ging iets mis. Probeer het later opnieuw.';
+          feedback.textContent = 'Er ging iets mis. Probeer het later opnieuw.';
           console.error('Fout:', error);
         });
     }
