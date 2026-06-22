@@ -5,7 +5,12 @@
     <title>Leroy Exel - Recoil</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="../src/output.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Nunito font (BPV style) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -17,13 +22,13 @@
             colors: {
               bg: "#0f1724",
               muted: "#9aa4b2",
-              accent: "#8fc1ff",
+              accent: "#60a5fa",
               text: "#e6eef8",
             },
             keyframes: {
               pulseGlow: {
-                "0%, 100%": { textShadow: "0 0 8px #8fc1ff" },
-                "50%": { textShadow: "0 0 18px #8fc1ff" },
+                "0%, 100%": { textShadow: "0 0 8px #60a5fa" },
+                "50%": { textShadow: "0 0 18px #60a5fa" },
               },
             },
             animation: {
@@ -34,505 +39,237 @@
       };
     </script>
     <style>
+      /* BPV-style typography */
+      body, * { font-family: 'Nunito', sans-serif !important; font-weight: 700; letter-spacing: 0.01em; line-height: 1.75; }
+      h1, h2, h3, h4, h5, h6 { font-family: 'Nunito', sans-serif !important; font-weight: 900; letter-spacing: 0.01em; }
+      p, li, a, span, td, th { font-weight: 700; }
+      .font-mono, code, pre { font-family: 'JetBrains Mono', 'Fira Code', monospace !important; }
+
       @font-face {
         font-family: "RecoilFont";
         src: url("./RecoilAssets/RecoilFont.TTF") format("truetype");
       }
       .recoil-font {
-        font-family: "RecoilFont", sans-serif;
+        font-family: "RecoilFont", sans-serif !important;
+        font-weight: 400 !important;
+        letter-spacing: normal !important;
       }
     </style>
   </head>
 
-  <body
-    class="min-h-screen flex bg-linear-to-b text-white from-[#0f2b72] to-[#071025] text-text relative font-sans"
-  >
+  <body class="min-h-screen flex bg-gradient-to-b from-[#0f2b72] to-[#071025] text-[#e6eef8] antialiased selection:bg-[#60a5fa] selection:text-[#0f1724] relative">
     <!-- Particles background -->
     <div
       id="particles-js"
       class="fixed inset-0 z-0 pointer-events-none opacity-90"
     ></div>
 
-    <!-- Sidebar -->
-    <nav
-      class="fixed left-0 top-0 z-30 w-56 min-h-screen bg-white/5 border-r border-white/5 flex flex-col p-6 backdrop-blur-sm"
-    >
-      <ul class="flex flex-col gap-2">
-        <li>
-          <a
-            href="../main.html"
-            class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            href="../about.html"
-            class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition"
-            >About</a
-          >
-        </li>
-        <li>
-          <a
-            href="../projects.html"
-            class="block text-text bg-white/10 rounded-md px-2 py-1 font-semibold transition"
-            >Projects</a
-          >
-        </li>
-        <li>
-          <a
-            href="../contact.html"
-            class="block text-muted hover:text-text hover:bg-white/5 rounded-md px-2 py-1 transition"
-            >Contact</a
-          >
-        </li>
-      </ul>
-    </nav>
+    <!-- Mobile menu button (BPV style) -->
+    <button id="menuBtn" onclick="toggleMenu()" class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+    <div id="mobile-overlay" onclick="toggleMenu()" class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden hidden"></div>
+
+    <!-- Sidebar (BPV style) -->
+    <aside id="mobile-menu" class="fixed md:sticky top-0 left-0 z-40 h-screen w-64 bg-[#0a1a45]/95 border-r border-white/10 p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-200 ease-in-out md:translate-x-0 backdrop-blur-md md:bg-white/5 overflow-y-auto">
+      <div class="space-y-8">
+        <div>
+          <h2 class="text-xs font-bold tracking-widest text-[#9aa4b2] uppercase mb-4">Recoil — Project</h2>
+          <nav class="flex flex-col space-y-1 text-sm font-medium">
+            <a href="#hero" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Intro</a>
+            <a href="#game" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Gameplay Trailer</a>
+            <a href="#info" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Over Recoil</a>
+            <a href="#bijdrage" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Mijn Bijdrage</a>
+            <a href="#team" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Teamgenoten</a>
+            <a href="#scripts" onclick="closeMenu()" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">C# Scripts</a>
+          </nav>
+
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <a href="../projects.html" class="text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-[#9aa4b2] hover:bg-white/10 hover:text-[#60a5fa] transition-colors">← Back</a>
+        <div class="text-xs text-[#9aa4b2] font-mono uppercase tracking-widest mt-1">
+          Leroy Exel &copy; 2026
+        </div>
+      </div>
+    </aside>
 
     <!-- Main content -->
-    <main
-      class="ml-56 flex-1 flex flex-col items-center pt-20 px-6 md:px-12 lg:px-16 relative z-20"
-    >
-      <section class="text-center max-w-xl w-full">
-        <h1
-          class="text-5xl sm:text-6xl md:text-7xl font-bold recoil-font bg-linear-to-r from-blue-400 to-blue-300 text-transparent bg-clip-text drop-shadow-lg mb-4 tracking-widest animate-pulseGlow"
-        >
-          RECOIL
-        </h1>
-        <p class="text-muted text-base sm:text-lg mb-6">
-          Een <span class="text-accent">2D pixel-shooter</span> waarin je
-          beweegt door de terugslag van je eigen wapen. Ontwikkeld met passie
-          door een klein maar Leuk team..
-        </p>
-        <a
-          href="#game"
-          class="inline-block px-5 py-2 sm:px-6 sm:py-3 bg-accent/20 border border-accent text-accent rounded-xl hover:bg-accent/30 transition"
-        >
+    <main class="flex-1 max-w-4xl mx-auto px-6 py-12 md:px-12 space-y-16 relative z-10">
+
+      <!-- Hero -->
+      <header id="hero" class="space-y-6 pt-6">
+        <div class="space-y-2">
+          <span class="inline-block px-3 py-1 text-xs font-bold tracking-widest text-[#60a5fa] bg-[#60a5fa]/10 border border-[#60a5fa]/20 rounded-lg uppercase">School Project</span>
+          <h1 class="text-5xl sm:text-6xl md:text-7xl font-bold recoil-font bg-gradient-to-r from-blue-400 to-blue-300 text-transparent bg-clip-text drop-shadow-lg mb-2 tracking-widest animate-pulseGlow">RECOIL</h1>
+          <p class="text-lg text-[#9aa4b2]">Een <span class="text-[#60a5fa]">2D pixel-shooter</span> waarin je beweegt door de terugslag van je eigen wapen.</p>
+        </div>
+        <a href="#game" class="inline-block px-5 py-2 bg-[#60a5fa]/20 border border-[#60a5fa] text-[#60a5fa] rounded-xl hover:bg-[#60a5fa]/30 transition font-bold">
           Bekijk het spel ↓
         </a>
-      </section>
+      </header>
 
-      <!-- Gameplay Trailer Section -->
-      <section id="game" class="w-full max-w-3xl text-center mt-16">
-        <h2 class="text-2xl sm:text-3xl recoil-font text-accent mb-4">
-          Gameplay Trailer
-        </h2>
-        <div class="w-20 sm:w-24 h-1 bg-accent mx-auto mb-6"></div>
-        <div
-          class="bg-white/5 border border-white/10 rounded-xl p-2 backdrop-blur-sm flex flex-col items-center overflow-hidden w-[40%] sm:w-full max-w-[40%] mx-auto"
-        >
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            class="w-full h-auto rounded-lg border border-accent shadow-lg mb-4"
-          >
+      <hr class="border-white/10">
+
+      <!-- Gameplay Trailer -->
+      <section id="game" class="space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Gameplay Trailer</h2>
+        <div class="bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm flex flex-col items-center overflow-hidden w-full sm:w-[60%] mx-auto">
+          <video autoplay muted loop playsinline class="w-full h-auto rounded-lg border border-[#60a5fa]/30 shadow-lg">
             <source src="./RecoilAssets/Trailer.mp4" type="video/mp4" />
             Je browser ondersteunt het video-element niet.
           </video>
         </div>
       </section>
-            <!-- Info Section -->
-      <section
-        id="info"
-        class="w-full max-w-3xl text-center mt-16 px-4 sm:px-0"
-      >
-        <h2 class="text-xl sm:text-2xl recoil-font text-accent mb-4">
-          Over Recoil
-        </h2>
-        <p class="text-muted leading-relaxed text-sm sm:text-base">
-          <span class="text-accent">Recoil</span> is een 2D actieplatformer met
-          een unieke twist: je beweegt niet door te lopen, maar door de
-          terugslag van je wapen te gebruiken. Elk schot telt — zowel om
-          vijanden te verslaan als om jezelf door uitdagende levels te
-          verplaatsen. <br /><br />
-          Ontwikkeld als schoolproject, is Recoil het resultaat van een
-          gepassioneerde samenwerking tussen programmeurs en
-          ontwerpers die hun vaardigheden wilden testen en verbeteren. Met
-        </p>
+
+      <hr class="border-white/10">
+      <!-- Over Recoil -->
+      <section id="info" class="space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Over Recoil</h2>
+        <div class="text-[#9aa4b2] space-y-4 leading-relaxed">
+          <p><span class="text-[#60a5fa]">Recoil</span> is een 2D actieplatformer met een unieke twist: je beweegt niet door te lopen, maar door de terugslag van je wapen te gebruiken. Elk schot telt — zowel om vijanden te verslaan als om jezelf door uitdagende levels te verplaatsen.</p>
+          <p>Ontwikkeld als schoolproject, is Recoil het resultaat van een gepassioneerde samenwerking tussen programmeurs en ontwerpers die hun vaardigheden wilden testen en verbeteren.</p>
+        </div>
       </section>
 
-      <section class="w-full max-w-3xl text-center mt-16 px-4 sm:px-0">
-        <h2 class="text-xl sm:text-2xl recoil-font text-accent mb-4">
-          Mijn Bijdrage
-        </h2>
-        <p class="text-muted leading-relaxed text-sm sm:text-base">
-          <span class="text-accent">Recoil</span> was een geweldige kans om mijn
-          programmeerskills te verbeteren en samen te werken in een team. Ik
-          was verantwoordelijk voor het implementeren van de CoreMechanic van het 
-          spel, waaronder het schiet- en terugslagsysteem, Ook heb ik bijgedragen aan de Art en leveldesign.
-        </p>
+      <hr class="border-white/10">
+
+      <!-- Mijn Bijdrage -->
+      <section id="bijdrage" class="space-y-4">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Mijn Bijdrage</h2>
+        <div class="text-[#9aa4b2] space-y-4 leading-relaxed">
+          <p><span class="text-[#60a5fa]">Recoil</span> was een geweldige kans om mijn programmeerskills te verbeteren en samen te werken in een team. Ik was verantwoordelijk voor het implementeren van de CoreMechanic van het spel, waaronder het schiet- en terugslagsysteem. Ook heb ik bijgedragen aan de Art en leveldesign.</p>
+        </div>
       </section>
 
-      <!-- Team Section -->
-      <section id="team" class="w-full max-w-5xl mt-16 text-center">
-        <h2 class="text-2xl sm:text-3xl recoil-font text-accent mb-4">
-          Teamgenoten
-        </h2>
-        <div class="w-20 sm:w-24 h-1 bg-accent mx-auto mb-6"></div>
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full"
-        >
-          <!--- Member 1 -->
-          <div
-            class="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-transform duration-300"
-          >
-            <img
-              src="../Assets/Profile.jpg"
-              alt="Leroy Exel"
-              class="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full object-cover mb-3 sm:mb-4 border border-accent"
-            />
-            <h3 class="text-lg sm:text-xl recoil-font text-accent">
-              Leroy Exel
-            </h3>
-            <p class="text-muted text-xs sm:text-sm">
-              Programmeur & Realisatie
-            </p>
+      <hr class="border-white/10">
+
+      <!-- Team -->
+      <section id="team" class="space-y-6">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">Teamgenoten</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Member 1 -->
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm hover:border-[#60a5fa]/40 hover:bg-white/8 transition-all">
+            <img src="../Assets/Profile.jpg" alt="Leroy Exel" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border border-[#60a5fa]/50" />
+            <h3 class="text-base font-bold text-[#60a5fa] text-center">Leroy Exel</h3>
+            <p class="text-[#9aa4b2] text-sm text-center">Programmeur & Realisatie</p>
           </div>
-
           <!-- Member 2 -->
-          <div
-            class="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-transform duration-300"
-          >
-            <img
-              src="./RecoilAssets/Markian.jpeg"
-              alt="Markian Tsypuk"
-              class="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full object-cover mb-3 sm:mb-4 border border-accent"
-            />
-            <h3 class="text-lg sm:text-xl recoil-font text-accent">
-              Markian Tsypuk
-            </h3>
-            <p class="text-muted text-xs sm:text-sm">
-              Teamleider & Ontwikkelaar
-            </p>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm hover:border-[#60a5fa]/40 hover:bg-white/8 transition-all">
+            <img src="./RecoilAssets/Markian.jpeg" alt="Markian Tsypuk" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border border-[#60a5fa]/50" />
+            <h3 class="text-base font-bold text-[#60a5fa] text-center">Markian Tsypuk</h3>
+            <p class="text-[#9aa4b2] text-sm text-center">Teamleider & Ontwikkelaar</p>
           </div>
-
           <!-- Member 3 -->
-          <div
-            class="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-transform duration-300"
-          >
-            <img
-              src="./RecoilAssets/Jeroen.jpeg"
-              alt="Jeroen Verboom"
-              class="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full object-cover mb-3 sm:mb-4 border border-accent"
-            />
-            <h3 class="text-lg sm:text-xl recoil-font text-accent">
-              Jeroen Verboom
-            </h3>
-            <p class="text-muted text-xs sm:text-sm">
-              Sound Designer & Programmeur
-            </p>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm hover:border-[#60a5fa]/40 hover:bg-white/8 transition-all">
+            <img src="./RecoilAssets/Jeroen.jpeg" alt="Jeroen Verboom" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border border-[#60a5fa]/50" />
+            <h3 class="text-base font-bold text-[#60a5fa] text-center">Jeroen Verboom</h3>
+            <p class="text-[#9aa4b2] text-sm text-center">Sound Designer & Programmeur</p>
           </div>
-
           <!-- Member 4 -->
-          <div
-            class="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm hover:scale-105 transition-transform duration-300"
-          >
-            <img
-              src="./RecoilAssets/Jasper.jpeg"
-              alt="Jasper Schipper"
-              class="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full object-cover mb-3 sm:mb-4 border border-accent"
-            />
-            <h3 class="text-lg sm:text-xl recoil-font text-accent">
-              Jasper Schipper
-            </h3>
-            <p class="text-muted text-xs sm:text-sm">Pixel Art Designer</p>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm hover:border-[#60a5fa]/40 hover:bg-white/8 transition-all">
+            <img src="./RecoilAssets/Jasper.jpeg" alt="Jasper Schipper" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border border-[#60a5fa]/50" />
+            <h3 class="text-base font-bold text-[#60a5fa] text-center">Jasper Schipper</h3>
+            <p class="text-[#9aa4b2] text-sm text-center">Pixel Art Designer</p>
           </div>
-
           <!-- Member 5 -->
-          <div
-            class="p-4 sm:p-6 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm hover:scale-105  transition-transform duration-300"
-          >
-            <img
-              src="./RecoilAssets/Ricardo.jpeg"
-              alt="Ricardo Finke"
-              class="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full object-cover mb-3 sm:mb-4 border border-accent"
-            />
-            <h3 class="text-lg sm:text-xl recoil-font text-accent">
-              Ricardo Finke
-            </h3>
-            <p class="text-muted text-xs sm:text-sm">Programmeur</p>
+          <div class="bg-white/5 border border-white/10 rounded-xl p-5 backdrop-blur-sm hover:border-[#60a5fa]/40 hover:bg-white/8 transition-all">
+            <img src="./RecoilAssets/Ricardo.jpeg" alt="Ricardo Finke" class="w-20 h-20 mx-auto rounded-full object-cover mb-3 border border-[#60a5fa]/50" />
+            <h3 class="text-base font-bold text-[#60a5fa] text-center">Ricardo Finke</h3>
+            <p class="text-[#9aa4b2] text-sm text-center">Programmeur</p>
           </div>
         </div>
       </section>
 
-<!-- Script Dropdown Section -->
-<section id="scripts" class="w-full max-w-5xl text-center mt-16 px-4 sm:px-0">
-  <h2 class="text-xl sm:text-2xl recoil-font text-accent mb-4">
-    C# Script Selectie
-  </h2>
+      <hr class="border-white/10">
 
-  <p class="text-muted text-sm sm:text-base mb-4">
-    Kies een C# script om de code te bekijken:
-  </p>
-
-  <!-- Dropdown menu -->
-<!-- Dropdown menu -->
-<select
-  id="scriptSelector"
-  class="bg-[#1a2538] border border-accent  placeholder-muted rounded-lg px-3 py-2 w-full sm:w-96 mx-auto 
-         focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition 
-         hover:bg-[#22324b] shadow-md mb-8"
->
-  <option value="">-- Selecteer een script --</option>
-  <option value="script1" class="bg-[#0f1724] text-text">BounceCounter.cs</option>
-  <option value="script2" class="bg-[#0f1724] text-text">CoinPickup.cs</option>
-  <option value="script3" class="bg-[#0f1724] text-text">Weapon.cs</option>
-</select>
-
-
-  <!-- Code output -->
-  <pre
-    id="scriptOutput"
-    class="mt-6 p-4 bg-[#0b1220]/80 border border-white/10 rounded-xl text-left text-sm mb-12 font-mono text-accent overflow-x-auto hidden backdrop-blur-sm"
-  ><code id="codeContent"></code></pre>
-</section>
-
-<!-- Script dropdown logic -->
-<script>
-  const scriptSelector = document.getElementById("scriptSelector");
-  const scriptOutput = document.getElementById("scriptOutput");
-  const codeContent = document.getElementById("codeContent");
-
-  // JSON met C# scripts en kleuren
-  const scripts = {
-    "script1": {
-      "name": "BounceCounter.cs",
-      "color": "#8fc1ff",
-      "code": `using UnityEngine;
-
-public class BounceCounter : MonoBehaviour
-{
-    int bounceCounter;
-    [SerializeField] int maxBounces;
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        bounceCounter++;
-        if (bounceCounter > maxBounces)
-        {
-            Destroy(gameObject);
-        }
-    }
-}`
-    },
-
-    "script2": {
-      "name": "GunRecoil.cs",
-      "color": "#60a5fa",
-      "code": `using UnityEngine;
-
-public class CoinPickup : MonoBehaviour
-{
-    [SerializeField] int amount;
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log($"Add Coins {amount}");
-            SFXManager.instance.PlaySound("coin");
-            CoinManager.Instance.AddCoins(amount);
-            Destroy(gameObject);
-        }
-    }
-}`
-    },
-
-    "script3": {
-      "name": "EnemyAI.cs",
-      "color": "#38bdf8",
-      "code": `using UnityEngine;
-
-public class Weapon : MonoBehaviour
-{
-    public WeaponObject Config;
-    [SerializeField] GameObject bullet;
-    [SerializeField] Transform shootPoint;
-    [SerializeField] LineRenderer lineRenderer;
-    public bool aiming;
-    Rigidbody2D rb;
-
-    protected virtual void Start()
-    {
-        rb = GetComponentInParent<Rigidbody2D>();
-    }
-    public void FlipSprite()
-    {
-        Vector3 scale = transform.localScale;
-        scale.y *= -1;
-        transform.localScale = scale;
-    }
-
-    public virtual void Shoot(Vector2 dir, float dragDistance)
-    {
-            float t = Mathf.Clamp01(dragDistance / 3);
-            float finalForce = Mathf.Lerp(Config.minForce, Config.maxForce, t);
-
-
-            SFXManager.instance.PlaySound("shoot");
-
-            if (GroundCheck.Instance.Grounded)
-            {
-                rb.AddForce(-dir * finalForce, ForceMode2D.Impulse);
-            }
-            else
-
-            {
-                rb.AddForce(-dir * Config.minForce, ForceMode2D.Impulse);
-            }
-            Instantiate(bullet, shootPoint.position, shootPoint.rotation);
-
-        
-    }
-
-    private void Update()
-    {
-        if (aiming)
-        {
-            if (lineRenderer != null)
-            {
-                Vector2 origin = shootPoint.position;
-                Vector2 direction = shootPoint.right;
-
-                RaycastHit2D hit = Physics2D.Raycast(origin, direction, Mathf.Infinity);
-
-                Debug.DrawLine(origin, hit ? hit.point : origin + direction * 10f, Color.red);
-
-                lineRenderer.useWorldSpace = true;
-
-                lineRenderer.SetPosition(0, origin);
-
-                if (hit.collider != null)
-                {
-                    lineRenderer.SetPosition(1, hit.point);
-                }
-                else
-                {
-                    lineRenderer.SetPosition(1, origin + direction * 10f);
-                }
-            }
-            
-        }
-    }
-}`
-    }
-  };
-
-  // Toon het juiste script bij selectie
-  scriptSelector.addEventListener("change", () => {
-    const selected = scriptSelector.value;
-
-    if (selected && scripts[selected]) {
-      const { name, code, color } = scripts[selected];
-      codeContent.textContent = code;
-      scriptOutput.classList.remove("hidden");
-      scriptOutput.style.borderColor = color;
-      scriptOutput.style.boxShadow = `0 0 15px ${color}40`;
-      scriptOutput.style.color = color;
-    } else {
-      scriptOutput.classList.add("hidden");
-      codeContent.textContent = "";
-    }
-  });
-</script>
+      <!-- C# Scripts -->
+      <section id="scripts" class="space-y-4 pb-12">
+        <h2 class="text-2xl font-bold text-white tracking-tight border-l-4 border-[#60a5fa] pl-4">C# Script Selectie</h2>
+        <p class="text-[#9aa4b2]">Kies een C# script om de code te bekijken:</p>
+        <select id="scriptSelector" class="bg-[#1a2538] border border-[#60a5fa]/40 text-[#e6eef8] rounded-lg px-3 py-2 w-full sm:w-96 focus:outline-none focus:ring-2 focus:ring-[#60a5fa] transition hover:bg-[#22324b] shadow-md">
+          <option value="">-- Selecteer een script --</option>
+          <option value="script1" class="bg-[#0f1724]">BounceCounter.cs</option>
+          <option value="script2" class="bg-[#0f1724]">CoinPickup.cs</option>
+          <option value="script3" class="bg-[#0f1724]">Weapon.cs</option>
+        </select>
+        <pre id="scriptOutput" class="p-5 bg-[#0b1220]/80 border border-white/10 rounded-xl text-left text-sm font-mono text-[#60a5fa] overflow-x-auto hidden backdrop-blur-sm"><code id="codeContent"></code></pre>
+      </section>
 
     </main>
-    </div>
 
-    <!-- Mobile Styling -->
-    <style>
-      @media (max-width: 700px) {
-        /* Sidebar becomes top nav */
-        nav {
-          position: fixed !important;
-          top: 0;
-          left: 0;
-          width: 100% !important;
-          height: auto !important;
-          min-height: auto !important;
-          flex-direction: row !important;
-          justify-content: space-around !important;
-          padding: 0.5rem 0 !important;
-          border-right: none !important;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-          z-index: 50;
-        }
-        nav ul {
-          flex-direction: row !important;
-          gap: 1rem !important;
-          width: 100%;
-          justify-content: space-around;
-        }
-        nav ul li a {
-          padding: 0.5rem 0 !important;
-        }
-        /* Hide desktop Upcoming */
-        nav .mt-auto {
-          display: none !important;
-        }
+    <!-- Script dropdown logic -->
+    <script>
+      const scriptSelector = document.getElementById("scriptSelector");
+      const scriptOutput = document.getElementById("scriptOutput");
+      const codeContent = document.getElementById("codeContent");
 
-        main {
-          margin-left: 0 !important;
-          padding-top: 4rem !important; /* leave space for top nav */
-          padding-left: 1.5rem !important;
-          padding-right: 1.5rem !important;
+      const scripts = {
+        "script1": {
+          "color": "#60a5fa",
+          "code": `using UnityEngine;\n\npublic class BounceCounter : MonoBehaviour\n{\n    int bounceCounter;\n    [SerializeField] int maxBounces;\n\n    private void OnCollisionEnter2D(Collision2D collision)\n    {\n        bounceCounter++;\n        if (bounceCounter > maxBounces)\n        {\n            Destroy(gameObject);\n        }\n    }\n}`
+        },
+        "script2": {
+          "color": "#60a5fa",
+          "code": `using UnityEngine;\n\npublic class CoinPickup : MonoBehaviour\n{\n    [SerializeField] int amount;\n    private void OnTriggerEnter2D(Collider2D other)\n    {\n        if (other.CompareTag("Player"))\n        {\n            Debug.Log($"Add Coins {amount}");\n            SFXManager.instance.PlaySound("coin");\n            CoinManager.Instance.AddCoins(amount);\n            Destroy(gameObject);\n        }\n    }\n}`
+        },
+        "script3": {
+          "color": "#60a5fa",
+          "code": `using UnityEngine;\n\npublic class Weapon : MonoBehaviour\n{\n    public WeaponObject Config;\n    [SerializeField] GameObject bullet;\n    [SerializeField] Transform shootPoint;\n    [SerializeField] LineRenderer lineRenderer;\n    public bool aiming;\n    Rigidbody2D rb;\n\n    protected virtual void Start()\n    {\n        rb = GetComponentInParent<Rigidbody2D>();\n    }\n\n    public virtual void Shoot(Vector2 dir, float dragDistance)\n    {\n        float t = Mathf.Clamp01(dragDistance / 3);\n        float finalForce = Mathf.Lerp(Config.minForce, Config.maxForce, t);\n        SFXManager.instance.PlaySound("shoot");\n        if (GroundCheck.Instance.Grounded)\n            rb.AddForce(-dir * finalForce, ForceMode2D.Impulse);\n        else\n            rb.AddForce(-dir * Config.minForce, ForceMode2D.Impulse);\n        Instantiate(bullet, shootPoint.position, shootPoint.rotation);\n    }\n}`
         }
+      };
 
-        /* Fixed Upcoming at bottom-right */
-        #upcoming-fixed {
-          display: block;
-          position: fixed;
-          bottom: 1rem;
-          right: 1rem;
-          width: 220px;
-          background: rgba(143, 193, 255, 0.2);
-          border-radius: 0.5rem;
-          padding: 0.75rem;
-          color: #e6eef8;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-          z-index: 60;
+      scriptSelector.addEventListener("change", () => {
+        const selected = scriptSelector.value;
+        if (selected && scripts[selected]) {
+          const { code, color } = scripts[selected];
+          codeContent.textContent = code;
+          scriptOutput.classList.remove("hidden");
+          scriptOutput.style.borderColor = color;
+          scriptOutput.style.boxShadow = `0 0 15px ${color}40`;
+          scriptOutput.style.color = color;
+        } else {
+          scriptOutput.classList.add("hidden");
+          codeContent.textContent = "";
         }
+      });
+    </script>
 
-        h1 {
-          font-size: 2rem !important;
-        }
-        p {
-          font-size: 0.9rem !important;
-        }
-         #scriptOutput {
-      width: 100% !important;
-      font-size: 0.8rem !important;
-      white-space: pre-wrap !important;
-      word-break: break-word !important;
-      overflow-x: auto !important;
-    }
+    <!-- Menu toggle (BPV style) -->
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-overlay');
+        const isOpen = !menu.classList.contains('-translate-x-full');
+        menu.classList.toggle('-translate-x-full', isOpen);
+        overlay.classList.toggle('hidden', isOpen);
       }
-    </style>
+      function closeMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-overlay');
+        menu.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    </script>
 
     <!-- Particles Config -->
     <script>
       if (window.particlesJS) {
         particlesJS("particles-js", {
           particles: {
-            number: { value: 100, density: { enable: true, value_area: 800 } },
+            number: { value: 80, density: { enable: true, value_area: 800 } },
             color: { value: "#60a5fa" },
             shape: { type: "circle" },
-            opacity: { value: 0.6 },
+            opacity: { value: 0.5 },
             size: { value: 3, random: true },
-            line_linked: {
-              enable: true,
-              distance: 120,
-              color: "#60a5fa",
-              opacity: 0.12,
-              width: 1,
-            },
-            move: { enable: true, speed: 1.5, out_mode: "out" },
+            line_linked: { enable: true, distance: 150, color: "#60a5fa", opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 2, out_mode: "out" },
           },
           interactivity: {
-            detect_on: "window",
-            events: { onhover: { enable: true, mode: "repulse" } },
-            modes: { repulse: { distance: 100 }, push: { particles_nb: 1 } },
+            detect_on: "canvas",
+            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
           },
           retina_detect: true,
         });
