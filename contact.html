@@ -66,7 +66,7 @@
       <div class="text-center mb-10">
         <h1 class="text-4xl font-bold text-white mb-3">Contact</h1>
         <p class="text-muted text-sm max-w-md mx-auto">
-          Heb je een vraag, een projectidee of wil je gewoon kennismaken? Ik hoor graag van je!
+          Have a question, a project idea, or just want to connect? I'd love to hear from you!
         </p>
       </div>
 
@@ -123,26 +123,26 @@
       </div>
 
       <div class="bg-white/5 border border-white/10 rounded-xl p-6 md:p-8">
-        <h2 class="text-lg font-bold text-white mb-4">Stuur een bericht</h2>
+        <h2 class="text-lg font-bold text-white mb-4">Send a message</h2>
         <form id="contactForm" onsubmit="handleSubmit(event)" class="space-y-4">
           <div>
-            <label for="name" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Naam</label>
-            <input type="text" id="name" name="name" required placeholder="Jouw naam" class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm">
+            <label for="name" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm">
           </div>
           <div>
             <label for="email" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Email</label>
-            <input type="email" id="email" name="email" required placeholder="Jouw emailadres" class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm">
+            <input type="email" id="email" name="email" required placeholder="Your email address" class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm">
           </div>
           <div>
-            <label for="subject" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Onderwerp</label>
-            <input type="text" id="subject" name="subject" required placeholder="Waar gaat het over?" class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm">
+            <label for="subject" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Subject</label>
+            <input type="text" id="subject" name="subject" required placeholder="What's it about?" class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm">
           </div>
           <div>
-            <label for="message" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Bericht</label>
-            <textarea id="message" name="message" required rows="4" placeholder="Vertel me waar je mee bezig bent..." class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm resize-none"></textarea>
+            <label for="message" class="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">Message</label>
+            <textarea id="message" name="message" required rows="4" placeholder="Tell me what you're working on..." class="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm resize-none"></textarea>
           </div>
           <button type="submit" class="w-full py-3 bg-accent hover:bg-accent/80 text-white font-bold rounded-lg transition-colors text-sm">
-            Verstuur bericht
+            Send message
           </button>
         </form>
         <div id="formFeedback" class="mt-4 text-sm text-center hidden"></div>
@@ -246,17 +246,17 @@
       event.preventDefault();
       const feedback = document.getElementById('formFeedback');
       feedback.className = 'mt-4 text-sm text-center text-accent';
-      feedback.textContent = '📨 Bericht wordt verzonden...';
+      feedback.textContent = '📨 Sending message...';
       const form = document.getElementById('contactForm');
       emailjs.sendForm('service_k551zka', 'template_jjmglr6', form)
         .then(() => {
           feedback.className = 'mt-4 text-sm text-center text-emerald-400';
-          feedback.textContent = 'Bedankt! Je bericht is verzonden. Ik neem zo snel mogelijk contact met je op.';
+          feedback.textContent = 'Thanks! Your message has been sent. I\'ll get back to you as soon as possible.';
           form.reset();
         }, (error) => {
           feedback.className = 'mt-4 text-sm text-center text-red-400';
-          feedback.textContent = 'Er ging iets mis. Probeer het later opnieuw.';
-          console.error('Fout:', error);
+          feedback.textContent = 'Something went wrong. Please try again later.';
+          console.error('Error:', error);
         });
     }
 
