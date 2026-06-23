@@ -1,583 +1,872 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leroy Exel - Projects</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bg: "#0f1724",
-                        muted: "#9aa4b2",
-                        accent: "#60a5fa",
-                        text: "#e6eef8",
-                    },
-                },
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "#0f1724",
+              muted: "#9aa4b2",
+              accent: "#60a5fa",
+              text: "#e6eef8",
             },
-        };
+          },
+        },
+      };
     </script>
 
     <style>
-        @font-face {
-            font-family: "RecoilFont";
-            src: url("./Projects/RecoilAssets/RecoilFont.TTF") format("truetype");
-        }
-        .recoil-font {
-            font-family: "RecoilFont", sans-serif;
-        }
+      @font-face {
+        font-family: "RecoilFont";
+        src: url("./Projects/RecoilAssets/RecoilFont.TTF") format("truetype");
+      }
+      .recoil-font {
+        font-family: "RecoilFont", sans-serif;
+      }
 
-        #sidebar-container {
-            display: contents;
-        }
+      #sidebar-container {
+        display: contents;
+      }
 
-        .mod-card {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .mod-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(96, 165, 250, 0.15);
-        }
+      .mod-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .mod-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 40px rgba(96, 165, 250, 0.15);
+      }
 
-        .mod-tag {
-            transition: all 0.2s ease;
-        }
-        .mod-tag:hover {
-            transform: scale(1.05);
-        }
+      .mod-tag {
+        transition: all 0.2s ease;
+      }
+      .mod-tag:hover {
+        transform: scale(1.05);
+      }
 
-        /* Modal overlay */
-        .modal-overlay {
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-        }
-        .modal-content {
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        .modal-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        .modal-content::-webkit-scrollbar-track {
-            background: #0a1530;
-            border-radius: 10px;
-        }
-        .modal-content::-webkit-scrollbar-thumb {
-            background: #60a5fa;
-            border-radius: 10px;
-        }
-        #modalImage {
-            max-height: 300px;
-            object-fit: cover;
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+      /* Modal overlay */
+      .modal-overlay {
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(8px);
+      }
+      .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .modal-content::-webkit-scrollbar {
+        width: 6px;
+      }
+      .modal-content::-webkit-scrollbar-track {
+        background: #0a1530;
+        border-radius: 10px;
+      }
+      .modal-content::-webkit-scrollbar-thumb {
+        background: #60a5fa;
+        border-radius: 10px;
+      }
+
+      /* Lightbox styling - same as BPV verslag */
+      #lightbox {
+        background: rgba(0, 0, 0, 0.92);
+        backdrop-filter: blur(8px);
+      }
+      #lightbox .lb-close {
+        background: rgba(220, 38, 38, 0.9);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.15s ease;
+      }
+      #lightbox .lb-close:hover {
+        background: rgb(220, 38, 38);
+        transform: scale(1.05);
+      }
+      #lightbox .lb-nav-btn {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        transition: all 0.15s ease;
+      }
+      #lightbox .lb-nav-btn:hover {
+        background: rgba(96, 165, 250, 0.25);
+        border-color: rgba(96, 165, 250, 0.4);
+      }
+      #lb-media-wrap video,
+      #lb-media-wrap img {
+        max-height: 84vh;
+        max-width: 100%;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        object-fit: contain;
+      }
+      #lb-media-wrap video {
+        background: #000;
+      }
+      #lb-counter {
+        font-size: 10px;
+        font-weight: 700;
+        font-family: "JetBrains Mono", monospace;
+        color: #9aa4b2;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 2px 10px;
+        border-radius: 20px;
+      }
+      #lb-caption {
+        font-size: 11px;
+        font-family: "JetBrains Mono", monospace;
+        color: #9aa4b2;
+        text-align: center;
+        max-width: 90%;
+        margin-top: 12px;
+      }
     </style>
-</head>
+  </head>
 
-<body
-class="min-h-screen flex font-sans text-white bg-linear-to-b from-[#0f2b72] to-[#071025] text-text relative">
+  <body
+    class="min-h-screen flex font-sans text-white bg-linear-to-b from-[#0f2b72] to-[#071025] text-text relative"
+  >
+    <!-- Particles background -->
+    <div
+      id="particles-js"
+      class="fixed inset-0 z-0 pointer-events-none opacity-90"
+    ></div>
 
-<!-- Particles background -->
-<div id="particles-js" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
+    <!-- Mobile menu button -->
+    <button
+      id="menuBtn"
+      onclick="toggleMenu()"
+      class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
 
-<!-- Mobile menu button -->
-<button id="menuBtn" onclick="toggleMenu()"
-class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-</svg>
-</button>
+    <!-- Mobile overlay -->
+    <div
+      id="mobile-overlay"
+      onclick="toggleMenu()"
+      class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden hidden"
+    ></div>
 
-<!-- Mobile overlay -->
-<div id="mobile-overlay" onclick="toggleMenu()"
-class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden hidden"></div>
+    <!-- Sidebar will be injected here -->
+    <div id="sidebar-container"></div>
 
-<!-- Sidebar will be injected here -->
-<div id="sidebar-container"></div>
-
-<!-- Main content -->
-<main class="flex-1 flex items-center justify-center p-12 relative z-20">
-    <div class="w-full flex flex-col items-center gap-6">
+    <!-- Main content -->
+    <main class="flex-1 flex items-center justify-center p-12 relative z-20">
+      <div class="w-full flex flex-col items-center gap-6">
         <h1 class="text-5xl font-bold mb-8">Projects</h1>
 
         <!-- Projects Grid -->
         <div class="w-full max-w-6xl grid grid-cols-1 gap-6">
-
-            <!-- Project 1: Recoil -->
-            <div
-            class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer">
+          <!-- Project 1: Recoil -->
+          <div
+            class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer"
+          >
             <div class="flex flex-col md:flex-row gap-4 md:items-start">
-                <div class="flex-1">
-                    <h3 class="text-2xl font-bold text-accent mb-2">Recoil</h3>
-                    <p class="text-muted text-sm">School project using bullet force to shoot yourself up and kill
-                        enemies</p>
-                    <p class="text-muted text-sm mt-4 mb-8">
-                        <a href="https://github.com/LeroyExel/Recoil" target="_blank" rel="noopener noreferrer"
-                        class="text-sky-400 hover:underline">See GitHub →</a>
-                    </p>
-                </div>
-                <p class="font-bold recoil-font text-5xl md:text-5xl mt-8 text-blue-400 md:flex-shrink-0">RECOIL</p>
-            </div>
-        </div>
-
-        <!-- Project 2: PhysicsGame -->
-        <div
-        class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer">
-        <div class="flex flex-col md:flex-row gap-4 md:items-start">
-            <div class="flex-1">
-                <h3 class="text-xl font-bold text-accent mb-2">PhysicsGame</h3>
-                <p class="text-muted text-sm">Fully physics driven characters using my own physics animation system.</p>
-                <p class="text-muted text-sm mt-4">
-                    <a href="https://github.com/LeroyExel/Physics-Based-Character/tree/main" target="_blank"
-                    rel="noopener noreferrer" class="text-sky-400 hover:underline">See GitHub →</a>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-accent mb-2">Recoil</h3>
+                <p class="text-muted text-sm">
+                  School project using bullet force to shoot yourself up and
+                  kill enemies
                 </p>
+                <p class="text-muted text-sm mt-4 mb-8">
+                  <a
+                    href="https://github.com/LeroyExel/Recoil"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sky-400 hover:underline"
+                    >See GitHub →</a
+                  >
+                </p>
+              </div>
+              <p
+                class="font-bold recoil-font text-5xl md:text-5xl mt-8 text-blue-400 md:flex-shrink-0"
+              >
+                RECOIL
+              </p>
             </div>
-            <img src="https://raw.githubusercontent.com/LeroyExel/Physics-Based-Character/main/ExamplePicture.png"
-            alt="PhysicsGame Preview"
-            class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0">
-        </div>
-    </div>
+          </div>
 
-    <!-- Project 3: GOPO -->
-    <div
-    class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer">
-    <div class="flex flex-col md:flex-row gap-4 md:items-start">
-        <div class="flex-1">
-            <h3 class="text-xl font-bold text-accent mb-2">GOPO</h3>
-            <p class="text-muted text-sm">Physics based Pogostick game.</p>
-            <p class="text-muted text-sm mt-4">
-                <a href="https://github.com/LeroyExel/Gopo-PogoStick-" target="_blank" rel="noopener noreferrer"
-                class="text-sky-400 hover:underline">See GitHub →</a>
+          <!-- Project 2: PhysicsGame -->
+          <div
+            class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer"
+          >
+            <div class="flex flex-col md:flex-row gap-4 md:items-start">
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-accent mb-2">PhysicsGame</h3>
+                <p class="text-muted text-sm">
+                  Fully physics driven characters using my own physics animation
+                  system.
+                </p>
+                <p class="text-muted text-sm mt-4">
+                  <a
+                    href="https://github.com/LeroyExel/Physics-Based-Character/tree/main"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sky-400 hover:underline"
+                    >See GitHub →</a
+                  >
+                </p>
+              </div>
+              <img
+                src="https://raw.githubusercontent.com/LeroyExel/Physics-Based-Character/main/ExamplePicture.png"
+                alt="PhysicsGame Preview"
+                class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0"
+              />
+            </div>
+          </div>
+
+          <!-- Project 3: GOPO -->
+          <div
+            class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer"
+          >
+            <div class="flex flex-col md:flex-row gap-4 md:items-start">
+              <div class="flex-1">
+                <h3 class="text-xl font-bold text-accent mb-2">GOPO</h3>
+                <p class="text-muted text-sm">Physics based Pogostick game.</p>
+                <p class="text-muted text-sm mt-4">
+                  <a
+                    href="https://github.com/LeroyExel/Gopo-PogoStick-"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sky-400 hover:underline"
+                    >See GitHub →</a
+                  >
+                </p>
+              </div>
+              <img
+                src="https://raw.githubusercontent.com/LeroyExel/Gopo-PogoStick-/main/Example.png"
+                alt="Project 3 Preview"
+                class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0"
+              />
+            </div>
+          </div>
+
+          <!-- ─── FIVERR MODS SECTION (specific projects) ─── -->
+          <div class="w-full max-w-6xl mt-12">
+            <div class="flex items-center flex-wrap gap-4 mb-2">
+              <h2 class="text-3xl font-bold text-white">Fiverr Mods</h2>
+              <span
+                class="px-3 py-1 text-xs font-bold tracking-wider text-green-400 bg-green-500/10 border border-green-500/30 rounded-full uppercase"
+              >
+                ★ 35+ Reviews
+              </span>
+              <span
+                class="px-3 py-1 text-xs font-bold tracking-wider text-accent bg-accent/10 border border-accent/20 rounded-full uppercase"
+              >
+                Commissioned
+              </span>
+            </div>
+            <p class="text-muted text-sm mb-6">
+              Alle mods zijn gemaakt voor één enkele opdrachtgever — elk met 1
+              unieke beoordeling.
             </p>
-        </div>
-        <img src="https://raw.githubusercontent.com/LeroyExel/Gopo-PogoStick-/main/Example.png"
-        alt="Project 3 Preview"
-        class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0">
-    </div>
-</div>
 
-<!-- ─── FIVERR MODS SECTION (specific projects) ─── -->
-<div class="w-full max-w-6xl mt-12">
-    <div class="flex items-center flex-wrap gap-4 mb-2">
-        <h2 class="text-3xl font-bold text-white">Fiverr Mods</h2>
-        <span class="px-3 py-1 text-xs font-bold tracking-wider text-green-400 bg-green-500/10 border border-green-500/30 rounded-full uppercase">
-            ★ 35+ Reviews
-        </span>
-        <span class="px-3 py-1 text-xs font-bold tracking-wider text-accent bg-accent/10 border border-accent/20 rounded-full uppercase">
-            Commissioned
-        </span>
-    </div>
-    <p class="text-muted text-sm mb-6">Alle mods zijn gemaakt voor één enkele opdrachtgever — elk met 1 unieke beoordeling.</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Mod 1: Baby Steps -->
-        <div class="mod-card bg-white/5 border border-white/10 rounded-xl p-6 hover:border-accent/60 transition-all group" data-mod="babysteps">
-            <div class="flex items-start justify-between mb-3">
-                <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded border border-accent/20">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <!-- Mod: The Long Drive -->
+              <div
+                class="mod-card bg-white/5 border border-white/10 rounded-xl p-6 hover:border-accent/60 transition-all group"
+                data-mod="longdrive"
+              >
+                <div class="flex items-start justify-between mb-3">
+                  <span
+                    class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded border border-accent/20"
+                  >
                     Unity
-                </span>
-                <span class="text-xs text-muted">⭐ 5.0</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent transition-colors">Baby Steps – Character Replacement</h3>
-            <p class="text-muted text-sm leading-relaxed">
-                Vervang de standaard protagonist door een custom 3D-model met behoud van alle animaties, physics en
-                interacties.
-            </p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Unity</span>
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">3D</span>
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Animation</span>
-            </div>
-        </div>
-
-        <!-- Mod 2: The Long Drive -->
-        <div class="mod-card bg-white/5 border border-white/10 rounded-xl p-6 hover:border-accent/60 transition-all group" data-mod="longdrive">
-            <div class="flex items-start justify-between mb-3">
-                <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded border border-accent/20">
-                    Unity
-                </span>
-                <span class="text-xs text-muted">⭐ 5.0</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent transition-colors">The Long Drive – Custom Car</h3>
-            <p class="text-muted text-sm leading-relaxed">
-                Volledig werkende custom voertuigen voor The Long Drive: physics, wielophanging en motor geluid.
-            </p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Unity</span>
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Physics</span>
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Vehicles</span>
-            </div>
-        </div>
-
-        <!-- Mod 3: Bonelab -->
-        <div class="mod-card bg-white/5 border border-white/10 rounded-xl p-6 hover:border-accent/60 transition-all group" data-mod="bonelab">
-            <div class="flex items-start justify-between mb-3">
-                <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded border border-accent/20">
-                    Bonelab
-                </span>
-                <span class="text-xs text-muted">⭐ 5.0</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent transition-colors">Bonelab – Custom Avatar & Items</h3>
-            <p class="text-muted text-sm leading-relaxed">
-                Maak custom avatars met eigen fysica, items en wapens, volledig geïntegreerd met Bonelab.
-            </p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Avatars</span>
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Physics</span>
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">VR</span>
-            </div>
-        </div>
-
-        <!-- Mod 4: Unreal Engine Mechanics -->
-        <div class="mod-card bg-white/5 border border-white/10 rounded-xl p-6 hover:border-accent/60 transition-all group" data-mod="unrealmechanics">
-            <div class="flex items-start justify-between mb-3">
-                <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded border border-accent/20">
-                    Unreal Engine
-                </span>
-                <span class="text-xs text-muted">⭐ 5.0</span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent transition-colors">Unreal Engine – Custom Mechanics</h3>
-            <p class="text-muted text-sm leading-relaxed">
-                Ontwikkel op maat gemaakte gameplay mechanics in Blueprints of C++.
-            </p>
-            <div class="flex flex-wrap gap-1.5 mt-3">
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Blueprints</span>
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">C++</span>
-                <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">AI</span>
-            </div>
-        </div>
-
-        <!-- Mod 5: VR Interaction Systems (featured) -->
-        <div class="mod-card bg-white/5 border border-white/10 rounded-xl p-6 hover:border-accent/60 transition-all group md:col-span-2 lg:col-span-3" data-mod="vrinteractions">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                <div>
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="text-xs font-mono font-bold text-green-400 bg-green-500/10 px-2.5 py-1 rounded border border-green-500/30">
-                            ★ Featured
-                        </span>
-                        <span class="text-xs font-mono text-muted">Gorvert S</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white group-hover:text-accent transition-colors">VR Interaction Systems</h3>
-                    <p class="text-muted text-sm max-w-2xl">
-                        Op maat gemaakte VR-interacties voor Unreal Engine en Unity: physics-based grabbing, haptische
-                        feedback, hand-tracking en complexe object-manipulatie.
-                    </p>
+                  </span>
+                  <span class="text-xs text-muted">⭐ 5.0</span>
                 </div>
-                <a href="https://www.fiverr.com/gorvert" target="_blank" rel="noopener noreferrer"
-                class="flex-shrink-0 inline-flex items-center gap-2 px-4 py-2 bg-green-500/20 hover:bg-green-500/30 border border-green-500/40 rounded-lg text-green-400 text-sm font-bold transition-colors">
-                Bekijk profiel
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-            </a>
+                <h3
+                  class="text-lg font-bold text-white mb-1 group-hover:text-accent transition-colors"
+                >
+                  The Long Drive – Custom Car
+                </h3>
+                <p class="text-muted text-sm leading-relaxed">
+                  Volledig werkende custom voertuigen voor The Long Drive:
+                  physics, wielophanging en motor geluid.
+                </p>
+                <div class="flex flex-wrap gap-1.5 mt-3">
+                  <span
+                    class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted"
+                    >Unity</span
+                  >
+                  <span
+                    class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted"
+                    >Physics</span
+                  >
+                  <span
+                    class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted"
+                    >Vehicles</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ─── END FIVERR MODS ─── -->
         </div>
-    </div>
+      </div>
+    </main>
 
-</div>
-</div>
-<!-- ─── END FIVERR MODS ─── -->
-
-</div>
-</div>
-</main>
-
-<!-- ─── MODAL (Popup) ─── -->
-<div id="modModal" class="fixed inset-0 z-50 hidden modal-overlay flex items-center justify-center p-4 transition-opacity duration-300">
-    <div class="modal-content bg-[#0a1a45]/95 border border-white/10 rounded-2xl max-w-2xl w-full p-6 md:p-8 shadow-2xl backdrop-blur-sm relative">
+    <!-- ─── MODAL (Popup) ─── -->
+    <div
+      id="modModal"
+      class="fixed inset-0 z-50 hidden modal-overlay flex items-center justify-center p-4 transition-opacity duration-300"
+    >
+      <div
+        class="modal-content bg-[#0a1a45]/95 border border-white/10 rounded-2xl max-w-2xl w-full p-6 md:p-8 shadow-2xl backdrop-blur-sm relative"
+      >
         <!-- Close button -->
-        <button onclick="closeModal()" class="absolute top-4 right-4 text-muted hover:text-white transition-colors text-2xl leading-none">
-            &times;
+        <button
+          onclick="closeModal()"
+          class="absolute top-4 right-4 text-muted hover:text-white transition-colors text-2xl leading-none"
+        >
+          &times;
         </button>
-        <!-- Image -->
-        <div id="modalImageContainer" class="hidden mb-4">
-            <img id="modalImage" src="" alt="Mod preview" class="w-full rounded-xl border border-white/10" />
+
+        <!-- Video (if present) - click to open lightbox -->
+        <div id="modalVideoContainer" class="hidden mb-4">
+          <span class="media-label">🎬 Eindresultaat</span>
+          <div
+            onclick="openLightboxFromModal('video')"
+            class="cursor-zoom-in group relative rounded-xl overflow-hidden border border-white/10 hover:border-accent/50 transition-colors"
+          >
+            <video
+              id="modalVideo"
+              autoplay
+              muted
+              loop
+              playsinline
+              class="w-full rounded-xl border border-white/10 pointer-events-none"
+            >
+              <source src="" type="video/mp4" />
+            </video>
+            <div
+              class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div
+                class="bg-[#0a1530]/80 p-3 rounded-full border border-white/10 shadow-lg"
+              >
+                <svg
+                  class="w-8 h-8 text-[#60a5fa]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+            <div
+              class="absolute bottom-0 left-0 right-0 bg-[#0a1530]/80 px-3 py-1.5 text-[10px] font-mono text-[#9aa4b2]"
+            >
+              Klik om te vergroten
+            </div>
+          </div>
         </div>
+
+        <!-- Review Image (if present) - click to open lightbox -->
+        <div id="modalReviewContainer" class="hidden mb-4">
+          <span class="media-label">⭐ Review</span>
+          <div
+            onclick="openLightboxFromModal('review')"
+            class="cursor-zoom-in group relative rounded-xl overflow-hidden border border-white/10 hover:border-accent/50 transition-colors"
+          >
+            <img
+              id="modalReviewImage"
+              src=""
+              alt="Review screenshot"
+              class="w-full rounded-xl border border-white/10 pointer-events-none"
+            />
+            <div
+              class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <div
+                class="bg-[#0a1530]/80 p-3 rounded-full border border-white/10 shadow-lg"
+              >
+                <svg
+                  class="w-8 h-8 text-[#60a5fa]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              class="absolute bottom-0 left-0 right-0 bg-[#0a1530]/80 px-3 py-1.5 text-[10px] font-mono text-[#9aa4b2]"
+            >
+              Klik om te vergroten
+            </div>
+          </div>
+        </div>
+
         <!-- Dynamic content -->
         <div id="modalBody">
-            <h2 id="modalTitle" class="text-2xl font-bold text-accent mb-2"></h2>
-            <div id="modalEngine" class="text-xs font-mono text-muted mb-4"></div>
-            <div id="modalDescription" class="text-sm text-[#e6eef8] leading-relaxed space-y-3"></div>
-            <div id="modalTags" class="flex flex-wrap gap-2 mt-4"></div>
-            <div id="modalExtra" class="mt-4 text-muted text-sm border-t border-white/10 pt-4"></div>
+          <h2 id="modalTitle" class="text-2xl font-bold text-accent mb-2"></h2>
+          <div id="modalEngine" class="text-xs font-mono text-muted mb-4"></div>
+          <div
+            id="modalDescription"
+            class="text-sm text-[#e6eef8] leading-relaxed space-y-3"
+          ></div>
+          <div id="modalTags" class="flex flex-wrap gap-2 mt-4"></div>
+          <div
+            id="modalExtra"
+            class="mt-4 text-muted text-sm border-t border-white/10 pt-4"
+          ></div>
         </div>
+      </div>
     </div>
-</div>
 
-<!-- Scripts -->
-<script>
-    // --- Modal data with images (placeholders) ---
-    const modDetails = {
-        babysteps: {
-            title: "Baby Steps – Character Replacement",
-            engine: "Unity · 3D Character Swap",
-            image: "https://placehold.co/600x300/0a1530/60a5fa?text=Baby+Steps+Mod",
-            description: `
-                <p>Voor de game <strong>Baby Steps</strong> heb ik een volledige character replacement uitgevoerd. De standaard protagonist is vervangen door een custom 3D-model, met behoud van alle animaties, physics en interacties.</p>
-                <p>Het proces omvatte:</p>
-                <ul class="list-disc list-inside space-y-1 text-muted">
-                    <li>Rigging en skinning van het nieuwe model naar de bestaande skeleton.</li>
-                    <li>Materiaal- en shader-aanpassingen om te matchen met de game-stijl.</li>
-                    <li>Testen en finetunen van physics (colliders, ragdoll) zodat het gedrag identiek blijft.</li>
-                </ul>
-                <p>Het resultaat is een naadloze vervanging die de speelervaring een persoonlijke touch geeft.</p>
-            `,
-            tags: ["Unity", "3D", "Animation", "Rigging"],
-            extra: "⭐ 5.0 · 1 beoordeling · Commissioned for a single client"
-        },
+    <!-- ─── LIGHTBOX (same as BPV verslag) ─── -->
+    <div
+      id="lightbox"
+      class="hidden fixed inset-0 z-[60] bg-black/92 backdrop-blur-sm items-center justify-center p-0"
+      onclick="if (event.target === this) closeLightbox();"
+    >
+      <div
+        class="relative flex flex-col items-center"
+        style="width: 100vw; max-width: 100vw; padding: 0 8px"
+        onclick="event.stopPropagation()"
+      >
+        <button
+          onclick="closeLightbox()"
+          class="fixed top-4 right-4 z-[70] text-white text-lg font-bold w-9 h-9 flex items-center justify-center leading-none rounded-full bg-red-600 hover:bg-red-500 border-2 border-white/30 shadow-lg transition-all duration-150 cursor-pointer"
+          style="line-height: 1; padding-bottom: 1px"
+        >
+          &times;
+        </button>
+
+        <div
+          id="lb-counter"
+          class="absolute -top-4 left-0 text-[10px] font-mono text-[#9aa4b2] bg-black/50 px-2 py-1 rounded-full"
+        ></div>
+
+        <div class="flex items-center gap-2 sm:gap-4 w-full">
+          <button
+            id="lb-prev"
+            onclick="lbNav(-1)"
+            class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#60a5fa]/30 border border-white/20 text-white transition-all duration-150 cursor-pointer"
+            title="Vorige"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+
+          <div
+            id="lb-media-wrap"
+            class="flex-1 min-w-0 flex items-center justify-center rounded-lg overflow-hidden"
+          ></div>
+
+          <button
+            id="lb-next"
+            onclick="lbNav(1)"
+            class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#60a5fa]/30 border border-white/20 text-white transition-all duration-150 cursor-pointer"
+            title="Volgende"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div
+          id="lb-caption"
+          class="mt-3 text-center text-xs font-mono text-[#9aa4b2] max-w-2xl px-2"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      // --- Lightbox state (same as BPV verslag) ---
+      let _lbItems = [];
+      let _lbIndex = 0;
+      let _currentModKey = null;
+
+      // --- Modal data ---
+      const modDetails = {
         longdrive: {
-            title: "The Long Drive – Custom Car",
-            engine: "Unity · Vehicle Physics",
-            image: "https://placehold.co/600x300/0a1530/60a5fa?text=The+Long+Drive+Mod",
-            description: `
-                <p>Voor <strong>The Long Drive</strong> heb ik een volledig werkende custom auto ontwikkeld. Het voertuig beschikt over realistische fysica, wielophanging en motor geluid.</p>
-                <p>De implementatie omvat:</p>
-                <ul class="list-disc list-inside space-y-1 text-muted">
-                    <li>Chassis en wielen met eigen colliders en massaverdeling.</li>
-                    <li>Motor- en transmissiesimulatie met koppel en RPM.</li>
-                    <li>Geluidsintegratie die reageert op snelheid en belasting.</li>
-                    <li>Mogelijkheid om eigen texturen en onderdelen toe te voegen.</li>
-                </ul>
-                <p>Deze mod is volledig geïntegreerd met de bestaande game-logica en is getest op stabiliteit.</p>
-            `,
-            tags: ["Unity", "Physics", "Vehicles", "Audio"],
-            extra: "⭐ 5.0 · 1 beoordeling · Commissioned for a single client"
+          title: "The Long Drive – Custom Car",
+          engine: "Unity · C# · AssetBundles",
+          video: "./Projects/fiverr/longdrive/endresult.mp4",
+          reviewImage: "./Projects/fiverr/longdrive/review.jpeg",
+          description: `
+        <p>Voor <strong>The Long Drive</strong> heb ik een volledig werkende custom auto gemaakt. Ik heb hiervoor <strong>C#</strong>, <strong>Unity AssetBundles</strong> en <strong>stripped in-game scripts</strong> gebruikt om de auto in de game te krijgen.</p>
+        <p>Wat ik allemaal heb gedaan:</p>
+        <ul class="list-disc list-inside space-y-1 text-muted">
+            <li><strong>AssetBundles</strong> — De auto is verpakt als AssetBundle, zodat hij dynamisch geladen kan worden zonder de game zelf aan te passen.</li>
+            <li><strong>Stripped scripts</strong> — Ik heb de bestaande game-scripts teruggebracht tot de kern en ze aangepast zodat de custom auto gewoon werkt met de game-logica.</li>
+            <li><strong>Physics</strong> — Chassis en wielen met eigen colliders, massaverdeling en wielophanging. Voelt hetzelfde als de originele auto's.</li>
+            <li><strong>Motor & geluid</strong> — Koppel, RPM en geluid dat reageert op snelheid en belasting. </li>
+            <li><strong>Custom textures</strong> — Je kunt eigen kleuren en onderdelen toevoegen.</li>
+        </ul>
+        <p>De mod is volledig getest en werkt naadloos in de game. Geen crashes, geen rare bugs — gewoon een werkende custom auto.</p>
+    `,
+          tags: ["Unity", "C#", "AssetBundles", "Physics", "Vehicles"],
+          extra: "⭐ 5.0 · 1 beoordeling · Commissioned for a single client",
         },
-        bonelab: {
-            title: "Bonelab – Custom Avatar & Items",
-            engine: "Bonelab · VR Physics",
-            image: "https://placehold.co/600x300/0a1530/60a5fa?text=Bonelab+Mod",
-            description: `
-                <p>Voor <strong>Bonelab</strong> ontwikkel ik custom avatars, items en wapens met eigen fysica en interacties. Alles wordt naadloos geïntegreerd in de Bonelab-omgeving.</p>
-                <p>Mogelijkheden:</p>
-                <ul class="list-disc list-inside space-y-1 text-muted">
-                    <li>Avatars met eigen rigging en physics constraints.</li>
-                    <li>Items zoals wapens, gereedschappen en verzamelobjecten.</li>
-                    <li>Volledige levels met interactieve elementen.</li>
-                    <li>Ondersteuning voor hand-tracking en haptische feedback.</li>
-                </ul>
-                <p>De mods worden geleverd met duidelijke documentatie en installatie-instructies.</p>
-            `,
-            tags: ["Avatars", "Physics", "VR", "Levels"],
-            extra: "⭐ 5.0 · 1 beoordeling · Commissioned for a single client"
-        },
-        unrealmechanics: {
-            title: "Unreal Engine – Custom Mechanics",
-            engine: "Unreal Engine 5 · Blueprints/C++",
-            image: "https://placehold.co/600x300/0a1530/60a5fa?text=Unreal+Engine+Mechanics",
-            description: `
-                <p>Ik ontwikkel op maat gemaakte gameplay mechanics in <strong>Unreal Engine</strong>, zowel in Blueprints als in C++.</p>
-                <p>Voorbeelden van geleverde mechanics:</p>
-                <ul class="list-disc list-inside space-y-1 text-muted">
-                    <li>Physics-gestuurde objecten (grabbing, throwing, stacking).</li>
-                    <li>Complexe AI-gedragingen met behavior trees.</li>
-                    <li>Interactieve UI-systemen en HUD-elementen.</li>
-                    <li>Multiplayer-synchronisatie en netwerkcode.</li>
-                </ul>
-                <p>Alle code wordt voorzien van comments en is schaalbaar voor verdere uitbreiding.</p>
-            `,
-            tags: ["Blueprints", "C++", "AI", "Physics"],
-            extra: "⭐ 5.0 · 1 beoordeling · Commissioned for a single client"
-        },
-        vrinteractions: {
-            title: "VR Interaction Systems",
-            engine: "Unreal Engine / Unity · VR",
-            image: "https://placehold.co/600x300/0a1530/60a5fa?text=VR+Interactions",
-            description: `
-                <p>Ik bouw op maat gemaakte <strong>VR-interactiesystemen</strong> voor Unreal Engine en Unity, geschikt voor Meta Quest, HTC Vive en andere headsets.</p>
-                <p>Functionaliteiten:</p>
-                <ul class="list-disc list-inside space-y-1 text-muted">
-                    <li>Physics-based grabbing en objectmanipulatie.</li>
-                    <li>Haptische feedback (trillingen) voor realistische interactie.</li>
-                    <li>Hand-tracking en gesture-herkenning.</li>
-                    <li>Complexe interacties zoals knopbediening, schakelaars en puzzels.</li>
-                </ul>
-                <p>Ook lever ik custom Bonelab-avatars en levels op verzoek. Alle systemen worden grondig getest op stabiliteit en gebruiksvriendelijkheid.</p>
-            `,
-            tags: ["VR", "Physics", "Haptics", "Hand-tracking"],
-            extra: "⭐ 5.0 · 1 beoordeling · Commissioned for a single client · Featured"
-        }
-    };
+      };
 
-    // --- Modal functions ---
-    function openModal(modKey) {
+      // --- Lightbox functions (matching BPV verslag) ---
+      function _buildLightboxItems(modKey) {
         const data = modDetails[modKey];
+        if (!data) return [];
+        const items = [];
+        if (data.video) {
+          items.push({
+            src: data.video,
+            isVideo: true,
+            caption: "🎬 Eindresultaat — The Long Drive Custom Car",
+          });
+        }
+        if (data.reviewImage) {
+          items.push({
+            src: data.reviewImage,
+            isVideo: false,
+            caption: "⭐ Review — 5.0 sterren",
+          });
+        }
+        return items;
+      }
+
+      function _renderLightboxContent(index) {
+        const mediaWrap = document.getElementById("lb-media-wrap");
+        const capEl = document.getElementById("lb-caption");
+        const counterEl = document.getElementById("lb-counter");
+
+        const oldVid = mediaWrap.querySelector("video");
+        if (oldVid) oldVid.pause();
+        mediaWrap.innerHTML = "";
+
+        const info = _lbItems[index];
+        if (!info) return;
+
+        if (info.isVideo) {
+          const video = document.createElement("video");
+          video.src = info.src;
+          video.autoplay = true;
+          video.controls = true;
+          video.muted = false;
+          video.loop = true;
+          video.className =
+            "w-full rounded-lg shadow-2xl border border-white/10 cursor-default object-contain";
+          video.style.maxHeight = "84vh";
+          mediaWrap.appendChild(video);
+        } else {
+          const img = document.createElement("img");
+          img.src = info.src;
+          img.className =
+            "object-contain rounded-lg shadow-2xl border border-white/10 cursor-default mx-auto block";
+          img.style.maxHeight = "84vh";
+          img.style.maxWidth = "100%";
+          mediaWrap.appendChild(img);
+        }
+
+        capEl.textContent = info.caption || "";
+        counterEl.textContent = index + 1 + " / " + _lbItems.length;
+
+        document.getElementById("lb-prev").style.opacity =
+          index === 0 ? "0.3" : "1";
+        document.getElementById("lb-next").style.opacity =
+          index === _lbItems.length - 1 ? "0.3" : "1";
+      }
+
+      function openLightboxFromModal(type) {
+        if (!_currentModKey) return;
+        const data = modDetails[_currentModKey];
         if (!data) return;
 
-        document.getElementById('modalTitle').textContent = data.title;
-        document.getElementById('modalEngine').textContent = data.engine;
-        document.getElementById('modalDescription').innerHTML = data.description;
+        _lbItems = _buildLightboxItems(_currentModKey);
+        if (_lbItems.length === 0) return;
 
-        // Image
-        const imgContainer = document.getElementById('modalImageContainer');
-        const img = document.getElementById('modalImage');
-        if (data.image) {
-            img.src = data.image;
-            img.alt = data.title + ' preview';
-            imgContainer.classList.remove('hidden');
+        // Find index based on type
+        let idx = 0;
+        if (type === "video") {
+          idx = _lbItems.findIndex((item) => item.isVideo === true);
+        } else if (type === "review") {
+          idx = _lbItems.findIndex((item) => item.isVideo === false);
+        }
+        if (idx === -1) idx = 0;
+
+        _lbIndex = idx;
+        const lb = document.getElementById("lightbox");
+        lb.classList.remove("hidden");
+        lb.classList.add("flex");
+        _renderLightboxContent(_lbIndex);
+      }
+
+      function closeLightbox() {
+        const lb = document.getElementById("lightbox");
+        const v = lb.querySelector("video");
+        if (v) v.pause();
+        lb.classList.add("hidden");
+        lb.classList.remove("flex");
+        document.getElementById("lb-media-wrap").innerHTML = "";
+      }
+
+      function lbNav(dir) {
+        const next = _lbIndex + dir;
+        if (next < 0 || next >= _lbItems.length) return;
+        _lbIndex = next;
+        _renderLightboxContent(_lbIndex);
+      }
+
+      // Keyboard support for lightbox
+      document.addEventListener("keydown", (e) => {
+        const lb = document.getElementById("lightbox");
+        if (lb.classList.contains("hidden")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") lbNav(-1);
+        if (e.key === "ArrowRight") lbNav(1);
+      });
+
+      // Close lightbox on overlay click
+      document
+        .getElementById("lightbox")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeLightbox();
+        });
+
+      // --- Modal functions ---
+      function openModal(modKey) {
+        const data = modDetails[modKey];
+        if (!data) return;
+        _currentModKey = modKey;
+
+        document.getElementById("modalTitle").textContent = data.title;
+        document.getElementById("modalEngine").textContent = data.engine;
+        document.getElementById("modalDescription").innerHTML =
+          data.description;
+
+        // Video
+        const videoContainer = document.getElementById("modalVideoContainer");
+        const video = document.getElementById("modalVideo");
+        if (data.video) {
+          const source = video.querySelector("source");
+          source.src = data.video;
+          video.load();
+          videoContainer.classList.remove("hidden");
         } else {
-            imgContainer.classList.add('hidden');
+          videoContainer.classList.add("hidden");
         }
 
-        const tagsContainer = document.getElementById('modalTags');
-        tagsContainer.innerHTML = '';
-        data.tags.forEach(tag => {
-            const span = document.createElement('span');
-            span.className = 'text-[10px] px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-muted';
-            span.textContent = tag;
-            tagsContainer.appendChild(span);
+        // Review Image
+        const reviewContainer = document.getElementById("modalReviewContainer");
+        const reviewImg = document.getElementById("modalReviewImage");
+        if (data.reviewImage) {
+          reviewImg.src = data.reviewImage;
+          reviewContainer.classList.remove("hidden");
+        } else {
+          reviewContainer.classList.add("hidden");
+        }
+
+        const tagsContainer = document.getElementById("modalTags");
+        tagsContainer.innerHTML = "";
+        data.tags.forEach((tag) => {
+          const span = document.createElement("span");
+          span.className =
+            "text-[10px] px-2.5 py-1 bg-white/5 border border-white/10 rounded-full text-muted";
+          span.textContent = tag;
+          tagsContainer.appendChild(span);
         });
 
-        document.getElementById('modalExtra').textContent = data.extra || '';
+        document.getElementById("modalExtra").textContent = data.extra || "";
 
-        const modal = document.getElementById('modModal');
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-    }
+        const modal = document.getElementById("modModal");
+        modal.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
 
-    function closeModal() {
-        const modal = document.getElementById('modModal');
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
-    }
+      function closeModal() {
+        const modal = document.getElementById("modModal");
+        const video = document.getElementById("modalVideo");
+        if (video) video.pause();
+        modal.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
 
-    // --- Attach click events to mod cards ---
-    document.querySelectorAll('.mod-card[data-mod]').forEach(card => {
-        card.addEventListener('click', function(e) {
-            if (e.target.closest('a')) return;
-            const modKey = this.dataset.mod;
-            openModal(modKey);
+      // --- Attach click events to mod cards ---
+      document.querySelectorAll(".mod-card[data-mod]").forEach((card) => {
+        card.addEventListener("click", function (e) {
+          if (e.target.closest("a")) return;
+          const modKey = this.dataset.mod;
+          openModal(modKey);
         });
-    });
+      });
 
-    // Close modal on overlay click or Escape key
-    document.getElementById('modModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
-    });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeModal();
-    });
+      // Close modal on overlay click or Escape key
+      document
+        .getElementById("modModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) closeModal();
+        });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          const modal = document.getElementById("modModal");
+          if (!modal.classList.contains("hidden")) closeModal();
+        }
+      });
 
-    // --- Sidebar injection ---
-    (function() {
+      // --- Sidebar injection ---
+      (function () {
         function getSidebarPath() {
-            const path = window.location.pathname;
-            if (path.includes('/Projects/') || path.includes('/project/')) {
-                return '../sidebar.html';
-            }
-            return 'sidebar.html';
+          const path = window.location.pathname;
+          if (path.includes("/Projects/") || path.includes("/project/")) {
+            return "../sidebar.html";
+          }
+          return "sidebar.html";
         }
 
         fetch(getSidebarPath())
-            .then(res => {
-                if (!res.ok) throw new Error('Sidebar not found');
-                return res.text();
-            })
-            .then(html => {
-                document.getElementById('sidebar-container').innerHTML = html;
-                const currentPath = window.location.pathname.split('/').pop() || 'projects.html';
-                document.querySelectorAll('#mobile-menu a[href]').forEach(link => {
-                    const href = link.getAttribute('href');
-                    if (href === currentPath) {
-                        link.classList.add('text-accent', 'bg-white/5');
-                        link.classList.remove('text-muted');
-                    } else {
-                        link.classList.remove('text-accent', 'bg-white/5');
-                        link.classList.add('text-muted');
-                    }
-                });
-            })
-            .catch(err => console.warn('Sidebar injection failed:', err));
+          .then((res) => {
+            if (!res.ok) throw new Error("Sidebar not found");
+            return res.text();
+          })
+          .then((html) => {
+            document.getElementById("sidebar-container").innerHTML = html;
+            const currentPath =
+              window.location.pathname.split("/").pop() || "projects.html";
+            document
+              .querySelectorAll("#mobile-menu a[href]")
+              .forEach((link) => {
+                const href = link.getAttribute("href");
+                if (href === currentPath) {
+                  link.classList.add("text-accent", "bg-white/5");
+                  link.classList.remove("text-muted");
+                } else {
+                  link.classList.remove("text-accent", "bg-white/5");
+                  link.classList.add("text-muted");
+                }
+              });
+          })
+          .catch((err) => console.warn("Sidebar injection failed:", err));
 
-        window.toggleMenu = function() {
-            const menu = document.getElementById('mobile-menu');
-            const overlay = document.getElementById('mobile-overlay');
-            if (!menu) return;
-            const isHidden = menu.classList.contains('-translate-x-full');
-            if (isHidden) {
-                menu.classList.remove('-translate-x-full');
-                menu.classList.add('translate-x-0');
-                if (overlay) overlay.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            } else {
-                menu.classList.remove('translate-x-0');
-                menu.classList.add('-translate-x-full');
-                if (overlay) overlay.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
+        window.toggleMenu = function () {
+          const menu = document.getElementById("mobile-menu");
+          const overlay = document.getElementById("mobile-overlay");
+          if (!menu) return;
+          const isHidden = menu.classList.contains("-translate-x-full");
+          if (isHidden) {
+            menu.classList.remove("-translate-x-full");
+            menu.classList.add("translate-x-0");
+            if (overlay) overlay.classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+          } else {
+            menu.classList.remove("translate-x-0");
+            menu.classList.add("-translate-x-full");
+            if (overlay) overlay.classList.add("hidden");
+            document.body.style.overflow = "";
+          }
         };
 
-        const overlay = document.getElementById('mobile-overlay');
+        const overlay = document.getElementById("mobile-overlay");
         if (overlay) {
-            overlay.addEventListener('click', toggleMenu);
+          overlay.addEventListener("click", toggleMenu);
         }
 
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('mobile-menu');
-            if (!menu) return;
-            const link = e.target.closest('#mobile-menu a');
-            if (link && window.innerWidth < 768) {
-                menu.classList.remove('translate-x-0');
-                menu.classList.add('-translate-x-full');
-                if (overlay) overlay.classList.add('hidden');
-                document.body.style.overflow = '';
-            }
+        document.addEventListener("click", function (e) {
+          const menu = document.getElementById("mobile-menu");
+          if (!menu) return;
+          const link = e.target.closest("#mobile-menu a");
+          if (link && window.innerWidth < 768) {
+            menu.classList.remove("translate-x-0");
+            menu.classList.add("-translate-x-full");
+            if (overlay) overlay.classList.add("hidden");
+            document.body.style.overflow = "";
+          }
         });
 
         let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                const menu = document.getElementById('mobile-menu');
-                const overlay = document.getElementById('mobile-overlay');
-                if (!menu) return;
-                if (window.innerWidth >= 768) {
-                    menu.classList.remove('-translate-x-full');
-                    menu.classList.add('translate-x-0');
-                    if (overlay) overlay.classList.add('hidden');
-                    document.body.style.overflow = '';
-                } else {
-                    if (!menu.classList.contains('translate-x-0')) {
-                        menu.classList.add('-translate-x-full');
-                        menu.classList.remove('translate-x-0');
-                        if (overlay) overlay.classList.add('hidden');
-                    }
-                }
-            }, 200);
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            const menu = document.getElementById("mobile-menu");
+            const overlay = document.getElementById("mobile-overlay");
+            if (!menu) return;
+            if (window.innerWidth >= 768) {
+              menu.classList.remove("-translate-x-full");
+              menu.classList.add("translate-x-0");
+              if (overlay) overlay.classList.add("hidden");
+              document.body.style.overflow = "";
+            } else {
+              if (!menu.classList.contains("translate-x-0")) {
+                menu.classList.add("-translate-x-full");
+                menu.classList.remove("translate-x-0");
+                if (overlay) overlay.classList.add("hidden");
+              }
+            }
+          }, 200);
         });
-    })();
+      })();
 
-    // --- Particles ---
-    if (window.particlesJS) {
+      // --- Particles ---
+      if (window.particlesJS) {
         particlesJS("particles-js", {
-            particles: {
-                number: { value: 100, density: { enable: true, value_area: 800 } },
-                color: { value: "#60a5fa" },
-                shape: { type: "circle" },
-                opacity: { value: 0.6 },
-                size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 120, color: "#60a5fa", opacity: 0.12, width: 1 },
-                move: { enable: true, speed: 1.5, out_mode: "out" },
+          particles: {
+            number: { value: 100, density: { enable: true, value_area: 800 } },
+            color: { value: "#60a5fa" },
+            shape: { type: "circle" },
+            opacity: { value: 0.6 },
+            size: { value: 3, random: true },
+            line_linked: {
+              enable: true,
+              distance: 120,
+              color: "#60a5fa",
+              opacity: 0.12,
+              width: 1,
             },
-            interactivity: {
-                detect_on: "window",
-                events: { onhover: { enable: true, mode: "repulse" } },
-                modes: { repulse: { distance: 100 } },
-            },
-            retina_detect: true,
+            move: { enable: true, speed: 1.5, out_mode: "out" },
+          },
+          interactivity: {
+            detect_on: "window",
+            events: { onhover: { enable: true, mode: "repulse" } },
+            modes: { repulse: { distance: 100 } },
+          },
+          retina_detect: true,
         });
-    }
-</script>
-
-</body>
+      }
+    </script>
+  </body>
 </html>
