@@ -409,7 +409,6 @@
         // 10. Update state
         currentRoute = route;
         highlightNav(route);
-        updateUrl(route);
 
       } catch (err) {
         mainEl.innerHTML = `<div class="text-center text-muted py-12">Failed to load content.</div>`;
@@ -421,11 +420,6 @@
     function navigateTo(route) {
       if (route === currentRoute || isLoading) return;
       loadContent(route);
-    }
-
-    function updateUrl(route) {
-      const path = route === DEFAULT_ROUTE ? '/' : '/' + route;
-      history.pushState({ route }, '', path);
     }
 
     window.addEventListener('popstate', (e) => {
