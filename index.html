@@ -66,12 +66,11 @@
       color: #9aa4b2;
     }
 
-    /* ── Global content transition ── */
-    #main-content {
-      transition: opacity 0.2s ease;
-    }
-    #main-content.swapping {
-      opacity: 0.4;
+    /* ── Page content sliding animation ── */
+    #main-content .page-content {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.4s ease;
+      will-change: transform, opacity;
     }
 
     /* ── Shared page styles ── */
@@ -221,8 +220,8 @@
 
   <!-- MAIN CONTENT -->
   <main class="flex-1 flex items-center justify-center p-6 md:p-12 relative z-20">
-    <div id="main-content" class="w-full max-w-3xl transition-opacity duration-200">
-      <!-- content swapped here -->
+    <div id="main-content" class="w-full max-w-3xl">
+      <!-- content swapped here with sliding animation -->
     </div>
   </main>
 
@@ -293,6 +292,8 @@
     };
     const DEFAULT_ROUTE = 'about';
     let currentRoute = DEFAULT_ROUTE;
+    let isLoading = false;
+    const ANIMATION_DURATION = 400; // ms
 
     // ─── SIDEBAR ──────────────────────────────────────────────────────────
     async function loadSidebar() {
@@ -319,13 +320,35 @@
       });
     }
 
-    // ─── CONTENT LOADER ──────────────────────────────────────────────────
-    const contentEl = document.getElementById('main-content');
+    // ─── CONTENT LOADER WITH SLIDING ANIMATION ──────────────────────────
+    const mainEl = document.getElementById('main-content');
 
     async function loadContent(route) {
+      if (isLoading) return;
+      isLoading = true;
+
       const url = ROUTES[route];
-      if (!url) return;
-      contentEl.classList.add('swapping');
+      if (!url) {
+        isLoading = false;
+        return;
+      }
+
+      // 1. Animate existing content out (if any)
+      const existingWrapper = mainEl.firstElementChild;
+      let exitPromise = Promise.resolve();
+      if (existingWrapper && existingWrapper.classList.contains('page-content')) {
+        // Set transform to slide down (translateY(100%)) and fade
+        existingWrapper.style.transform = 'translateY(100%)';
+        existingWrapper.style.opacity = '0';
+        exitPromise = new Promise(resolve => {
+          setTimeout(resolve, ANIMATION_DURATION);
+        });
+      }
+
+      // 2. Wait for exit animation
+      await exitPromise;
+
+      // 3. Fetch new content
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error('Content not found');
@@ -334,16 +357,37 @@
         const doc = parser.parseFromString(html, 'text/html');
         const bodyContent = doc.body ? doc.body.innerHTML : html;
 
-        // extract scripts
+        // Extract scripts
         const scripts = [];
         doc.querySelectorAll('script').forEach(s => {
           if (s.src) scripts.push({ src: s.src, inline: null });
           else scripts.push({ src: null, inline: s.textContent });
         });
 
-        contentEl.innerHTML = bodyContent;
+        // 4. Create new wrapper, start hidden above (translateY(-100%))
+        const newWrapper = document.createElement('div');
+        newWrapper.className = 'page-content';
+        newWrapper.style.transform = 'translateY(-100%)';
+        newWrapper.style.opacity = '0';
+        newWrapper.innerHTML = bodyContent;
 
-        // execute scripts
+        // Remove old wrapper (if any)
+        if (existingWrapper) {
+          existingWrapper.remove();
+        }
+
+        // 5. Append new wrapper
+        mainEl.appendChild(newWrapper);
+
+        // 6. Force reflow then animate in
+        newWrapper.offsetHeight; // reflow
+        newWrapper.style.transform = 'translateY(0%)';
+        newWrapper.style.opacity = '1';
+
+        // 7. Wait for entry animation to complete (optional, but we want scripts after)
+        await new Promise(resolve => setTimeout(resolve, ANIMATION_DURATION));
+
+        // 8. Execute scripts
         scripts.forEach(s => {
           const script = document.createElement('script');
           if (s.src) { script.src = s.src; script.async = false; }
@@ -358,21 +402,24 @@
           }
         });
 
-        // page‑specific initialisation
+        // 9. Page-specific initialisation
         if (route === 'projects') initProjectsPage();
         if (route === 'contact') initContactPage();
 
+        // 10. Update state
         currentRoute = route;
         highlightNav(route);
         updateUrl(route);
+
       } catch (err) {
-        contentEl.innerHTML = `<div class="text-center text-muted py-12">Failed to load content.</div>`;
+        mainEl.innerHTML = `<div class="text-center text-muted py-12">Failed to load content.</div>`;
       }
-      contentEl.classList.remove('swapping');
+
+      isLoading = false;
     }
 
     function navigateTo(route) {
-      if (route === currentRoute) return;
+      if (route === currentRoute || isLoading) return;
       loadContent(route);
     }
 
@@ -383,7 +430,9 @@
 
     window.addEventListener('popstate', (e) => {
       const route = e.state?.route || DEFAULT_ROUTE;
-      if (route !== currentRoute) loadContent(route);
+      if (route !== currentRoute && !isLoading) {
+        loadContent(route);
+      }
     });
 
     // ─── TOGGLE MENU ──────────────────────────────────────────────────────
@@ -691,6 +740,8 @@
     // ─── STARTUP ──────────────────────────────────────────────────────────
     async function init() {
       await loadSidebar();
+      // Initial load: we want the first content to slide in from top
+      // We'll call loadContent which will handle the slide-in (no exit animation)
       await loadContent(DEFAULT_ROUTE);
     }
 
