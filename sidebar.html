@@ -1,4 +1,41 @@
 <!-- sidebar.html -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  #mobile-menu, #mobile-menu * {
+    font-family: 'Nunito', sans-serif !important;
+  }
+  #mobile-menu .project-link {
+    background: rgba(96, 165, 250, 0.12);
+    border-color: rgba(96, 165, 250, 0.30);
+    color: #60a5fa;
+    font-weight: 800;
+    transition: all 0.25s ease;
+    letter-spacing: 0.02em;
+  }
+  #mobile-menu .project-link:hover {
+    background: rgba(96, 165, 250, 0.25);
+    border-color: #60a5fa;
+    transform: translateX(4px);
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.15);
+  }
+  #mobile-menu .nav-link {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  #mobile-menu .nav-link:hover {
+    color: #60a5fa;
+    background: rgba(255,255,255,0.06);
+  }
+  #mobile-menu .section-label {
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    color: #9aa4b2;
+  }
+</style>
+
 <aside id="mobile-menu"
        class="fixed md:sticky top-0 left-0 z-40 h-screen w-64 bg-[#0a1a45]/95 border-r border-white/10 p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-200 ease-in-out md:translate-x-0 backdrop-blur-md md:bg-white/5 overflow-y-auto">
 
@@ -13,33 +50,32 @@
   <!-- Top section -->
   <div class="space-y-8">
     <div>
-      <h2 class="text-xs font-bold tracking-widest text-[#9aa4b2] uppercase mb-4">Menu</h2>
-      <nav class="flex flex-col space-y-1 text-sm font-medium">
-        <a href="main.html" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Home</a>
-        <a href="about.html" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">About</a>
-        <a href="projects.html" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Projects</a>
-        <a href="contact.html" class="px-3 py-2 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors">Contact</a>
+      <h2 class="section-label text-[11px] uppercase mb-4">Menu</h2>
+      <nav class="flex flex-col space-y-1 text-sm">
+        <a href="about.html" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">Home</a>
+        <a href="about.html" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">About</a>
+        <a href="projects.html" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">Projects</a>
+        <a href="contact.html" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">Contact</a>
       </nav>
     </div>
+  </div>
 
-    <div class="border-t border-white/5 pt-4">
-      <p class="text-[10px] font-bold tracking-widest text-[#9aa4b2] uppercase mb-2">Projecten</p>
-      <div class="flex flex-col gap-2">
+  <!-- Bottom section with Project links and footer -->
+  <div class="flex flex-col gap-3">
+    <div class="border-t border-white/10 pt-4">
+      <p class="section-label text-[11px] uppercase mb-3">Projecten</p>
+      <div class="flex flex-col gap-2.5">
         <a href="Projects/recoil.html"
-           class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-[#9aa4b2] hover:bg-white/10 hover:text-[#60a5fa] transition-colors">
+           class="project-link block text-center text-sm font-extrabold px-3 py-2.5 rounded-xl border transition-all">
           Recoil
         </a>
         <a href="Projects/BPV_Project.html"
-           class="block text-center text-xs font-bold px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-[#9aa4b2] hover:bg-white/10 hover:text-[#60a5fa] transition-colors">
+           class="project-link block text-center text-sm font-extrabold px-3 py-2.5 rounded-xl border transition-all">
           BPV Project
         </a>
       </div>
     </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="flex flex-col gap-2">
-    <div class="text-xs text-[#9aa4b2] font-mono uppercase tracking-widest mt-1">
+    <div class="text-[11px] text-[#9aa4b2] font-bold uppercase tracking-widest mt-1">
       Leroy Exel &copy; 2026
     </div>
   </div>
