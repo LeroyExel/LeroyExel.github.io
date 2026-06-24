@@ -1,0 +1,181 @@
+// pages/Contact.jsx
+import { useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
+function Contact() {
+  const formRef = useRef(null);
+  const feedbackRef = useRef(null);
+
+  useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init('Y7_VfCpY6XSVV9JuV');
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const feedback = feedbackRef.current;
+    if (!feedback) return;
+
+    feedback.className = 'mt-4 text-sm text-center text-accent';
+    feedback.textContent = '📨 Sending message...';
+
+    emailjs
+      .sendForm('service_k551zka', 'template_jjmglr6', e.target)
+      .then(() => {
+        feedback.className = 'mt-4 text-sm text-center text-emerald-400';
+        feedback.textContent = "Thanks! Your message has been sent. I'll get back to you as soon as possible.";
+        e.target.reset();
+      })
+      .catch((error) => {
+        feedback.className = 'mt-4 text-sm text-center text-red-400';
+        feedback.textContent = 'Something went wrong. Please try again later.';
+        console.error('Error:', error);
+      });
+  };
+
+  return (
+    <>
+      <div className="text-center mb-10">
+        <h1 className="text-4xl font-bold text-white mb-3">Contact</h1>
+        <p className="text-muted text-sm max-w-md mx-auto">
+          Have a question, a project idea, or just want to connect? I'd love to hear from you!
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <a
+          href="mailto:leroyexell@gmail.com"
+          className="contact-card bg-white/5 border border-white/10 rounded-xl p-5 flex items-center gap-4 hover:border-accent group transition-all hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(96,165,250,0.15)]"
+        >
+          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center shrink-0 group-hover:bg-accent/30 transition-colors">
+            <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-xs text-muted uppercase tracking-wider">Email</p>
+            <p className="text-white text-sm font-medium group-hover:text-accent transition-colors">leroyexell@gmail.com</p>
+          </div>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/leroy-exel-8b3b4a381/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="contact-card bg-white/5 border border-white/10 rounded-xl p-5 flex items-center gap-4 hover:border-accent group transition-all hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(96,165,250,0.15)]"
+        >
+          <div className="w-12 h-12 rounded-full bg-[#0a66c2]/20 flex items-center justify-center shrink-0 group-hover:bg-[#0a66c2]/30 transition-colors">
+            <svg className="w-6 h-6 text-[#0a66c2]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-xs text-muted uppercase tracking-wider">LinkedIn</p>
+            <p className="text-white text-sm font-medium group-hover:text-accent transition-colors">Leroy Exel</p>
+          </div>
+        </a>
+
+        <a
+          href="https://github.com/LeroyExel"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="contact-card bg-white/5 border border-white/10 rounded-xl p-5 flex items-center gap-4 hover:border-accent group transition-all hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(96,165,250,0.15)]"
+        >
+          <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-white/20 transition-colors">
+            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.468-2.38 1.235-3.22-.123-.3-.535-1.52.117-3.16 0 0 1.008-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.29-1.552 3.297-1.23 3.297-1.23.653 1.64.24 2.86.118 3.16.768.84 1.233 1.91 1.233 3.22 0 4.61-2.804 5.62-5.476 5.92.43.37.824 1.102.824 2.22 0 1.602-.015 2.894-.015 3.287 0 .322.216.694.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-xs text-muted uppercase tracking-wider">GitHub</p>
+            <p className="text-white text-sm font-medium group-hover:text-accent transition-colors">LeroyExel</p>
+          </div>
+        </a>
+
+        <a
+          href="https://www.fiverr.com/gorvert"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="contact-card bg-white/5 border border-white/10 rounded-xl p-5 flex items-center gap-4 hover:border-green-400 group transition-all hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(96,165,250,0.15)]"
+        >
+          <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center shrink-0 group-hover:bg-green-500/30 transition-colors">
+            <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.5 4H6.5C4.6 4 3 5.6 3 7.5v9C3 18.4 4.6 20 6.5 20h11c1.9 0 3.5-1.6 3.5-3.5v-9C21 5.6 19.4 4 17.5 4zm0 14h-11c-.8 0-1.5-.7-1.5-1.5v-9C5 6.7 5.7 6 6.5 6h11c.8 0 1.5.7 1.5 1.5v9c0 .8-.7 1.5-1.5 1.5zM8 8h8v1.5H8V8zm0 3h8v1.5H8V11zm0 3h5v1.5H8V14z" />
+            </svg>
+          </div>
+          <div>
+            <p className="text-xs text-muted uppercase tracking-wider">Fiverr</p>
+            <p className="text-white text-sm font-medium group-hover:text-green-400 transition-colors">Gorvert S</p>
+          </div>
+        </a>
+      </div>
+
+      <div className="bg-white/5 border border-white/10 rounded-xl p-6 md:p-8">
+        <h2 className="text-lg font-bold text-white mb-4">Send a message</h2>
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your name"
+              className="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(96,165,250,0.2)] transition-all"
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Your email address"
+              className="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(96,165,250,0.2)] transition-all"
+            />
+          </div>
+          <div>
+            <label htmlFor="subject" className="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">
+              Subject
+            </label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              required
+              placeholder="What's it about?"
+              className="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(96,165,250,0.2)] transition-all"
+            />
+          </div>
+          <div>
+            <label htmlFor="message" className="block text-xs font-semibold text-muted uppercase tracking-wider mb-1.5">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="4"
+              placeholder="Tell me what you're working on..."
+              className="form-input w-full px-4 py-2.5 bg-[#0a1530] border border-white/10 rounded-lg text-white placeholder-muted/50 text-sm resize-none focus:outline-none focus:border-accent focus:shadow-[0_0_0_3px_rgba(96,165,250,0.2)] transition-all"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full py-3 bg-accent hover:bg-accent/80 text-white font-bold rounded-lg transition-colors text-sm"
+          >
+            Send message
+          </button>
+        </form>
+        <div ref={feedbackRef} className="mt-4 text-sm text-center hidden"></div>
+      </div>
+    </>
+  );
+}
+
+export default Contact;
