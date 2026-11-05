@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leroy Exel – Software Developer</title>
-  <meta name="description" content="Leroy Exel — Software Developer from Almelo. Unreal Engine 5, Unity, VR, physics-driven games. Ex-Saxion XR Lab intern, former freelancer." />
+  <meta name="description" content="Leroy Exel — Software Developer (MBO 4) from Almelo. Unreal Engine 5, Unity, VR. Ex-Saxion XR Lab intern, available for an internship from August 2027." />
   <meta property="og:title" content="Leroy Exel – Software Developer" />
   <meta property="og:description" content="Unreal Engine 5, Unity, VR and physics-driven games. Ex-Saxion XR Lab intern, former freelancer." />
   <meta property="og:type" content="website" />
@@ -13,38 +13,35 @@
   <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/svg+xml" href="Assets/favicon.svg" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            bg: '#0f1724',
-            muted: '#9aa4b2',
-            accent: '#60a5fa',
-            text: '#e6eef8'
-          },
-          keyframes: {
-            bounceX: {
-              '0%, 100%': { left: '0%' },
-              '50%': { left: 'calc(100% - 4rem)' },
-            },
-          },
-          animation: {
-            bounceX: 'bounceX 3s ease-in-out forwards',
-          },
-        }
-      }
-    };
-  </script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-bg: #0f1724;
+      --color-muted: #9aa4b2;
+      --color-accent: #60a5fa;
+      --color-text: #e6eef8;
+    }
+  </style>
 
   <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    /* ── Language twins: only the active language is shown ── */
+    html[lang="nl"] [data-lang="en"] { display: none !important; }
+    html[lang="en"] [data-lang="nl"] { display: none !important; }
+    #mobile-menu a[data-route].active-nav {
+      color: #60a5fa !important;
+      background: rgba(255, 255, 255, 0.05);
+    }
     /* ── Shared sidebar styles ── */
     #mobile-menu, #mobile-menu * {
-      font-family: 'Nunito', sans-serif !important;
+      font-family: 'Inter', system-ui, sans-serif !important;
     }
     #mobile-menu .project-link {
       background: rgba(96, 165, 250, 0.12);
@@ -208,10 +205,13 @@
   </style>
 </head>
 
-<body class="min-h-screen text-white flex bg-linear-to-b from-[#0f2b72] to-[#071025] text-text font-sans relative">
+<body class="min-h-screen text-white flex bg-[#0b1526] text-text relative antialiased">
 
-  <!-- PARTICLES BACKGROUND -->
-  <div id="particles-js" aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
+  <!-- Subtle static backdrop glows (no animation libraries) -->
+  <div aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none">
+    <div class="absolute -top-40 left-1/4 w-[36rem] h-[36rem] rounded-full opacity-20" style="background: radial-gradient(circle, #1d4ed8 0%, transparent 65%);"></div>
+    <div class="absolute bottom-0 right-0 w-[28rem] h-[28rem] rounded-full opacity-10" style="background: radial-gradient(circle, #60a5fa 0%, transparent 65%);"></div>
+  </div>
 
   <!-- MOBILE MENU BUTTON -->
   <button id="menuBtn" onclick="toggleMenu()" class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
@@ -219,6 +219,12 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
     </svg>
   </button>
+
+  <!-- MOBILE LANGUAGE TOGGLE -->
+  <div class="fixed top-4 right-4 z-50 md:hidden flex gap-1 bg-[#0d1a33]/90 border border-white/10 rounded-xl p-1 backdrop-blur-md">
+    <button data-lang-toggle="nl" onclick="setLang('nl')" class="text-[11px] font-extrabold px-2.5 py-1 rounded-lg transition-all text-muted">NL</button>
+    <button data-lang-toggle="en" onclick="setLang('en')" class="text-[11px] font-extrabold px-2.5 py-1 rounded-lg transition-all text-muted">EN</button>
+  </div>
 
   <!-- MOBILE OVERLAY -->
   <div id="mobile-overlay" onclick="toggleMenu()" class="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm md:hidden hidden"></div>
@@ -321,10 +327,7 @@
 
     function highlightNav(route) {
       document.querySelectorAll('#mobile-menu a[data-route]').forEach(link => {
-        const r = link.getAttribute('data-route');
-        link.classList.remove('text-accent', 'bg-white/5');
-        link.classList.add('text-muted');
-        if (r === route) link.classList.add('text-accent', 'bg-white/5');
+        link.classList.toggle('active-nav', link.getAttribute('data-route') === route);
       });
     }
 
@@ -413,6 +416,7 @@
         // 9. Page-specific initialisation
         if (route === 'projects') initProjectsPage();
         if (route === 'contact') initContactPage();
+        applyPlaceholders(currentLang());
 
         // 10. Update state
         currentRoute = route;
@@ -497,26 +501,39 @@
       }, 200);
     });
 
-    // ─── PARTICLES ──────────────────────────────────────────────────────
-    if (window.particlesJS) {
-      particlesJS("particles-js", {
-        particles: {
-          number: { value: 100, density: { enable: true, value_area: 800 } },
-          color: { value: "#60a5fa" },
-          shape: { type: "circle" },
-          opacity: { value: 0.6 },
-          size: { value: 3, random: true },
-          line_linked: { enable: true, distance: 120, color: "#60a5fa", opacity: 0.12, width: 1 },
-          move: { enable: true, speed: 1.5, out_mode: "out" },
-        },
-        interactivity: {
-          detect_on: "window",
-          events: { onhover: { enable: true, mode: "repulse" } },
-          modes: { repulse: { distance: 100 } },
-        },
-        retina_detect: true,
+    // ─── LANGUAGE (NL/EN) ─────────────────────────────────────────────
+    const LANG_KEY = 'leroyexel-lang';
+    function currentLang() {
+      try {
+        const saved = localStorage.getItem(LANG_KEY);
+        if (saved === 'nl' || saved === 'en') return saved;
+      } catch (err) {}
+      return document.documentElement.getAttribute('lang') === 'en' ? 'en' : 'nl';
+    }
+    function applyPlaceholders(lang) {
+      const dict = {
+        nl: { name: 'Je naam', email: 'Je e-mailadres', subject: 'Waar gaat het over?', message: 'Vertel kort waar je aan werkt...', sendBtn: 'Verstuur bericht' },
+        en: { name: 'Your name', email: 'Your email address', subject: "What's it about?", message: 'Tell me what you are working on...', sendBtn: 'Send message' }
+      }[lang] || {};
+      Object.keys(dict).forEach(function(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (el.tagName === 'BUTTON') el.textContent = dict[id];
+        else el.placeholder = dict[id];
       });
     }
+    window.setLang = function(lang) {
+      if (lang !== 'nl' && lang !== 'en') return;
+      try { localStorage.setItem(LANG_KEY, lang); } catch (err) {}
+      document.documentElement.setAttribute('lang', lang);
+      applyPlaceholders(lang);
+      document.querySelectorAll('[data-lang-toggle]').forEach(function(btn) {
+        const active = btn.getAttribute('data-lang-toggle') === lang;
+        btn.classList.toggle('bg-accent', active);
+        btn.classList.toggle('text-[#0b1526]', active);
+        btn.classList.toggle('text-muted', !active);
+      });
+    };
 
     // ─── PROJECTS PAGE LOGIC (global) ────────────────────────────────────
     function initProjectsPage() {
@@ -524,8 +541,8 @@
         longdrive: {
           title: "The Long Drive – Custom Car",
           engine: "Unity · C# · AssetBundles",
-          video: "./Projects/fiverr/longdrive/endresult.mp4",
-          reviewImage: "./Projects/fiverr/longdrive/review.jpeg",
+          video: "./Projects/Fiverr/LongDrive/endresult.mp4",
+          reviewImage: "./Projects/Fiverr/LongDrive/review.jpeg",
           description: `
             <p>For <strong>The Long Drive</strong> I made a fully working custom car. I used <strong>C#</strong>, <strong>Unity AssetBundles</strong> and <strong>stripped in-game scripts</strong> to get the car into the game.</p>
             <p>What I did:</p>
@@ -538,8 +555,21 @@
             </ul>
             <p>The mod is fully tested and works seamlessly in the game. No crashes, no weird bugs — just a working custom car.</p>
           `,
+          descriptionNl: `
+            <p>Voor <strong>The Long Drive</strong> heb ik een volledig werkende custom auto gemaakt. Ik gebruikte <strong>C#</strong>, <strong>Unity AssetBundles</strong> en <strong>uitgeklede in-game scripts</strong> om de auto in de game te krijgen.</p>
+            <p>Wat ik deed:</p>
+            <ul class="list-disc list-inside space-y-1 text-muted">
+              <li><strong>AssetBundles</strong> — De auto zit in een AssetBundle en wordt dynamisch geladen, zonder de game zelf aan te passen.</li>
+              <li><strong>Uitgeklede scripts</strong> — De bestaande game-scripts teruggebracht tot de kern en aangepast zodat de custom auto gewoon werkt met de game-logica.</li>
+              <li><strong>Physics</strong> — Chassis en wielen met custom colliders, gewichtsverdeling en vering. Voelt hetzelfde als de originele auto's.</li>
+              <li><strong>Motor & geluid</strong> — Koppel, toerental en geluid dat reageert op snelheid en belasting.</li>
+              <li><strong>Custom textures</strong> — Eigen kleuren en onderdelen toevoegen.</li>
+            </ul>
+            <p>De mod is volledig getest en werkt naadloos in de game. Geen crashes, geen rare bugs — gewoon een werkende custom auto.</p>
+          `,
           tags: ["Unity", "C#", "AssetBundles", "Physics", "Vehicles"],
-          extra: "⭐ 5.0 · 1 review · Commissioned for a single client"
+          extra: "⭐ 5.0 · 1 review · Commissioned for a single client",
+          extraNl: "⭐ 5.0 · 1 review · In opdracht van één klant"
         }
       };
 
@@ -628,7 +658,8 @@
         _currentModKey = modKey;
         document.getElementById('modalTitle').textContent = data.title;
         document.getElementById('modalEngine').textContent = data.engine;
-        document.getElementById('modalDescription').innerHTML = data.description;
+        const lang = document.documentElement.lang === 'nl' ? 'Nl' : '';
+        document.getElementById('modalDescription').innerHTML = data['description' + lang] || data.description;
 
         const vc = document.getElementById('modalVideoContainer');
         const video = document.getElementById('modalVideo');
@@ -658,7 +689,7 @@
           span.textContent = tag;
           tags.appendChild(span);
         });
-        document.getElementById('modalExtra').textContent = data.extra || '';
+        document.getElementById('modalExtra').textContent = data['extra' + lang] || data.extra || '';
         document.getElementById('modModal').classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       };
@@ -731,15 +762,15 @@
         const feedback = document.getElementById('formFeedback');
         if (!feedback) return;
         feedback.className = 'mt-4 text-sm text-center text-accent';
-        feedback.textContent = '📨 Sending message...';
+        feedback.textContent = document.documentElement.lang === 'nl' ? '📨 Bericht verzenden...' : '📨 Sending message...';
         emailjs.sendForm('service_k551zka', 'template_jjmglr6', this)
           .then(() => {
             feedback.className = 'mt-4 text-sm text-center text-emerald-400';
-            feedback.textContent = 'Thanks! Your message has been sent. I\'ll get back to you as soon as possible.';
+            feedback.textContent = document.documentElement.lang === 'nl' ? 'Bedankt! Je bericht is verzonden. Ik reageer zo snel mogelijk.' : 'Thanks! Your message has been sent. I\'ll get back to you as soon as possible.';
             this.reset();
           }, (error) => {
             feedback.className = 'mt-4 text-sm text-center text-red-400';
-            feedback.textContent = 'Something went wrong. Please try again later.';
+            feedback.textContent = document.documentElement.lang === 'nl' ? 'Er ging iets mis. Probeer het later opnieuw.' : 'Something went wrong. Please try again later.';
             console.error('Error:', error);
           });
       });
@@ -748,6 +779,7 @@
     // ─── STARTUP ──────────────────────────────────────────────────────────
     async function init() {
       await loadSidebar();
+      window.setLang(currentLang());
       // Initial load: we want the first content to slide in from top
       // We'll call loadContent which will handle the slide-in (no exit animation)
       await loadContent(DEFAULT_ROUTE);

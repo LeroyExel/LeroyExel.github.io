@@ -1,75 +1,144 @@
 <div class="w-full flex flex-col items-center gap-6">
-  <h1 class="text-5xl font-bold mb-8">Projects</h1>
+  <h1 class="text-4xl md:text-5xl font-bold tracking-tight">
+    <span data-lang="nl">Projecten</span><span data-lang="en">Projects</span>
+  </h1>
 
-  <div class="w-full max-w-6xl grid grid-cols-1 gap-6">
-
-    <!-- Recoil -->
-    <div onclick="if(!event.target.closest('a'))window.location.href='Projects/recoil.html'" title="Open Recoil details" class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer">
-      <div class="flex flex-col md:flex-row gap-4 md:items-start">
-        <div class="flex-1">
-          <h3 class="text-2xl font-bold text-accent mb-2">Recoil</h3>
-          <p class="text-muted text-sm">School project using bullet force to shoot yourself up and kill enemies</p>
-          <p class="text-muted text-sm mt-4 mb-8">
-            <a href="https://github.com/LeroyExel/Recoil" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline">See GitHub →</a>
-          </p>
-        </div>
-        <p class="font-bold recoil-font text-5xl md:text-5xl mt-8 text-blue-400 md:flex-shrink-0">RECOIL</p>
-      </div>
+  <div class="w-full max-w-6xl">
+    <div class="flex items-center flex-wrap gap-4 mb-2">
+      <h2 class="text-2xl font-bold text-white tracking-tight">
+        <span data-lang="nl">Stagewerk — Saxion XR Lab</span><span data-lang="en">Internship work — Saxion XR Lab</span>
+      </h2>
+      <span class="px-3 py-1 text-xs font-bold tracking-wider text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 rounded-full uppercase">Feb – Jun 2026</span>
     </div>
+    <p class="text-muted text-sm mb-6">
+      <span data-lang="nl">VR-projecten uit mijn stage bij het Saxion XR Lab, gebouwd in Unreal Engine 5.</span><span data-lang="en">VR projects from my internship at Saxion XR Lab, built in Unreal Engine 5.</span>
+    </p>
 
-    <!-- PhysicsGame -->
-    <div onclick="if(!event.target.closest('a'))window.open('https://github.com/LeroyExel/Physics-Based-Character/tree/main','_blank','noopener')" title="Open PhysicsGame on GitHub" class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer">
-      <div class="flex flex-col md:flex-row gap-4 md:items-start">
-        <div class="flex-1">
-          <h3 class="text-xl font-bold text-accent mb-2">PhysicsGame</h3>
-          <p class="text-muted text-sm">Fully physics driven characters using my own physics animation system.</p>
-          <p class="text-muted text-sm mt-4">
-            <a href="https://github.com/LeroyExel/Physics-Based-Character/tree/main" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline">See GitHub →</a>
-          </p>
-        </div>
-        <img src="https://raw.githubusercontent.com/LeroyExel/Physics-Based-Character/main/ExamplePicture.png" alt="PhysicsGame Preview" class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0">
-      </div>
-    </div>
-
-    <!-- GOPO -->
-    <div onclick="if(!event.target.closest('a'))window.open('https://github.com/LeroyExel/Gopo-PogoStick-','_blank','noopener')" title="Open GOPO on GitHub" class="bg-white/5 border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/10 transition-all cursor-pointer">
-      <div class="flex flex-col md:flex-row gap-4 md:items-start">
-        <div class="flex-1">
-          <h3 class="text-xl font-bold text-accent mb-2">GOPO</h3>
-          <p class="text-muted text-sm">Physics based Pogostick game.</p>
-          <p class="text-muted text-sm mt-4">
-            <a href="https://github.com/LeroyExel/Gopo-PogoStick-" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline">See GitHub →</a>
-          </p>
-        </div>
-        <img src="https://raw.githubusercontent.com/LeroyExel/Gopo-PogoStick-/main/Example.png" alt="Project 3 Preview" class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0">
-      </div>
-    </div>
-
-    <!-- FIVERR MODS SECTION -->
-    <div class="w-full max-w-6xl mt-12">
-      <div class="flex items-center flex-wrap gap-4 mb-2">
-        <h2 class="text-3xl font-bold text-white">Past Client Work</h2>
-        <span class="px-3 py-1 text-xs font-bold tracking-wider text-green-400 bg-green-500/10 border border-green-500/30 rounded-full uppercase">★ 35+ Reviews</span>
-        <span class="px-3 py-1 text-xs font-bold tracking-wider text-accent bg-accent/10 border border-accent/20 rounded-full uppercase">Past Commissions</span>
-      </div>
-      <p class="text-muted text-sm mb-6">All mods were made for single clients in the past — each with 1 unique review.</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- The Long Drive -->
-        <div class="mod-card bg-white/5 border border-white/10 rounded-xl p-6 hover:border-accent/60 transition-all group" data-mod="longdrive">
-          <div class="flex items-start justify-between mb-3">
-            <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded border border-accent/20">Unity</span>
-            <span class="text-xs text-muted">⭐ 5.0</span>
+    <div class="grid grid-cols-1 gap-6">
+      <div class="bg-white/[0.04] border border-white/10 rounded-lg p-6 hover:border-accent/60 transition-all">
+        <div class="flex flex-col md:flex-row gap-4 md:items-start">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-accent mb-2">LUMC Anaesthesiology VR Showcase</h3>
+            <p class="text-muted text-sm">
+              <span data-lang="nl">Medische VR-showcase voor het LUMC: een VR-presentatie voor artsen, gebouwd in Unreal Engine 5 met Blueprints en C++.</span><span data-lang="en">Medical VR showcase for LUMC: a VR presentation for doctors, built in Unreal Engine 5 with Blueprints and C++.</span>
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Unreal Engine 5</span>
+              <span class="text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Blueprints</span>
+              <span class="text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">C++</span>
+              <span class="text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">VR</span>
+            </div>
           </div>
-          <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent transition-colors">The Long Drive – Custom Car</h3>
-          <p class="text-muted text-sm leading-relaxed">
-            Fully working custom vehicles for The Long Drive: physics, suspension, and engine sound.
-          </p>
-          <div class="flex flex-wrap gap-1.5 mt-3">
-            <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Unity</span>
-            <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Physics</span>
-            <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Vehicles</span>
+          <div class="relative w-full md:w-64 md:h-40 h-40 rounded-md border border-white/10 overflow-hidden bg-white/5 flex items-center justify-center shrink-0">
+            <span class="text-3xl font-extrabold text-accent/40 tracking-tight">LUMC</span>
+            <img src="Assets/saxion/lumc.jpg" alt="LUMC VR Showcase" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover">
           </div>
+        </div>
+      </div>
+
+      <div class="bg-white/[0.04] border border-white/10 rounded-lg p-6 hover:border-accent/60 transition-all">
+        <div class="flex flex-col md:flex-row gap-4 md:items-start">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-accent mb-2">REINTEGRATION</h3>
+            <p class="text-muted text-sm">
+              <span data-lang="nl">Interactief Sticky Notes-meldingensysteem in VR: ruimtelijke notificaties waar je mee kunt interacteren.</span><span data-lang="en">Interactive Sticky Notes notification system in VR: spatial notifications you can interact with.</span>
+            </p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Unreal Engine 5</span>
+              <span class="text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">VR</span>
+              <span class="text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">UI / UX</span>
+            </div>
+          </div>
+          <div class="relative w-full md:w-64 md:h-40 h-40 rounded-md border border-white/10 overflow-hidden bg-white/5 flex items-center justify-center shrink-0">
+            <span class="text-3xl font-extrabold text-accent/40 tracking-tight">RE</span>
+            <img src="Assets/saxion/reintegration.jpg" alt="REINTEGRATION VR" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full max-w-6xl mt-6">
+    <h2 class="text-2xl font-bold text-white tracking-tight mb-1">
+      <span data-lang="nl">Eigen projecten</span><span data-lang="en">Personal projects</span>
+    </h2>
+    <p class="text-muted text-sm mb-6">
+      <span data-lang="nl">Dingen die ik in mijn eigen tijd heb gebouwd.</span><span data-lang="en">Things I built in my own time.</span>
+    </p>
+
+    <div class="grid grid-cols-1 gap-6">
+      <div onclick="if(!event.target.closest('a'))window.location.href='Projects/recoil.html'" title="Open Recoil details" class="bg-white/[0.04] border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/[0.07] transition-all cursor-pointer">
+        <div class="flex flex-col md:flex-row gap-4 md:items-start">
+          <div class="flex-1">
+            <h3 class="text-2xl font-bold text-accent mb-2">Recoil</h3>
+            <p class="text-muted text-sm">
+              <span data-lang="nl">Schoolproject: 2D-pixelshooter waarin je jezelf omhoog schiet met de terugslag van je wapen.</span><span data-lang="en">School project: 2D pixel shooter that moves you with your own weapon recoil.</span>
+            </p>
+            <p class="text-muted text-sm mt-4 mb-8">
+              <a href="https://github.com/LeroyExel/Recoil" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline">GitHub →</a>
+            </p>
+          </div>
+          <p class="font-bold recoil-font text-5xl md:text-5xl mt-8 text-blue-400 md:flex-shrink-0">RECOIL</p>
+        </div>
+      </div>
+
+      <div onclick="if(!event.target.closest('a'))window.open('https://github.com/LeroyExel/Physics-Based-Character/tree/main','_blank','noopener')" title="Open PhysicsGame on GitHub" class="bg-white/[0.04] border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/[0.07] transition-all cursor-pointer">
+        <div class="flex flex-col md:flex-row gap-4 md:items-start">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-accent mb-2">PhysicsGame</h3>
+            <p class="text-muted text-sm">
+              <span data-lang="nl">Volledig physics-driven characters met mijn eigen physics-animatiesysteem.</span><span data-lang="en">Fully physics-driven characters with my own physics animation system.</span>
+            </p>
+            <p class="text-muted text-sm mt-4">
+              <a href="https://github.com/LeroyExel/Physics-Based-Character/tree/main" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline">GitHub →</a>
+            </p>
+          </div>
+          <img src="https://raw.githubusercontent.com/LeroyExel/Physics-Based-Character/main/ExamplePicture.png" alt="PhysicsGame Preview" loading="lazy" class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0">
+        </div>
+      </div>
+
+      <div onclick="if(!event.target.closest('a'))window.open('https://github.com/LeroyExel/Gopo-PogoStick-','_blank','noopener')" title="Open GOPO on GitHub" class="bg-white/[0.04] border border-white/10 rounded-lg p-6 hover:border-accent hover:bg-white/[0.07] transition-all cursor-pointer">
+        <div class="flex flex-col md:flex-row gap-4 md:items-start">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-accent mb-2">GOPO</h3>
+            <p class="text-muted text-sm">
+              <span data-lang="nl">Physics-based pogostick-game.</span><span data-lang="en">Physics-based pogo stick game.</span>
+            </p>
+            <p class="text-muted text-sm mt-4">
+              <a href="https://github.com/LeroyExel/Gopo-PogoStick-" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline">GitHub →</a>
+            </p>
+          </div>
+          <img src="https://raw.githubusercontent.com/LeroyExel/Gopo-PogoStick-/main/Example.png" alt="GOPO Preview" loading="lazy" class="rounded-md border border-white/10 w-full md:w-64 md:h-32 h-40 object-cover md:flex-shrink-0">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full max-w-6xl mt-6">
+    <div class="flex items-center flex-wrap gap-4 mb-2">
+      <h2 class="text-2xl font-bold text-white tracking-tight">
+        <span data-lang="nl">Vroeger clientwerk</span><span data-lang="en">Past client work</span>
+      </h2>
+      <span class="px-3 py-1 text-xs font-bold tracking-wider text-yellow-300 bg-yellow-500/10 border border-yellow-500/30 rounded-full uppercase">★ 35+ Reviews</span>
+    </div>
+    <p class="text-muted text-sm mb-6">
+      <span data-lang="nl">Mods die ik als freelancer voor individuele klanten heb gemaakt — elk met 1 unieke review.</span><span data-lang="en">Mods I made as a freelancer for individual clients — each with 1 unique review.</span>
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="mod-card bg-white/[0.04] border border-white/10 rounded-xl p-6 hover:border-accent/60 transition-all group" data-mod="longdrive">
+        <div class="flex items-start justify-between mb-3">
+          <span class="text-xs font-mono font-bold text-accent bg-accent/10 px-2.5 py-1 rounded border border-accent/20">Unity</span>
+          <span class="text-xs text-muted">⭐ 5.0</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-1 group-hover:text-accent transition-colors">The Long Drive – Custom Car</h3>
+        <p class="text-muted text-sm leading-relaxed">
+          <span data-lang="nl">Volledig werkende custom voertuigen voor The Long Drive: physics, vering en motorgeluid.</span><span data-lang="en">Fully working custom vehicles for The Long Drive: physics, suspension and engine sound.</span>
+        </p>
+        <div class="flex flex-wrap gap-1.5 mt-3">
+          <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Unity</span>
+          <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Physics</span>
+          <span class="mod-tag text-[10px] px-2 py-0.5 bg-white/5 border border-white/10 rounded text-muted">Vehicles</span>
         </div>
       </div>
     </div>

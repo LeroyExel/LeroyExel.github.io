@@ -12,32 +12,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Particles.js -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              bg: "#0f1724",
-              muted: "#9aa4b2",
-              accent: "#60a5fa",
-              text: "#e6eef8",
-            },
-            keyframes: {
-              pulseGlow: {
-                "0%, 100%": { textShadow: "0 0 8px #60a5fa" },
-                "50%": { textShadow: "0 0 18px #60a5fa" },
-              },
-            },
-            animation: {
-              pulseGlow: "pulseGlow 3s infinite ease-in-out",
-            },
-          },
-        },
-      };
-    </script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-bg: #0f1724;
+        --color-muted: #9aa4b2;
+        --color-accent: #60a5fa;
+        --color-text: #e6eef8;
+        --animate-pulseGlow: pulseGlow 3s infinite ease-in-out;
+        @keyframes pulseGlow {
+          0%, 100% { text-shadow: 0 0 8px #60a5fa; }
+          50% { text-shadow: 0 0 18px #60a5fa; }
+        }
+      }
+    </style>
     <style>
       /* BPV-style typography */
       body, * { font-family: 'Nunito', sans-serif !important; font-weight: 700; letter-spacing: 0.01em; line-height: 1.75; }
@@ -57,12 +45,11 @@
     </style>
   </head>
 
-  <body class="min-h-screen flex bg-gradient-to-b from-[#0f2b72] to-[#071025] text-[#e6eef8] antialiased selection:bg-[#60a5fa] selection:text-[#0f1724] relative">
+  <body class="min-h-screen flex bg-[#0b1526] text-[#e6eef8] antialiased selection:bg-[#60a5fa] selection:text-[#0f1724] relative">
     <!-- Particles background -->
-    <div
-      id="particles-js"
-      class="fixed inset-0 z-0 pointer-events-none opacity-90"
-    ></div>
+    <div aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none">
+      <div class="absolute -top-40 left-1/4 w-[36rem] h-[36rem] rounded-full opacity-20" style="background: radial-gradient(circle, #1d4ed8 0%, transparent 65%);"></div>
+    </div>
 
     <!-- Mobile menu button (BPV style) -->
     <button id="menuBtn" onclick="toggleMenu()" class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
@@ -88,10 +75,10 @@
 
         </div>
       </div>
-<!-- BPV_Project.html — updated back button in the sidebar footer -->
+
 
 <div class="flex flex-col gap-2">
-  <a href="../index.html" 
+  <a href="../index.html#projects" 
      class="block text-center text-sm font-extrabold px-3 py-2.5 rounded-xl border border-red-500/40 bg-red-500/10 text-red-400 hover:bg-red-500/25 hover:border-red-500 hover:-translate-x-1 transition-all duration-200">
     ← Back
   </a>
@@ -259,26 +246,5 @@
       }
     </script>
 
-    <!-- Particles Config -->
-    <script>
-      if (window.particlesJS) {
-        particlesJS("particles-js", {
-          particles: {
-            number: { value: 80, density: { enable: true, value_area: 800 } },
-            color: { value: "#60a5fa" },
-            shape: { type: "circle" },
-            opacity: { value: 0.5 },
-            size: { value: 3, random: true },
-            line_linked: { enable: true, distance: 150, color: "#60a5fa", opacity: 0.4, width: 1 },
-            move: { enable: true, speed: 2, out_mode: "out" },
-          },
-          interactivity: {
-            detect_on: "canvas",
-            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
-          },
-          retina_detect: true,
-        });
-      }
-    </script>
   </body>
 </html>

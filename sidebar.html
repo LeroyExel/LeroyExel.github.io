@@ -1,10 +1,6 @@
 <!-- sidebar.html -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
-
 <aside id="mobile-menu"
-       class="fixed md:sticky top-0 left-0 z-40 h-screen w-64 bg-[#0a1a45]/95 border-r border-white/10 p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-200 ease-in-out md:translate-x-0 backdrop-blur-md md:bg-white/5 overflow-y-auto">
+       class="fixed md:sticky top-0 left-0 z-40 h-screen w-64 bg-[#0d1a33]/95 border-r border-white/10 p-6 flex flex-col justify-between transform -translate-x-full transition-transform duration-200 ease-in-out md:translate-x-0 backdrop-blur-md md:bg-white/[0.03] overflow-y-auto">
 
   <button onclick="toggleMenu()"
           class="absolute top-4 right-4 md:hidden text-[#9aa4b2] hover:text-white transition-colors">
@@ -17,32 +13,53 @@
     <div>
       <h2 class="section-label text-[11px] uppercase mb-4">Menu</h2>
       <nav class="flex flex-col space-y-1 text-sm">
-        <a href="#" data-route="about" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">About</a>
-        <a href="#" data-route="projects" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">Projects</a>
-        <a href="#" data-route="contact" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">Contact</a>
+        <a href="#" data-route="about" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">
+          <span data-lang="nl">Over mij</span><span data-lang="en">About</span>
+        </a>
+        <a href="#" data-route="projects" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">
+          <span data-lang="nl">Projecten</span><span data-lang="en">Projects</span>
+        </a>
+        <a href="#" data-route="contact" class="nav-link px-3 py-2.5 rounded-lg hover:bg-white/5 hover:text-[#60a5fa] transition-colors text-[#e6eef8]">
+          Contact
+        </a>
       </nav>
     </div>
-  </div>
 
-  <div class="flex flex-col gap-3">
-    <div class="border-t border-white/10 pt-4">
-      <p class="section-label text-[11px] uppercase mb-3">Projects</p>
+    <div>
+      <h2 class="section-label text-[11px] uppercase mb-3">
+        <span data-lang="nl">Links</span><span data-lang="en">Links</span>
+      </h2>
       <div class="flex flex-col gap-2.5">
         <a href="Projects/recoil.html"
            class="project-link block text-center text-sm font-extrabold px-3 py-2.5 rounded-xl border transition-all">
           Recoil
         </a>
-        <a href="Projects/BPV_Project.html"
+        <a href="https://github.com/LeroyExel" target="_blank" rel="noopener noreferrer"
            class="project-link block text-center text-sm font-extrabold px-3 py-2.5 rounded-xl border transition-all">
-          BPV Report
+          GitHub
         </a>
-        <a href="Assets/Leroy_Exel_CV.pdf" target="_blank" rel="noopener noreferrer"
+        <a href="Assets/Leroy_Exel_CV.pdf" target="_blank" rel="noopener noreferrer" data-lang="nl"
            class="project-link block text-center text-sm font-extrabold px-3 py-2.5 rounded-xl border transition-all">
-          CV
+          CV (Nederlands)
+        </a>
+        <a href="Assets/Leroy_Exel_CV_EN.pdf" target="_blank" rel="noopener noreferrer" data-lang="en"
+           class="project-link block text-center text-sm font-extrabold px-3 py-2.5 rounded-xl border transition-all">
+          CV (English)
         </a>
       </div>
     </div>
-    <div class="text-[11px] text-[#9aa4b2] font-bold uppercase tracking-widest mt-1">
+  </div>
+
+  <div class="flex flex-col gap-3">
+    <div class="border-t border-white/10 pt-4">
+      <div class="flex items-center gap-2" role="group" aria-label="Language / Taal">
+        <button data-lang-toggle="nl" onclick="setLang('nl')"
+                class="flex-1 text-xs font-extrabold px-3 py-1.5 rounded-lg border border-white/10 transition-all text-muted hover:text-white">NL</button>
+        <button data-lang-toggle="en" onclick="setLang('en')"
+                class="flex-1 text-xs font-extrabold px-3 py-1.5 rounded-lg border border-white/10 transition-all text-muted hover:text-white">EN</button>
+      </div>
+    </div>
+    <div class="text-[11px] text-[#9aa4b2] font-bold uppercase tracking-widest">
       Leroy Exel &copy; 2026
     </div>
   </div>
