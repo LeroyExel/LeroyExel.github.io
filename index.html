@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leroy Exel</title>
+  <title>Leroy Exel – Software Developer</title>
+  <meta name="description" content="Leroy Exel — Software Developer from Almelo. Unreal Engine 5, Unity, VR, physics-driven games. Ex-Saxion XR Lab intern, former freelancer." />
+  <meta property="og:title" content="Leroy Exel – Software Developer" />
+  <meta property="og:description" content="Unreal Engine 5, Unity, VR and physics-driven games. Ex-Saxion XR Lab intern, former freelancer." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://leroyexel.github.io/" />
+  <meta property="og:image" content="https://leroyexel.github.io/Assets/Profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="Assets/favicon.svg" />
 
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -417,13 +425,19 @@
       isLoading = false;
     }
 
+    function routeFromHash() {
+      const h = window.location.hash.replace(/^#\/?/, '');
+      return ROUTES[h] ? h : null;
+    }
+
     function navigateTo(route) {
       if (route === currentRoute || isLoading) return;
+      try { history.pushState({ route }, '', '#' + route); } catch (err) {}
       loadContent(route);
     }
 
     window.addEventListener('popstate', (e) => {
-      const route = e.state?.route || DEFAULT_ROUTE;
+      const route = e.state?.route || routeFromHash() || DEFAULT_ROUTE;
       if (route !== currentRoute && !isLoading) {
         loadContent(route);
       }
@@ -739,14 +753,20 @@
       await loadContent(DEFAULT_ROUTE);
     }
 
-    // detect initial route from URL
+    // detect initial route from URL (hash first, then path)
     (function() {
-      const path = window.location.pathname;
       let route = DEFAULT_ROUTE;
-      if (path !== '/' && path !== '') {
-        const parts = path.split('/').filter(Boolean);
-        if (parts.length && ROUTES[parts[0]]) route = parts[0];
-      }
+      try {
+        const h = window.location.hash.replace(/^#\/?/, '');
+        if (h && ROUTES[h]) route = h;
+        else {
+          const path = window.location.pathname;
+          if (path !== '/' && path !== '') {
+            const parts = path.split('/').filter(Boolean);
+            if (parts.length && ROUTES[parts[0]]) route = parts[0];
+          }
+        }
+      } catch (err) {}
       currentRoute = route;
     })();
 
