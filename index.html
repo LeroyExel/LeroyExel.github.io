@@ -17,6 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <style type="text/tailwindcss">
@@ -205,13 +206,10 @@
   </style>
 </head>
 
-<body class="min-h-screen text-white flex bg-[#0b1526] text-text relative antialiased">
+<body class="min-h-screen text-white flex bg-linear-to-b from-[#0f2b72] to-[#071025] text-text font-sans relative">
 
-  <!-- Subtle static backdrop glows (no animation libraries) -->
-  <div aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none">
-    <div class="absolute -top-40 left-1/4 w-[36rem] h-[36rem] rounded-full opacity-20" style="background: radial-gradient(circle, #1d4ed8 0%, transparent 65%);"></div>
-    <div class="absolute bottom-0 right-0 w-[28rem] h-[28rem] rounded-full opacity-10" style="background: radial-gradient(circle, #60a5fa 0%, transparent 65%);"></div>
-  </div>
+  <!-- PARTICLES BACKGROUND -->
+  <div id="particles-js" aria-hidden="true" class="fixed inset-0 z-0 pointer-events-none opacity-90"></div>
 
   <!-- MOBILE MENU BUTTON -->
   <button id="menuBtn" onclick="toggleMenu()" class="fixed top-4 left-4 z-50 md:hidden bg-white/10 border border-white/10 rounded-xl p-2 backdrop-blur-md text-[#60a5fa]">
@@ -534,6 +532,27 @@
         btn.classList.toggle('text-muted', !active);
       });
     };
+
+    // ─── PARTICLES ──────────────────────────────────────────────────────
+    if (window.particlesJS) {
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 100, density: { enable: true, value_area: 800 } },
+          color: { value: "#60a5fa" },
+          shape: { type: "circle" },
+          opacity: { value: 0.6 },
+          size: { value: 3, random: true },
+          line_linked: { enable: true, distance: 120, color: "#60a5fa", opacity: 0.12, width: 1 },
+          move: { enable: true, speed: 1.5, out_mode: "out" },
+        },
+        interactivity: {
+          detect_on: "window",
+          events: { onhover: { enable: true, mode: "repulse" } },
+          modes: { repulse: { distance: 100 } },
+        },
+        retina_detect: true,
+      });
+    }
 
     // ─── PROJECTS PAGE LOGIC (global) ────────────────────────────────────
     function initProjectsPage() {
